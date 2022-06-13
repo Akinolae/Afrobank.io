@@ -12,16 +12,7 @@ const Profile = (props) => {
   const { payLoad } = props
 
   return (
-    <Col
-      style={{
-        height: '100vh',
-        position: 'relative',
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right: 0,
-      }}
-    >
+    <>
       <Row>
         <Col lg={12}>
           <div className="d-flex pt-4 align-items-center">
@@ -128,7 +119,7 @@ const Profile = (props) => {
           </Col>
         </Col>
       </Col>
-    </Col>
+    </>
   )
 }
 

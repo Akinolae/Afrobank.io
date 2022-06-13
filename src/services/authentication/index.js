@@ -1,7 +1,13 @@
 import Axios from '../index'
 import { extractApiError } from '../../utils/error'
 import { transactionHistory } from '../transactions'
-import { login, updateUser, updateSignIn } from '../appstore/reducers/reducer'
+import {
+  login,
+  updateUser,
+  updateToken,
+  updateUsers,
+  updateSignIn,
+} from '../appstore/reducers/reducer'
 import { appStore } from '../appstore'
 
 const store = appStore
@@ -18,9 +24,9 @@ const userHasPin = () => {
   const { pin } = getUserProfile().payLoad
   return !!pin
 }
+
 const userToken = () => {
-  const { token } = getUserProfile().payLoad
-  return token
+  return getUserProfile().token
 }
 
 const registerUser = async (payload) => {
@@ -51,7 +57,9 @@ const pollUser = async () => {
 const userLogin = async (payLoad) => {
   try {
     const resp = await Axios.post('/login', payLoad)
-    store.dispatch(login(resp.data.message))
+    const { token, email } = resp.data.message
+    await getProfile(token, email)
+    store.dispatch(updateToken(token))
     store.dispatch(updateSignIn(true))
 
     return resp.data.message
@@ -105,6 +113,34 @@ const fetchUser = async () => {
   }
 }
 
+const getAllUsers = async () => {
+  const token = userToken()
+  const { email } = store.getState().user.payLoad
+  try {
+    const resp = await Axios.get(`/getAllUsers/${email}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    store.dispatch(updateUsers(resp.data.message))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const getProfile = async (token, email) => {
+  try {
+    const res = await Axios.get(`/getProfile/${email}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    store.dispatch(login(res.data.message))
+  } catch (error) {
+    throw extractApiError(error)
+  }
+}
+
 export {
   signOut,
   pollUser,
@@ -114,6 +150,8 @@ export {
   userToken,
   userLogin,
   userHasPin,
+  getProfile,
+  getAllUsers,
   registerUser,
   isUserSignedIn,
   getUserProfile,

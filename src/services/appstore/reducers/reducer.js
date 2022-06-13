@@ -15,12 +15,23 @@ const reducers = createSlice({
       state.transactions = data.payload
     },
     updateSignIn: (state, data) => {
-      console.log(data.payload)
       state.isSignedIn = data.payload
+    },
+    updateUsers: (state, data) => {
+      state.users = data.payload
+    },
+    updateToken: (state, data) => {
+      state.token = data.payload
     },
   },
 })
 
-export const { login, updateUser, updateTransactionHistory, updateSignIn } =
-  reducers.actions
+export const {
+  login,
+  updateUser,
+  updateUsers,
+  updateToken,
+  updateSignIn,
+  updateTransactionHistory,
+} = reducers.actions
 export default reducers.reducer

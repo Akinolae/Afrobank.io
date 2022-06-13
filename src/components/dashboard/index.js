@@ -18,6 +18,7 @@ import { connect } from 'react-redux'
 import SendMoney from './sendmoney'
 import Profile from './profile'
 import Settings from './settings'
+import AdminDash from './adminDash'
 
 const NotificationDiv = styled.div`
   height: 44px;
@@ -62,7 +63,6 @@ const NameDiv = styled.div`
   font-size: 14px;
   color: white;
 `
-
 const Main = (props) => {
   const [showNotification, setNotification] = useState(false)
   const [userNotification] = useState({
@@ -77,8 +77,10 @@ const Main = (props) => {
     await deleteSingleNotification(id)
   }
 
-  const { firstName, lastName } = props.payLoad
-  const name = `${firstName[0]}${lastName[0]}`
+  const { firstName, lastName, account } = props.payLoad
+  const name = !!Object.keys(props.payLoad).length
+    ? `${firstName[0]}${lastName[0]}`
+    : ''
 
   return (
     <Dashbody style={{ overflow: 'hidden' }} className="pb-4">
@@ -88,15 +90,33 @@ const Main = (props) => {
             <SideBar />
           </Col>
 
-          <Switch>
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/dashboard/wallet" component={Wallet} />
-            <Route exact path="/dashboard/analysis" component={SendMoney} />
-            <Route exact path="/dashboard/profile" component={Profile} />
-            <Route exact path="/dashboard/Settings" component={Settings} />
-          </Switch>
-          <Col className="hide d-flex justify-content-end" xl={1}>
-            <Row className="d-flex justify-content-between pr-2 pt-3">
+          <Col
+            md={9}
+            lg={9}
+            xl={9}
+            style={{
+              height: '100vh',
+              position: 'relative',
+              top: 0,
+              left: 0,
+              bottom: 0,
+              right: 0,
+            }}
+          >
+            <Switch>
+              <Route
+                exact
+                path="/dashboard"
+                component={account === 'admin' ? AdminDash : Dashboard}
+              />
+              <Route exact path="/dashboard/wallet" component={Wallet} />
+              <Route exact path="/dashboard/analysis" component={SendMoney} />
+              <Route exact path="/dashboard/profile" component={Profile} />
+              <Route exact path="/dashboard/Settings" component={Settings} />
+            </Switch>
+          </Col>
+          <Col md={1} lg={1} xl={1} className="hide d-flex justify-content-end">
+            <Row className="d-flex  pr-2 pt-3">
               <Col className="p-0 pt-1">
                 <Dropdown
                   isOpen={showNotification}

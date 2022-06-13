@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { pollUser } from '../../services/authentication'
+import { pollUser, getAllUsers } from '../../services/authentication'
 import { Col, Row, Table } from 'reactstrap'
 import {
   getFormatedDate,
@@ -9,7 +9,7 @@ import {
   getFormatedTime,
 } from '../../utils'
 import { Person, ShowChart, FileCopy } from '@material-ui/icons'
-
+import { Chart } from '../../globalcomponents'
 import styled from 'styled-components'
 
 const AccountCard = styled.div`
@@ -32,6 +32,7 @@ const SearchSection = styled(Col)`
 
 export const Dashbody = styled.div`
   height: 100%;
+  width: 100%;
   background: #0f0f0fe5;
 `
 export const Type = styled.span`
@@ -59,6 +60,7 @@ class Dashboard extends React.Component {
     })
     try {
       await pollUser()
+      await getAllUsers()
       this.setState({
         loading: false,
       })
@@ -75,35 +77,38 @@ class Dashboard extends React.Component {
 
   renderTransactions = () => {
     const { transactions } = this.props
-    return transactions.map((transaction, i) => {
-      const { transaction_id, amount, transaction_date, transaction_type } =
-        transaction
+    const trx = transactions || []
+    return trx
+      .map((transaction, i) => {
+        const { transaction_id, amount, transaction_date, transaction_type } =
+          transaction
 
-      const formatDay = getFormatedDate(transaction_date)
-      const formatTime = getFormatedTime(transaction_date)
-      return (
-        <tr key={i}>
-          <td>{transaction_id}</td>
-          <td
-            style={{
-              color: `${transaction_type === 'credit' ? 'green' : 'red'}`,
-              fontWeight: 600,
-            }}
-          >
-            {formatMoney(amount)}
-          </td>
-          <td
-            style={{
-              color: `${transaction_type === 'credit' ? 'green' : 'red'}`,
-              fontWeight: 600,
-            }}
-          >
-            {transaction_type}
-          </td>
-          <td>{`${formatDay} ${formatTime}`}</td>
-        </tr>
-      )
-    })
+        const formatDay = getFormatedDate(transaction_date)
+        const formatTime = getFormatedTime(transaction_date)
+        return (
+          <tr key={i}>
+            <td>{transaction_id}</td>
+            <td
+              style={{
+                color: `${transaction_type === 'credit' ? 'green' : 'red'}`,
+                fontWeight: 600,
+              }}
+            >
+              {formatMoney(amount)}
+            </td>
+            <td
+              style={{
+                color: `${transaction_type === 'credit' ? 'green' : 'red'}`,
+                fontWeight: 600,
+              }}
+            >
+              {transaction_type}
+            </td>
+            <td>{`${formatDay} ${formatTime}`}</td>
+          </tr>
+        )
+      })
+      .reverse()
   }
 
   render() {
@@ -111,17 +116,12 @@ class Dashboard extends React.Component {
     const { loading } = this.state
     const accountBalance = formatMoney(payLoad.accountBalance)
     const trx = transactions || []
+    const name = !!Object.keys(payLoad).length
+      ? `${payLoad.firstName.toUpperCase()}${payLoad.lastName.toUpperCase()}`
+      : ''
 
     return (
-      <Col
-        style={{
-          overflow: 'hidden',
-          position: 'relative',
-          top: 0,
-          bottom: 0,
-          height: '100vh',
-        }}
-      >
+      <>
         <Text className="pt-4">Dashboard</Text>
         <Text style={{ color: 'whitesmoke', fontSize: '18px', opacity: 0.3 }}>
           Account updates
@@ -140,7 +140,7 @@ class Dashboard extends React.Component {
                       opacity: 0.3,
                     }}
                   >
-                    {`Name: ${payLoad.firstName.toUpperCase()} ${payLoad.lastName.toUpperCase()}`}
+                    {`Name: ${name}`}
                   </Text>
                 </AccountCard>
               </Col>
@@ -188,10 +188,9 @@ class Dashboard extends React.Component {
               Balance
             </Text>
             <Text className="pt-1">{loading ? '...' : accountBalance}</Text>
-            <Col
-              style={{ height: '350px' }}
-              className="p-0 rounded bg-dark pt-2"
-            ></Col>
+            <Col style={{ height: '350px' }} className="p-0 m-0 rounded pt-2">
+              <Chart className="p-0" data={trx} datakey="amount" />
+            </Col>
           </Col>
           <Col lg={10} className="p-0 pt-3">
             <Text
@@ -205,7 +204,7 @@ class Dashboard extends React.Component {
             </Text>
             <Col className="p-0" style={{ height: '650px' }}>
               {!!trx.length ? (
-                <SearchSection height="50%">
+                <SearchSection className="p-0" height="60%">
                   <Table
                     className="p-0"
                     style={{ overflowY: 'scroll' }}
@@ -236,7 +235,7 @@ class Dashboard extends React.Component {
             </Col>
           </Col>
         </SearchSection>
-      </Col>
+      </>
     )
   }
 }
