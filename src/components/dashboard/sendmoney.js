@@ -45,16 +45,7 @@ const SendMoney = (props) => {
   useEffect(() => {}, [formikForm])
 
   return (
-    <Col
-      style={{
-        height: '100vh',
-        position: 'relative',
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right: 0,
-      }}
-    >
+    <>
       <PinModal
         centered
         isVisible={pinModal}
@@ -97,7 +88,7 @@ const SendMoney = (props) => {
           </AccountCard>
         </Col>
       </Col>
-    </Col>
+    </>
   )
 }
 

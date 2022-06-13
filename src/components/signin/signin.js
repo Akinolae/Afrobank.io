@@ -52,7 +52,10 @@ const SignIn = (props) => {
       setState({
         formLoading: false,
       })
-      props.history.push('/dashboard')
+      props.history.push({
+        pathName: '/dashboard',
+        state: { value },
+      })
     } catch (error) {
       setState({
         error: error || 'An error occured',

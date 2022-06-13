@@ -11,6 +11,7 @@ import {
 } from '@material-ui/icons'
 import styled from 'styled-components'
 import { Col } from 'reactstrap'
+import { connect } from 'react-redux'
 
 export const Type = styled.span`
   color: ${(props) => props.color};
@@ -147,5 +148,8 @@ const SideBar = (props) => {
     </Col>
   )
 }
+const mapStateToProps = (state) => ({
+  payLoad: state.user.payLoad,
+})
 
-export default SideBar
+export default connect(mapStateToProps, {})(SideBar)
