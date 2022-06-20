@@ -9,24 +9,17 @@ const sumAmount = (transactions) => {
 
 const calculateAllDebit = (transactions = []) => {
   const allDebits = transactions.filter(
-    (data) => data.transaction_type === 'debit'
+    (res) => res.transaction_type === 'debit'
   )
-  const totalDebits = sumAmount(allDebits)
-
-  return formatMoney(totalDebits)
+  const totalDebit = sumAmount(allDebits)
+  return totalDebit
 }
 
 const calculateAllCredit = (transactions = []) => {
-  // const allCredits = transactions.map((res) =>
-  //   Object.values(res).filter((data) => {
-  //     if (data.transaction_type === 'credit') {
-  //       return data.amount
-  //     }
-  //   })
-  // )
-  // console.log(allCredits)
-  // const totalDebits = sumAmount(allCredits)/
-  // console.log(allCredits)
-  // return formatMoney(totalDebits)
+  const allCredits = transactions.filter(
+    (res) => res.transaction_type === 'credit'
+  )
+  const totalCredits = sumAmount(allCredits)
+  return totalCredits
 }
 export { formatMoney, calculateAllDebit, calculateAllCredit }

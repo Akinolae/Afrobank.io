@@ -141,6 +141,41 @@ const getProfile = async (token, email) => {
   }
 }
 
+const activateUser = async (payload) => {
+  const { email } = store.getState().user.payLoad
+  const token = userToken()
+
+  try {
+    const res = await Axios.patch(`/acivate/${email}`, payload, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    await getAllUsers()
+    console.log(res)
+  } catch (error) {
+    throw extractApiError(error)
+  }
+}
+
+const deactivateUser = async (payload) => {
+  const { email } = store.getState().user.payLoad
+  const token = userToken()
+
+  try {
+    const res = await Axios.patch(`/deactivate/${email}`, payload, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    await getAllUsers()
+
+    console.log(res)
+  } catch (error) {
+    throw extractApiError(error)
+  }
+}
+
 export {
   signOut,
   pollUser,
@@ -153,6 +188,8 @@ export {
   getProfile,
   getAllUsers,
   registerUser,
-  isUserSignedIn,
+  activateUser,
   getUserProfile,
+  isUserSignedIn,
+  deactivateUser,
 }
