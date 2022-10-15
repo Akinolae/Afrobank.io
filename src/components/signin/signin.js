@@ -1,17 +1,10 @@
 import React, { useState } from 'react'
-import {
-  Col,
-  Row,
-  Button as btn,
-  Modal,
-  Container,
-  ModalBody,
-} from 'reactstrap'
+import { Col, Row, Button as btn, Modal, ModalBody } from 'reactstrap'
 import { userLogin } from '../../services/authentication'
 import { LoginForm } from '../forms/index'
 import styled from 'styled-components'
-import { Link, Redirect } from 'react-router-dom'
-import { Clear } from '@material-ui/icons'
+import { Redirect } from 'react-router-dom'
+
 import { connect } from 'react-redux'
 import Privacy from './privacy'
 
@@ -77,17 +70,27 @@ const SignIn = (props) => {
             left: 0,
             bottom: 0,
             right: 0,
+            background: 'black',
           }}
         >
           <Row style={{ height: '100%' }}>
             <Col
               lg={8}
-              className="d-flex justify-content-center align-items-center"
+              className="d-flex justify-content-center align-items-center m-auto"
             >
-              <Col lg={6} xs={12} md={7}>
+              <Col
+                lg={6}
+                xs={12}
+                md={7}
+                style={{
+                  paddingBottom: '50px',
+                  paddingTop: '50px',
+                  boxShadow: '-1px 8px 20px -1px rgba(3,2,2,0.53)',
+                }}
+              >
                 <Text
-                  style={{ color: 'black', opacity: '0.5' }}
-                  className="text-center mobile_text"
+                  style={{ color: 'white' }}
+                  className="text-center mobile_text pb-3"
                 >
                   Welcome back
                 </Text>
@@ -110,7 +113,7 @@ const SignIn = (props) => {
                     style={{
                       fontSize: '14px',
                       cursor: 'pointer',
-                      color: 'black',
+                      color: 'white',
                       opacity: '0.5',
                     }}
                     className="text-center"
@@ -121,57 +124,14 @@ const SignIn = (props) => {
                 </Col>
               </Col>
             </Col>
-            <Col
-              lg={4}
-              className="hide bg-dark  d-flex justify-content-center align-items-center mobile_mt mobile_pb"
-            >
-              <Col lg={7} className="m-auto ">
-                <Text style={{ color: 'white' }} className="text-center hide">
-                  Hello, Friend
-                </Text>
-                <Text
-                  style={{
-                    fontSize: '18px',
-                    color: 'white',
-                    opacity: 0.7,
-                    fontWeight: 500,
-                  }}
-                  className="text-center hide"
-                >
-                  Welcome back, we've missed you
-                </Text>
-                <div className="d-flex justify-content-center pt-4">
-                  <Link
-                    style={{
-                      color: 'white',
-                      textDecoration: 'none',
-                    }}
-                    to="/register"
-                  >
-                    <Button className="rounded-pill">Sign Up</Button>
-                  </Link>
-                </div>
-              </Col>
-            </Col>
           </Row>
 
-          <Modal size="lg" isOpen={open} toggle={() => toggle()} centered>
-            <Container>
-              <Col>
-                <Col
-                  lg={6}
-                  className="ml-auto d-flex justify-content-end align-items-center"
-                >
-                  <button className="float-right btn " onClick={() => toggle()}>
-                    <Clear />
-                  </button>
-                </Col>
-              </Col>
-              <ModalBody></ModalBody>
+          <Modal isOpen={open} toggle={() => toggle()} centered>
+            <ModalBody style={{ background: '#00000099' }}>
               <Col>
                 <Privacy />
               </Col>
-            </Container>
+            </ModalBody>
           </Modal>
           {/* <Col className="bg-dark" style={{ height: '160px' }}></Col> */}
         </Col>

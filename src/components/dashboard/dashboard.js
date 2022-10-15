@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { pollUser, getAllUsers } from '../../services/authentication'
 import { Col, Row, Table } from 'reactstrap'
 import {
   getFormatedDate,
@@ -8,20 +7,21 @@ import {
   formatMoney,
   getFormatedTime,
 } from '../../utils'
-import { Person, ShowChart, FileCopy } from '@material-ui/icons'
+import { Person, ShowChart, FileCopy, AddCircle } from '@material-ui/icons'
 import { Chart } from '../../globalcomponents'
 import styled from 'styled-components'
 
 const AccountCard = styled.div`
-  height: 250px;
+  height: 200px;
   width: 100%;
-  border-radius: 10px;
-  background: #0d3153;
-  background-image: url(${(props) => props.img});
+  border-radius: 20px;
+  background: #4004af;
+  box-shadow: -1px 8px 20px -1px rgba(3, 2, 2, 0.53);
   transition: all ease 0.3s;
 `
 const SearchSection = styled(Col)`
   height: ${(props) => props.height};
+  width: 100%;
   overflow-y: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -33,7 +33,7 @@ const SearchSection = styled(Col)`
 export const Dashbody = styled.div`
   height: 100%;
   width: 100%;
-  background: #0f0f0fe5;
+  background: white;
 `
 export const Type = styled.span`
   color: ${(props) => props.color};
@@ -41,9 +41,9 @@ export const Type = styled.span`
 `
 
 const Text = styled.h5`
-  color: white;
+  color: ${(props) => props.color || 'white'};
   font-size: 24px;
-  font-weight: 550;
+  font-weight: ${(props) => props.fw || 550};
 `
 
 class Dashboard extends React.Component {
@@ -52,27 +52,6 @@ class Dashboard extends React.Component {
     this.state = {
       loading: false,
     }
-  }
-
-  fetchUser = async () => {
-    this.setState({
-      loading: true,
-    })
-    try {
-      await pollUser()
-      await getAllUsers()
-      this.setState({
-        loading: false,
-      })
-    } catch (e) {
-      this.setState({
-        loading: false,
-      })
-    }
-  }
-
-  componentDidMount = async () => {
-    await this.fetchUser()
   }
 
   renderTransactions = () => {
@@ -116,21 +95,40 @@ class Dashboard extends React.Component {
     const { loading } = this.state
     const accountBalance = formatMoney(payLoad.accountBalance)
     const trx = transactions || []
-    const name = !!Object.keys(payLoad).length
-      ? `${payLoad.firstName.toUpperCase()}${payLoad.lastName.toUpperCase()}`
-      : ''
+
+    console.log(this.props)
+    // const name = !!Object.keys(payLoad).length
+    //   ? `${payLoad.firstName.toUpperCase()}${payLoad.lastName.toUpperCase()}`
+    //   : ''
 
     return (
-      <>
-        <Text className="pt-4">Dashboard</Text>
-        <Text style={{ color: 'whitesmoke', fontSize: '18px', opacity: 0.3 }}>
-          Account updates
-        </Text>
-        <SearchSection className="p-0" height="82%">
-          <Col lg={10} className="p-0 pt-4">
+      <div>
+        <Row
+          style={{ height: '100px' }}
+          className="justify-content-between  align-items-center"
+        >
+          <Col className="p-0">
+            <Text color="black" fw={900}>
+              Dashboard
+            </Text>
+          </Col>
+          <Col className="d-flex justify-content-end p-0">
+            <AddCircle
+              style={{
+                color: '#4004af',
+              }}
+              onClick={() => alert('done')}
+            />
+          </Col>
+        </Row>
+        <SearchSection
+          className="d-flex justify-content-center flex-column align-items-center p-0 m-0"
+          height="82%"
+        >
+          <Col className="p-0 pt-4">
             <Row className="d-flex justify-content-between">
               <Col xl={4}>
-                <AccountCard className="d-flex flex-column justify-content-center align-items-center bg-dark">
+                <AccountCard className="d-flex flex-column justify-content-center align-items-center">
                   <Person fontSize="large" style={{ color: 'white' }} />
                   <Text
                     className="pt-3"
@@ -140,27 +138,26 @@ class Dashboard extends React.Component {
                       opacity: 0.3,
                     }}
                   >
-                    {`Name: ${name}`}
+                    {/* {`Name: ${name}`} */}
                   </Text>
                 </AccountCard>
               </Col>
-              <Col xl={3}>
-                <AccountCard className="d-flex flex-column justify-content-center align-items-center bg-dark">
+              <Col xl={4}>
+                <AccountCard className="d-flex flex-column justify-content-center align-items-center">
                   <ShowChart style={{ color: 'white', fontSize: '40px' }} />
                   <Text
                     className="pt-3"
                     style={{
                       color: 'whitesmoke',
                       fontSize: '14px',
-                      opacity: 0.5,
                     }}
                   >
                     {`You've spent ${calculateAllDebit(transactions)} so far`}
                   </Text>
                 </AccountCard>
               </Col>
-              <Col xl={5}>
-                <AccountCard className="bg-dark d-flex justify-content-center align-items-center">
+              <Col xl={4}>
+                <AccountCard className="d-flex justify-content-center align-items-center">
                   <FileCopy style={{ cursor: 'pointer', color: 'white' }} />
                   <Text
                     className="pl-2 pt-3 font-weight-bold"
@@ -177,7 +174,7 @@ class Dashboard extends React.Component {
             </Row>
           </Col>
 
-          <Col lg={10} className="p-0 pt-4">
+          <Col className="p-0 pt-4">
             <Text
               style={{
                 color: 'whitesmoke',
@@ -235,7 +232,7 @@ class Dashboard extends React.Component {
             </Col>
           </Col>
         </SearchSection>
-      </>
+      </div>
     )
   }
 }

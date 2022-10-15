@@ -9,7 +9,11 @@ import {
   updateSignIn,
 } from '../appstore/reducers/reducer'
 import { appStore } from '../appstore'
+import { Auth } from 'afrobank-sdk/dist'
 
+const newAuth = new Auth()
+
+console.log(new Auth())
 const store = appStore
 
 const getUserProfile = () => {
@@ -56,13 +60,13 @@ const pollUser = async () => {
 
 const userLogin = async (payLoad) => {
   try {
-    const resp = await Axios.post('/login', payLoad)
-    const { token, email } = resp.data.message
-    await getProfile(token, email)
+    const resp = await newAuth.login(payLoad)
+    const { token } = resp
+    await getProfile(token)
     store.dispatch(updateToken(token))
     store.dispatch(updateSignIn(true))
 
-    return resp.data.message
+    return resp
   } catch (error) {
     throw extractApiError(error)
   }
@@ -128,14 +132,14 @@ const getAllUsers = async () => {
   }
 }
 
-const getProfile = async (token, email) => {
+const getProfile = async (token) => {
   try {
-    const res = await Axios.get(`/getProfile/${email}`, {
+    const res = await Axios.get(`/getProfile`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
-    store.dispatch(login(res.data.message))
+    store.dispatch(login(res.data.message.message))
   } catch (error) {
     throw extractApiError(error)
   }

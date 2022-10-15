@@ -32,9 +32,13 @@ const transfer = async (payload, pin) => {
 }
 
 const transactionHistory = async () => {
+  const token = userToken()
   try {
-    const { accountNumber } = getUserProfile().payLoad
-    const resp = await Axios.get(`/history/${accountNumber}`)
+    const resp = await Axios.get(`/history/`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     store.dispatch(updateTransactionHistory(resp.data.message))
   } catch (error) {
     throw extractApiError(error)

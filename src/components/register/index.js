@@ -2,8 +2,7 @@ import React from 'react'
 import { Row, Col } from 'reactstrap'
 import { SignUpForm } from '../forms'
 import { registerUser } from '../../services/authentication'
-import { Button, Text } from '../signin/signin'
-import { Link } from 'react-router-dom'
+import { Text } from '../signin/signin'
 
 class Register extends React.Component {
   constructor(props) {
@@ -37,17 +36,31 @@ class Register extends React.Component {
           left: 0,
           bottom: 0,
           right: 0,
+          background: 'black',
         }}
       >
-        <Row style={{ height: '100%' }}>
+        <Row
+          style={{
+            height: '100%',
+          }}
+        >
           <Col
             lg={8}
-            className="d-flex justify-content-center align-items-center"
+            className="d-flex justify-content-center align-items-center m-auto"
           >
-            <Col lg={6} xs={12} md={7}>
+            <Col
+              lg={6}
+              xs={12}
+              md={7}
+              style={{
+                paddingBottom: '50px',
+                paddingTop: '50px',
+                boxShadow: '-1px 8px 20px -1px rgba(3,2,2,0.53)',
+              }}
+            >
               <Text
-                className="text-center"
-                style={{ color: 'black', opacity: '0.5' }}
+                className="text-center pb-3"
+                style={{ color: 'white', opacity: '0.5' }}
               >
                 Create an Account
               </Text>
@@ -59,38 +72,6 @@ class Register extends React.Component {
                   regError={this.state.regError}
                 />
               </Col>
-            </Col>
-          </Col>
-          <Col
-            lg={4}
-            className="d-flex justify-content-center bg-dark align-items-center mobile_mt mobile_pb"
-          >
-            <Col lg={7} className="m-auto">
-              <Text style={{ color: 'white' }} className="text-center hide">
-                Hello, Friend
-              </Text>
-              <Text
-                style={{
-                  fontSize: '18px',
-                  color: 'white',
-                  opacity: 0.7,
-                  fontWeight: 500,
-                }}
-                className="text-center hide"
-              >
-                Fill up personal information and start journey with us
-              </Text>
-              <div className="d-flex justify-content-center pt-4">
-                <Link
-                  style={{
-                    color: 'white',
-                    textDecoration: 'none',
-                  }}
-                  to="/signin"
-                >
-                  <Button className="rounded-pill">Sign In</Button>
-                </Link>
-              </div>
             </Col>
           </Col>
         </Row>

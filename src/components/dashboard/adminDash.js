@@ -13,9 +13,6 @@ import {
   calculateAllDebit,
   calculateAllCredit,
 } from '../../utils/money'
-import styled from 'styled-components'
-
-const Card = styled.div``
 
 class AdminDash extends React.Component {
   componentDidMount = async () => {

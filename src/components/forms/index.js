@@ -29,6 +29,9 @@ const Error = styled.p`
   text-align: start;
   font-size: 12px;
 `
+const Text = styled.p`
+  color: white;
+`
 
 const Button = (props) => {
   return (
@@ -100,7 +103,20 @@ const LoginForm = (props) => {
                 </span>
               )}
             </div>
-            <div className="d-flex flex-column justify-content-center align-items-center pt-4">
+            <div className="d-flex justify-content-end align-items-center pt-3">
+              <Link
+                style={{
+                  color: 'grey',
+                  fontWeight: 600,
+                  fontSize: '14px',
+                  textDecoration: 'none',
+                }}
+                to="/forgotpassword"
+              >
+                forgot password
+              </Link>
+            </div>
+            <div className="d-flex flex-column justify-content-center align-items-center pt-3">
               <Button
                 type="submit"
                 disabled={props.formLoading}
@@ -118,18 +134,23 @@ const LoginForm = (props) => {
                 }
               />
             </div>
-            <div className="d-flex justify-content-end align-items-center pt-3">
-              <Link
-                style={{
-                  color: 'grey',
-                  fontWeight: 600,
-                  fontSize: '14px',
-                  textDecoration: 'none',
-                }}
-                to="/forgotpassword"
-              >
-                forgot password
-              </Link>
+
+            <div className="d-flex justify-content-center align-items-center pt-3">
+              <Text>
+                Don't have an account?
+                <Link
+                  style={{
+                    color: 'grey',
+                    fontWeight: 600,
+                    paddingLeft: '5px',
+                    fontSize: '14px',
+                    textDecoration: 'none',
+                  }}
+                  to="/register"
+                >
+                  register
+                </Link>
+              </Text>
             </div>
           </Form>
         )
@@ -165,7 +186,7 @@ const ForgotPasswordForm = (props) => {
 
             <span
               style={{
-                color: 'black',
+                color: 'white',
                 opacity: '0.5',
                 fontSize: '13px',
               }}
@@ -178,7 +199,7 @@ const ForgotPasswordForm = (props) => {
             <div className="d-flex justify-content-center align-items-center mt-3">
               <Button type="submit" text="Send" />
             </div>
-            <div className="d-flex justify-content-end align-items-center pt-3">
+            <div className="d-flex justify-content-center align-items-center pt-3">
               <Link
                 style={{
                   color: 'grey',
@@ -346,10 +367,27 @@ const SignUpForm = (props) => {
                       color="#ffffff"
                     />
                   ) : (
-                    'create account'
+                    'Create Account'
                   )
                 }
               />
+            </div>
+            <div className="d-flex justify-content-center align-items-center pt-3">
+              <Text>
+                Do you have an account?
+                <Link
+                  style={{
+                    color: 'grey',
+                    fontWeight: 600,
+                    fontSize: '16px',
+                    textDecoration: 'none',
+                    paddingLeft: '5px',
+                  }}
+                  to="/signin"
+                >
+                  sign in
+                </Link>
+              </Text>
             </div>
           </Form>
         )

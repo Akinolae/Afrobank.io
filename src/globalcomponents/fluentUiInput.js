@@ -12,6 +12,7 @@ const FluentUiInput = (props) => {
           border: '1px solid #ced4da',
           outline: 'none',
           fontWeight: '400',
+          boxSizing: 'none',
         },
         revealButton: {
           height: '100%',
