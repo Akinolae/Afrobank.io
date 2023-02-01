@@ -1,23 +1,34 @@
-import React from 'react'
-import Main from './pages'
-import { Provider } from 'react-redux'
-import { appStore, persistor } from './services/appstore'
-import { PersistGate } from 'redux-persist/integration/react'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import './index.css'
-import ErrorBoundary from './pages/errorBoundary'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import "./App.scss";
 
-const store = appStore
 function App() {
+  const [count, setCount] = useState(0);
+
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <ErrorBoundary>
-          <Main />
-        </ErrorBoundary>
-      </PersistGate>
-    </Provider>
-  )
+    <div className="App">
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src="/vite.svg" className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://reactjs.org" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </div>
+  );
 }
 
-export default App
+export default App;
