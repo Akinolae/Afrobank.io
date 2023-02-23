@@ -2,6 +2,7 @@ import { useState } from "react";
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { StoreWrapper } from "./@store";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -18,9 +19,9 @@ function App() {
   ]);
 
   return (
-    <div>
+    <StoreWrapper initialState={{ name: "" }}>
       <RouterProvider router={routes} />
-    </div>
+    </StoreWrapper>
   );
 }
 
