@@ -21,7 +21,7 @@ const StoreWrapper = (props: Props) => {
     }
   }, []);
 
-  const Render = useCallback((e: any) => {
+  const Render = useCallback(() => {
     return <>{props.children}</>;
   }, []);
 

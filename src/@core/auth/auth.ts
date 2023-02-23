@@ -5,8 +5,11 @@ const login = async (params: object) => {
   try {
     const res = await apiFunctionCall("/login", params, "POST");
 
-    localStorage.setItem("user", JSON.stringify(response.extractData(res)));
-    return response.extractData(res);
+    const data = localStorage.getItem("user");
+    // console.log();
+
+    // return response.extractData(res);
+    return;
   } catch (error: Res | any) {
     throw response.extractError(error);
   }

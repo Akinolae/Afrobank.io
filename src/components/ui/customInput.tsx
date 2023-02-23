@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { CSSProperties } from "styled-components";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
@@ -46,7 +46,7 @@ const CustomInput = (props: Props) => {
 
 const CustomPasswordInput = (props: Props) => {
   const { hasIcon, label, ...rest } = props;
-  const [isVisible, setIsVisible] = React.useState(false);
+  const [isVisible, setIsVisible] = useState<React.ComponentState>(false);
   return (
     <>
       {!!label ? <Label>{label}</Label> : null}
