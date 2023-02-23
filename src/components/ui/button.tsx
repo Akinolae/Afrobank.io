@@ -19,10 +19,17 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   backgroundColor?: string;
   fontSize?: number;
   height?: number;
+  isLoading?: boolean;
+  width?: string;
 }
 
 const Button = (props: Props) => {
-  return <ButtonComponent {...props}>{props.text}</ButtonComponent>;
+  const { isLoading } = props;
+  return (
+    <ButtonComponent {...props}>
+      {isLoading ? "Loading ..." : props.text}
+    </ButtonComponent>
+  );
 };
 
 export default Button;
