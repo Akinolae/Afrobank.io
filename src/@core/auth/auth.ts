@@ -3,9 +3,35 @@ import response, { Res } from "../../@utils/response";
 
 const login = async (params: object) => {
   try {
-    const res = await apiFunctionCall("/login", params, "POST");
+    const res: Res = await apiFunctionCall.axiosApi.post("login", params);
 
-    const data = localStorage.getItem("user");
+    return response.extractData(res);
+  } catch (error: Res | any) {
+    throw response.extractError(error);
+  }
+};
+
+const register = async (params: object) => {
+  try {
+    const res = await apiFunctionCall.axiosApi.post("/register", params);
+
+    // const data = localStorage.getItem("user");
+    // console.log();
+
+    // return response.extractData(res);
+    return;
+  } catch (error: Res | any) {
+    throw response.extractError(error);
+  }
+};
+
+const validate2fa = async (params: string) => {
+  try {
+    const res = await apiFunctionCall.axiosApi.post("/validate2fa", {
+      code: params,
+    });
+
+    // const data = localStorage.getItem("user");
     // console.log();
 
     // return response.extractData(res);
@@ -17,4 +43,6 @@ const login = async (params: object) => {
 
 export default {
   login,
+  validate2fa,
+  register,
 };

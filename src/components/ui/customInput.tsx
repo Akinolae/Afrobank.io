@@ -8,15 +8,18 @@ const Input = styled.input<CSSProperties>`
   height: 100%;
   width: ${(props) => props.width || "100%"};
   padding-right: 15px;
+  font-size: 15px;
+  font-weight: bold;
 `;
 const Label = styled.span<CSSProperties>`
   color: ${(props) => props.color};
   font-size: ${(props) => props.fontSize};
+  text-transform: capitalize;
+  font-weight: 800;
 `;
 
 const InputWrapper = styled.div`
-  height: 60px;
-  width: 400px;
+  height: 50px;
   background: white;
   display: flex;
   justify-content: space-between;
@@ -24,28 +27,51 @@ const InputWrapper = styled.div`
   padding-left: 15px;
   padding-right: 15px;
   border-radius: 10px;
+  border: 1px solid #858282;
+`;
+
+const Error = styled.span<CSSProperties>`
+  color: red;
+  font-weight: bold;
+  font-size: 12px;
 `;
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   hasIcon?: boolean;
   label?: string;
   labelColor?: string;
+  error?: string | undefined;
+  option?: [{ label: string; value: string }, { label: string; value: string }];
 }
 
 const CustomInput = (props: Props) => {
-  const { onChange, label, labelColor, ...rest } = props;
+  const { onChange, label, labelColor, error, option, ...rest } = props;
   return (
     <>
       {!!label ? <Label color={labelColor}>{label}</Label> : null}
-      <InputWrapper>
-        <Input onChange={onChange} {...rest} />
-      </InputWrapper>
+
+      {rest?.type === "select" ? (
+        <InputWrapper>
+          {option?.map(({ label, value }, i) => {
+            return (
+              <select key={i} id={Label}>
+                <option value={value}>{label}</option>
+              </select>
+            );
+          })}
+        </InputWrapper>
+      ) : (
+        <InputWrapper>
+          <Input onChange={onChange} {...rest} />
+        </InputWrapper>
+      )}
+      {!!error ? <Error>{error}</Error> : null}
     </>
   );
 };
 
 const CustomPasswordInput = (props: Props) => {
-  const { hasIcon, label, ...rest } = props;
+  const { hasIcon, label, error, ...rest } = props;
   const [isVisible, setIsVisible] = useState<React.ComponentState>(false);
   return (
     <>
@@ -76,6 +102,7 @@ const CustomPasswordInput = (props: Props) => {
           </div>
         ) : null}
       </InputWrapper>
+      {!!error ? <Error>{error}</Error> : null}
     </>
   );
 };
