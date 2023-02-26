@@ -14,7 +14,6 @@ const Register = () => {
     firstName: yup.string().required(),
     lastName: yup.string().required(),
     phoneNumber: yup.string().required(),
-    gender: yup.string().required(),
     password: yup.string().required(),
   });
 
@@ -54,14 +53,12 @@ const Register = () => {
             textAlign: "center",
           }}
         />
-        {/* <Form /> */}
         <Formik
           initialValues={{
             email: "",
             password: "",
             firstName: "",
             lastName: "",
-            gender: "",
             phoneNumber: "",
           }}
           validationSchema={validationSchema}
@@ -114,16 +111,6 @@ const Register = () => {
                       error={errors.phoneNumber}
                       onChange={(e: any) =>
                         setFieldValue("phoneNumber", e.target.value)
-                      }
-                    />
-                  </div>
-                  <div style={{ marginBottom: "20px" }}>
-                    <Ui.CustomInput
-                      label="Gender"
-                      value={values.gender}
-                      error={errors.gender}
-                      onChange={(e: any) =>
-                        setFieldValue("gender", e.target.value)
                       }
                     />
                   </div>

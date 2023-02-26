@@ -89,12 +89,12 @@ const CustomPasswordInput = (props: Props) => {
             }}
           >
             {isVisible ? (
-              <AiFillEyeInvisible
+              <AiFillEye
                 style={{ fontSize: "24px" }}
                 onClick={() => setIsVisible(!isVisible)}
               />
             ) : (
-              <AiFillEye
+              <AiFillEyeInvisible
                 style={{ fontSize: "24px" }}
                 onClick={() => setIsVisible(!isVisible)}
               />
