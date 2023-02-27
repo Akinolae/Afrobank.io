@@ -1,16 +1,16 @@
 import apiFunctionCall from "..";
 import response, { Res } from "../../@utils/response";
-import {
-  store,
-  updateSignIn,
-  updateUser,
-  updateToken,
-} from "../../@store/store";
+import { store, updateSignIn, updateUser } from "../../@store/store";
 
 const login = async (params: object) => {
   try {
     const res: Res = await apiFunctionCall.axiosApi.post("login", params);
-    return response.extractData(res);
+
+    const data = response.extractData(res);
+    store.dispatch(updateSignIn(true));
+    store.dispatch(updateUser(data));
+
+    return data;
   } catch (error: Res | any) {
     throw response.extractError(error);
   }

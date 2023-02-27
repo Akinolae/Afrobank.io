@@ -6,6 +6,7 @@ import auth from "../../@core/auth/auth";
 import { FaKey } from "react-icons/fa";
 import * as yup from "yup";
 import { Link } from "react-router-dom";
+import { Navigate, PathRouteProps } from "react-router-dom";
 
 export const LoginWrapper = styled.div<CSSProperties>`
   width: ${(props) => props.width || "100%"};
@@ -37,7 +38,13 @@ const Login = () => {
   const login = async (e: object) => {
     setLoading(true);
     try {
-      await auth.login(e);
+      const res = await auth.login(e);
+
+      !!res ? (
+        <Navigate to={"/authenticate"} replace />
+      ) : (
+        <Navigate to={"/user-dashboard"} replace />
+      );
       setLoading(false);
     } catch (error) {
       setLoading(false);

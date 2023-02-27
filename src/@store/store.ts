@@ -20,7 +20,6 @@ const persistConfig = {
 const reducers = createSlice({
   name: "user",
   initialState: {
-    token: "",
     isSignedIn: false,
     payLoad: {},
   },
@@ -28,16 +27,13 @@ const reducers = createSlice({
     updateUser: (state, data) => {
       state.payLoad = data.payload;
     },
-    updateToken: (state, data) => {
-      state.token = data.payload;
-    },
     updateSignIn: (state, data) => {
       state.isSignedIn = data.payload;
     },
   },
 });
 
-const { updateSignIn, updateToken, updateUser } = reducers.actions;
+const { updateSignIn, updateUser } = reducers.actions;
 
 const rootReducer = combineReducers({
   user: reducers.reducer,
@@ -58,4 +54,4 @@ const store = configureStore({
 
 let persistor = persistStore(store);
 
-export { store, persistor, updateSignIn, updateToken, updateUser };
+export { store, persistor, updateSignIn, updateUser };
