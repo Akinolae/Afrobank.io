@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Login from "./components/auth/login";
 import Register from "./components/auth/register/register";
 import Auth2fa from "./components/auth/auth2fa";
@@ -29,9 +29,9 @@ function App() {
     {
       path: "/user-dashboard",
       element: (
-        <>
+        <React.Suspense fallback={"...loading"}>
           <p>Dashboard</p>
-        </>
+        </React.Suspense>
       ),
       public: false,
     },

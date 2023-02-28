@@ -1,17 +1,23 @@
 export interface Res {
-  message?: object;
+  message?: object | any;
   response?: {
     data: {
-      message: string;
+      message: string | any;
     };
   };
   data?: {
-    message: string;
+    message?: {
+      has2fa: boolean;
+      token: string;
+      email: string;
+    };
   };
 }
 
-const extractData = (res: Res) => {
-  return res.data?.message;
+const extractData = (res: Res): object => {
+  return {
+    data: res.data?.message,
+  };
 };
 
 const extractError = (res: Res) => {

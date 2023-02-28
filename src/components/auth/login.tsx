@@ -6,7 +6,7 @@ import auth from "../../@core/auth/auth";
 import { FaKey } from "react-icons/fa";
 import * as yup from "yup";
 import { Link } from "react-router-dom";
-import { Navigate, PathRouteProps } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const LoginWrapper = styled.div<CSSProperties>`
   width: ${(props) => props.width || "100%"};
@@ -29,6 +29,7 @@ export const FormWrapper = styled.div`
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const validationSchema = yup.object().shape({
     email: yup.string().email("Enter a valid email").required(),
@@ -40,12 +41,8 @@ const Login = () => {
     try {
       const res = await auth.login(e);
 
-      !!res ? (
-        <Navigate to={"/authenticate"} replace />
-      ) : (
-        <Navigate to={"/user-dashboard"} replace />
-      );
       setLoading(false);
+      return res ? navigate("/authenticate") : navigate("/user-dashboard");
     } catch (error) {
       setLoading(false);
     }

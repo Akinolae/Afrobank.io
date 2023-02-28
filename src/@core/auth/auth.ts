@@ -4,13 +4,13 @@ import { store, updateSignIn, updateUser } from "../../@store/store";
 
 const login = async (params: object) => {
   try {
-    const res: Res = await apiFunctionCall.axiosApi.post("login", params);
+    const res = await apiFunctionCall.axiosApi.post("login", params);
 
-    const data = response.extractData(res);
+    const data: any = response.extractData(res);
     store.dispatch(updateSignIn(true));
-    store.dispatch(updateUser(data));
+    store.dispatch(updateUser(data?.data));
 
-    return data;
+    return data?.data.has2fa;
   } catch (error: Res | any) {
     throw response.extractError(error);
   }
