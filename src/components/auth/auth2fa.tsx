@@ -10,7 +10,7 @@ const Auth2fa = () => {
 
   const onSubmit = async () => {
     try {
-      if (!code || code.length !== 4) setError("code is required");
+      if (!code || code.length !== 6) setError("code is required");
       else {
         setError("");
         await auth.validate2fa(code);
@@ -50,7 +50,7 @@ const Auth2fa = () => {
         <ui.CustomInput
           onChange={(e) => setCode(e.target.value)}
           placeholder="Enter code"
-          maxLength={4}
+          maxLength={6}
           error={error}
         />
         <ui.Button

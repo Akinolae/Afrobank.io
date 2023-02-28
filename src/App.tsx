@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Login from "./components/auth/login";
 import Register from "./components/auth/register/register";
 import Auth2fa from "./components/auth/auth2fa";
+import Dashboard from "./components/dashboard/dashboard";
+import LogOut from "./components/auth/logOut";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { persistor, store as appStore } from "./@store/store";
 import { Provider } from "react-redux";
@@ -14,6 +16,11 @@ function App() {
     {
       path: "/",
       element: <Login />,
+      public: true,
+    },
+    {
+      path: "/sign-out",
+      element: <LogOut />,
       public: true,
     },
     {
@@ -30,7 +37,7 @@ function App() {
       path: "/user-dashboard",
       element: (
         <React.Suspense fallback={"...loading"}>
-          <p>Dashboard</p>
+          <Dashboard />
         </React.Suspense>
       ),
       public: false,

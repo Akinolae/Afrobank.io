@@ -22,6 +22,8 @@ const reducers = createSlice({
   initialState: {
     isSignedIn: false,
     payLoad: {},
+    cards: [],
+    has2fasStatus: false,
   },
   reducers: {
     updateUser: (state, data) => {
@@ -30,10 +32,16 @@ const reducers = createSlice({
     updateSignIn: (state, data) => {
       state.isSignedIn = data.payload;
     },
+    update2faStatus: (state, data) => {
+      state.has2fasStatus = data.payload;
+    },
+    cards: (state, data) => {
+      state.cards = data.payload;
+    },
   },
 });
 
-const { updateSignIn, updateUser } = reducers.actions;
+const { updateSignIn, updateUser, cards, update2faStatus } = reducers.actions;
 
 const rootReducer = combineReducers({
   user: reducers.reducer,
@@ -54,4 +62,4 @@ const store = configureStore({
 
 let persistor = persistStore(store);
 
-export { store, persistor, updateSignIn, updateUser };
+export { store, persistor, updateSignIn, updateUser, cards, update2faStatus };
