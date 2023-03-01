@@ -5,6 +5,7 @@ import {
   updateUser,
   updateSignIn,
   update2faStatus,
+  initialState,
 } from "../../@store/store";
 
 const getToken = (): string | undefined => {
@@ -79,10 +80,9 @@ const validate2fa = async (params: string) => {
         },
       }
     );
-    if (res.data.message.toLowerCase() === "validated") {
-      store.dispatch(update2faStatus(true));
-      store.dispatch(updateSignIn(true));
-    }
+
+    store.dispatch(update2faStatus(true));
+    store.dispatch(updateSignIn(true));
 
     return;
   } catch (error: any) {
@@ -91,8 +91,8 @@ const validate2fa = async (params: string) => {
 };
 const logOut = (): void => {
   localStorage.removeItem("user");
-  store.dispatch(updateSignIn(false));
-  store.dispatch(updateUser(""));
+  store.dispatch(updateSignIn(initialState.isSignedIn));
+  store.dispatch(updateUser(initialState.payLoad));
   localStorage.clear();
 };
 

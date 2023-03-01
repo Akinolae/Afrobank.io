@@ -77,4 +77,12 @@ const store = configureStore({
 
 let persistor = persistStore(store);
 
-export { store, persistor, updateSignIn, updateUser, cards, update2faStatus };
+export {
+  store,
+  persistor,
+  updateSignIn,
+  updateUser,
+  cards,
+  update2faStatus,
+  initialState,
+};
