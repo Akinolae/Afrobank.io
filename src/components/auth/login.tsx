@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled, { CSSProperties } from "styled-components";
 import ui from "../ui";
 import { Formik, Form } from "formik";
@@ -30,6 +30,10 @@ export const FormWrapper = styled.div`
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    auth.isSignedIn() && navigate("/user-dashboard");
+  }, []);
 
   const validationSchema = yup.object().shape({
     email: yup.string().email("Enter a valid email").required(),

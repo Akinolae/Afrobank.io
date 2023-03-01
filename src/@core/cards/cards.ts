@@ -1,19 +1,20 @@
 import apiFunctionCall from "..";
 import response, { Res } from "../../@utils/response";
 import { store, updateSignIn, updateUser, cards } from "../../@store/store";
+import auth from "../auth/auth";
 
 const getCards = async (): Promise<void> => {
+  const token = auth.getToken();
   try {
     const res = await apiFunctionCall.axiosApi.get("userCards", {
       headers: {
-        Authorization: `Bearer ${store.getState().user.payLoad?.token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
 
     store.dispatch(cards(res.data?.message));
-    console.log(res);
-  } catch (error) {
-    console.log(error);
+  } catch (error: any) {
+    throw response.extractError(error);
   }
 };
 

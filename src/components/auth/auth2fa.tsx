@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { FormWrapper, LoginWrapper } from "./login";
 import ui from "../ui";
-import { HiLockClosed } from "react-icons/hi";
 import auth from "../../@core/auth/auth";
+import { useNavigate } from "react-router-dom";
+import { HiLockClosed } from "react-icons/hi";
+import { FormWrapper, LoginWrapper } from "./login";
 
 const Auth2fa = () => {
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const onSubmit = async () => {
     try {
@@ -14,6 +16,7 @@ const Auth2fa = () => {
       else {
         setError("");
         await auth.validate2fa(code);
+        navigate("/user-dashboard");
       }
     } catch (error: string | any) {
       setError(error);

@@ -2,36 +2,52 @@ import apiFunctionCall from "..";
 import response, { Res } from "../../@utils/response";
 import {
   store,
-  updateSignIn,
   updateUser,
+  updateSignIn,
   update2faStatus,
 } from "../../@store/store";
+
+const getToken = (): string | undefined => {
+  const token = store.getState().user.payLoad.token;
+  return token;
+};
 
 const login = async (params: object) => {
   try {
     const res = await apiFunctionCall.axiosApi.post("login", params);
 
     const data: any = response.extractData(res);
-    store.dispatch(updateSignIn(true));
-    store.dispatch(updateUser(data?.data));
+    if (!data?.data.has2fa) {
+      store.dispatch(updateSignIn(true));
+    }
 
     return data?.data.has2fa;
-  } catch (error: Res | any) {
+  } catch (error: any) {
     throw response.extractError(error);
   }
 };
 
+const isSignedIn = (): boolean => {
+  return store.getState().user.isSignedIn;
+};
+
 const getProfile = async () => {
+  const token = getToken();
+
   try {
     const res = await apiFunctionCall.axiosApi.get("getProfile", {
       headers: {
-        Authorization: `Bearer ${store.getState().user.payLoad?.token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
 
+    if (!!Object.keys(store.getState().user.payLoad).length) {
+      return;
+    }
+
     const data: any = response.extractData(res);
-    console.log(data?.data);
-  } catch (error: Res | any) {
+    store.dispatch(updateUser(data?.data));
+  } catch (error: any) {
     throw response.extractError(error);
   }
 };
@@ -45,7 +61,7 @@ const register = async (params: object) => {
 
     // return response.extractData(res);
     return;
-  } catch (error: Res | any) {
+  } catch (error: any) {
     throw response.extractError(error);
   }
 };
@@ -63,18 +79,13 @@ const validate2fa = async (params: string) => {
         },
       }
     );
-
-    res.data.message.toLowerCase() === "validate" &&
+    if (res.data.message.toLowerCase() === "validated") {
       store.dispatch(update2faStatus(true));
+      store.dispatch(updateSignIn(true));
+    }
 
     return;
-
-    // const data = localStorage.getItem("user");
-    // console.log();
-
-    // return response.extractData(res);
-    return;
-  } catch (error: Res | any) {
+  } catch (error: any) {
     throw response.extractError(error);
   }
 };
@@ -88,7 +99,9 @@ const logOut = (): void => {
 export default {
   login,
   logOut,
-  validate2fa,
   register,
+  getToken,
+  isSignedIn,
   getProfile,
+  validate2fa,
 };

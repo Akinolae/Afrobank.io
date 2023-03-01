@@ -17,14 +17,29 @@ const persistConfig = {
   storage,
 };
 
+interface State {
+  isSignedIn: false;
+  payLoad: {
+    email: string;
+    token: string;
+  };
+  cards: Array<object>;
+  has2fasStatus: false;
+}
+
+const initialState: State = {
+  isSignedIn: false,
+  payLoad: {
+    email: "",
+    token: "",
+  },
+  cards: [],
+  has2fasStatus: false,
+};
+
 const reducers = createSlice({
   name: "user",
-  initialState: {
-    isSignedIn: false,
-    payLoad: {},
-    cards: [],
-    has2fasStatus: false,
-  },
+  initialState,
   reducers: {
     updateUser: (state, data) => {
       state.payLoad = data.payload;

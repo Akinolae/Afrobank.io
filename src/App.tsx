@@ -31,7 +31,7 @@ function App() {
     {
       path: "/authenticate",
       element: <Auth2fa />,
-      public: false,
+      public: true,
     },
     {
       path: "/user-dashboard",

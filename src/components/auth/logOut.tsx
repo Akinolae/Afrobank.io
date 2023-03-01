@@ -8,6 +8,8 @@ const LogOut = () => {
     auth.logOut();
     return navigate("/");
   }, []);
+
+  return <></>;
 };
 
 export default LogOut;
