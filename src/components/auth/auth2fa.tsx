@@ -34,6 +34,7 @@ const Auth2fa = () => {
         >
           <HiLockClosed color="green" />
         </ui.Badge>
+        {/* <ui.PinInput length={6} onChange={(e) => console.log(e)} /> */}
         <ui.Text
           text="Authenticate"
           fontSize="28px"
