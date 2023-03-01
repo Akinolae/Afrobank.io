@@ -13,6 +13,10 @@ const getToken = (): string | undefined => {
   return token;
 };
 
+const has2fa = (): boolean => {
+  return store.getState().user.has2fasStatus;
+};
+
 const login = async (params: object) => {
   try {
     const res = await apiFunctionCall.axiosApi.post("login", params);
@@ -21,6 +25,8 @@ const login = async (params: object) => {
     if (!data?.data.has2fa) {
       store.dispatch(updateSignIn(true));
     }
+
+    store.dispatch(updateUser(data?.data));
 
     return data?.data.has2fa;
   } catch (error: any) {
@@ -68,6 +74,7 @@ const register = async (params: object) => {
 };
 
 const validate2fa = async (params: string) => {
+  const token = getToken();
   try {
     const res: any = await apiFunctionCall.axiosApi.post(
       "validate2fa",
@@ -76,7 +83,7 @@ const validate2fa = async (params: string) => {
       },
       {
         headers: {
-          Authorization: `Bearer ${store.getState().user.payLoad?.token}`,
+          Authorization: `Bearer ${token}`,
         },
       }
     );
@@ -93,11 +100,13 @@ const logOut = (): void => {
   localStorage.removeItem("user");
   store.dispatch(updateSignIn(initialState.isSignedIn));
   store.dispatch(updateUser(initialState.payLoad));
+  store.dispatch(update2faStatus(initialState.has2fasStatus));
   localStorage.clear();
 };
 
 export default {
   login,
+  has2fa,
   logOut,
   register,
   getToken,

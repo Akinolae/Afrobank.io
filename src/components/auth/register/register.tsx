@@ -130,13 +130,10 @@ const Register = () => {
 
                 <Ui.Button
                   isLoading={loading}
-                  width="100%"
-                  height={50}
                   text="Register"
                   fontSize={18}
                   color={"white"}
                   backgroundColor={"#3B1FA4"}
-                  borderRadius={"10px"}
                   style={{ margin: "22px auto", fontWeight: 500 }}
                   type="submit"
                 />

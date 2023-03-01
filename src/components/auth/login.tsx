@@ -29,6 +29,7 @@ export const FormWrapper = styled.div`
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
+  const [erorr, setError] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -42,12 +43,15 @@ const Login = () => {
 
   const login = async (e: object) => {
     setLoading(true);
+    setError("");
+
     try {
       const res = await auth.login(e);
 
       setLoading(false);
       return res ? navigate("/authenticate") : navigate("/user-dashboard");
-    } catch (error) {
+    } catch (error: any) {
+      setError(error);
       setLoading(false);
     }
   };
@@ -79,6 +83,8 @@ const Login = () => {
             textAlign: "center",
           }}
         />
+
+        <ui.Alert type="error" text={erorr} />
         <Formik
           initialValues={{ email: "", password: "" }}
           validationSchema={validationSchema}
@@ -111,13 +117,10 @@ const Login = () => {
 
                 <ui.Button
                   isLoading={loading}
-                  width="100%"
-                  height={50}
                   text="Login"
                   fontSize={18}
                   color={"white"}
                   backgroundColor={"#3B1FA4"}
-                  borderRadius={"10px"}
                   style={{ margin: "22px auto", fontWeight: 500 }}
                   type="submit"
                 />
