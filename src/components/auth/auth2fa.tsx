@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ui from "../ui";
 import auth from "../../@core/auth/auth";
 import { useNavigate } from "react-router-dom";
@@ -8,18 +8,33 @@ import { FormWrapper, LoginWrapper } from "./login";
 const Auth2fa = () => {
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
+  const [networkErr, setNetworkErr] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
+  useEffect(() => {
+    auth.has2fa() && navigate("/user-dashboard");
+  }, []);
 
   const onSubmit = async () => {
+    setLoading(true);
+    setNetworkErr("");
     try {
-      if (!code || code.length !== 6) setError("code is required");
-      else {
+      if (!code || code.length !== 6) {
+        setLoading(false);
+
+        setError("code is required");
+      } else {
         setError("");
         await auth.validate2fa(code);
+        setLoading(false);
+
         navigate("/user-dashboard");
       }
     } catch (error: string | any) {
-      setError(error);
+      setLoading(false);
+
+      setNetworkErr(error);
     }
   };
 
@@ -36,21 +51,23 @@ const Auth2fa = () => {
         </ui.Badge>
         {/* <ui.PinInput length={6} onChange={(e) => console.log(e)} /> */}
         <ui.Text
-          text="Authenticate"
+          text="2FA Authentication"
           fontSize="28px"
           fontWeight={900}
           style={{
             textAlign: "center",
           }}
         />
+
         <ui.Text
-          text="Enter the four digit authentication code"
+          text="Enter the 6 digit authentication code"
           fontWeight={500}
           style={{
             marginBottom: "25px",
             textAlign: "center",
           }}
         />
+        <ui.Alert type="error" text={networkErr} />
         <ui.CustomInput
           onChange={(e) => setCode(e.target.value)}
           placeholder="Enter code"
@@ -58,14 +75,12 @@ const Auth2fa = () => {
           error={error}
         />
         <ui.Button
+          isLoading={loading}
           text="Proceed"
-          width="100%"
-          height={50}
           onClick={() => onSubmit()}
           fontSize={18}
           color={"white"}
           backgroundColor={"#3B1FA4"}
-          borderRadius={"10px"}
           style={{ margin: "22px auto", fontWeight: 500 }}
         />
       </FormWrapper>

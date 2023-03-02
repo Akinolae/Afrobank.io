@@ -3,6 +3,7 @@ import Login from "./components/auth/login";
 import Register from "./components/auth/register/register";
 import Auth2fa from "./components/auth/auth2fa";
 import Dashboard from "./components/dashboard/dashboard";
+import Main from "./components/dashboard";
 import LogOut from "./components/auth/logOut";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { persistor, store as appStore } from "./@store/store";
@@ -37,7 +38,7 @@ function App() {
       path: "/user-dashboard",
       element: (
         <React.Suspense fallback={"...loading"}>
-          <Dashboard />
+          <Main />
         </React.Suspense>
       ),
       public: false,

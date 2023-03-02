@@ -7,6 +7,7 @@ import { FaKey } from "react-icons/fa";
 import * as yup from "yup";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useBoolean } from "@fluentui/react-hooks";
 
 export const LoginWrapper = styled.div<CSSProperties>`
   width: ${(props) => props.width || "100%"};
@@ -15,6 +16,7 @@ export const LoginWrapper = styled.div<CSSProperties>`
   padding: 0px;
   margin: 0px;
   overflow-y: scroll;
+  transition: all ease 0.03s;
 `;
 
 export const FormWrapper = styled.div`
@@ -23,12 +25,14 @@ export const FormWrapper = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  transition: all ease 0.3s;
   display: flex;
   flex-direction: column;
 `;
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
+  const [erorr, setError] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -42,12 +46,15 @@ const Login = () => {
 
   const login = async (e: object) => {
     setLoading(true);
+    setError("");
+
     try {
       const res = await auth.login(e);
 
       setLoading(false);
       return res ? navigate("/authenticate") : navigate("/user-dashboard");
-    } catch (error) {
+    } catch (error: any) {
+      setError(error);
       setLoading(false);
     }
   };
@@ -79,6 +86,8 @@ const Login = () => {
             textAlign: "center",
           }}
         />
+
+        <ui.Alert type="error" text={erorr} />
         <Formik
           initialValues={{ email: "", password: "" }}
           validationSchema={validationSchema}
@@ -111,13 +120,10 @@ const Login = () => {
 
                 <ui.Button
                   isLoading={loading}
-                  width="100%"
-                  height={50}
                   text="Login"
                   fontSize={18}
                   color={"white"}
                   backgroundColor={"#3B1FA4"}
-                  borderRadius={"10px"}
                   style={{ margin: "22px auto", fontWeight: 500 }}
                   type="submit"
                 />
