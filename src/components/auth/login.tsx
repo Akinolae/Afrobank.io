@@ -7,6 +7,7 @@ import { FaKey } from "react-icons/fa";
 import * as yup from "yup";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useBoolean } from "@fluentui/react-hooks";
 
 export const LoginWrapper = styled.div<CSSProperties>`
   width: ${(props) => props.width || "100%"};
@@ -15,6 +16,7 @@ export const LoginWrapper = styled.div<CSSProperties>`
   padding: 0px;
   margin: 0px;
   overflow-y: scroll;
+  transition: all ease 0.03s;
 `;
 
 export const FormWrapper = styled.div`
@@ -23,6 +25,7 @@ export const FormWrapper = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  transition: all ease 0.3s;
   display: flex;
   flex-direction: column;
 `;

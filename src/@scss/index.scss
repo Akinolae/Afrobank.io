@@ -12,3 +12,19 @@ select {
   height: 100%;
   outline: none;
 }
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.overFlow {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}

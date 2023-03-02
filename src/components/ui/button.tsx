@@ -11,9 +11,6 @@ const ButtonComponent = styled.button<CSSProperties>`
   background-color: ${(props) => props.backgroundColor};
   border-radius: ${(props) => props.borderRadius || ""};
   font-size: ${(props) => `${props.fontSize}px` || "14px"};
-  display: flex;
-  justify-content: center;
-  align-items: center;
   transition: all ease 0.3s;
   font-weight: 700;
 `;
@@ -46,6 +43,7 @@ const Button = (props: Props) => {
   const { isLoading } = props;
   return (
     <ButtonComponent
+      className="flex"
       width={isLoading ? "45px" : "100%"}
       height={isLoading ? "45px" : "50px"}
       borderRadius={isLoading ? "50%" : "10px"}
