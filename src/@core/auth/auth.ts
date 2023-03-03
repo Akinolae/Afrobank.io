@@ -96,6 +96,7 @@ const validate2fa = async (params: string) => {
     throw response.extractError(error);
   }
 };
+
 const logOut = (): void => {
   localStorage.removeItem("user");
   store.dispatch(updateSignIn(initialState.isSignedIn));
