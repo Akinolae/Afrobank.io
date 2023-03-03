@@ -7,9 +7,10 @@ import { FaKey } from "react-icons/fa";
 import * as yup from "yup";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useBoolean } from "@fluentui/react-hooks";
+import { motion } from "framer-motion";
+import { errors } from "../../@utils/error";
 
-export const LoginWrapper = styled.div<CSSProperties>`
+export const LoginWrapper = styled(motion.div)<CSSProperties>`
   width: ${(props) => props.width || "100%"};
   background: ${(props) => props.background || ""};
   height: ${(props) => props.height};
@@ -20,7 +21,7 @@ export const LoginWrapper = styled.div<CSSProperties>`
 `;
 
 export const FormWrapper = styled.div`
-  width: 400px;
+  min-width: 375px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -40,8 +41,8 @@ const Login = () => {
   }, []);
 
   const validationSchema = yup.object().shape({
-    email: yup.string().email("Enter a valid email").required(),
-    password: yup.string().required(),
+    email: yup.string().email("Enter a valid email").required(errors.email),
+    password: yup.string().required(errors.password),
   });
 
   const login = async (e: object) => {
@@ -86,8 +87,6 @@ const Login = () => {
             textAlign: "center",
           }}
         />
-
-        <ui.Alert type="error" text={erorr} />
         <Formik
           initialValues={{ email: "", password: "" }}
           validationSchema={validationSchema}
@@ -95,39 +94,45 @@ const Login = () => {
         >
           {({ values, setFieldValue, errors }) => {
             return (
-              <Form>
-                <ui.CustomInput
-                  type={"email"}
-                  label="email"
-                  placeholder="Enter your email"
-                  value={values.email}
-                  error={errors.email}
-                  hasIcon={true}
-                  onChange={(e: any) => setFieldValue("email", e.target.value)}
-                />
-                <div style={{ marginTop: "20px" }}>
-                  <ui.CustomPasswordInput
-                    value={values.password}
-                    placeholder="Enter your password"
+              <React.Fragment>
+                <ui.Alert type="error" text={erorr} />
+
+                <Form>
+                  <ui.CustomInput
+                    type={"email"}
+                    label="email"
+                    placeholder="Enter your email"
+                    value={values.email}
+                    error={errors.email}
                     hasIcon={true}
-                    error={errors.password}
-                    label="password"
                     onChange={(e: any) =>
-                      setFieldValue("password", e.target.value)
+                      setFieldValue("email", e.target.value)
                     }
                   />
-                </div>
+                  <div style={{ marginTop: "20px" }}>
+                    <ui.CustomPasswordInput
+                      value={values.password}
+                      placeholder="Enter your password"
+                      hasIcon={true}
+                      error={errors.password}
+                      label="password"
+                      onChange={(e: any) =>
+                        setFieldValue("password", e.target.value)
+                      }
+                    />
+                  </div>
 
-                <ui.Button
-                  isLoading={loading}
-                  text="Login"
-                  fontSize={18}
-                  color={"white"}
-                  backgroundColor={"#3B1FA4"}
-                  style={{ margin: "22px auto", fontWeight: 500 }}
-                  type="submit"
-                />
-              </Form>
+                  <ui.Button
+                    isLoading={loading}
+                    text="Login"
+                    fontSize={18}
+                    color={"white"}
+                    backgroundColor={"#3B1FA4"}
+                    style={{ margin: "22px auto", fontWeight: 500 }}
+                    type="submit"
+                  />
+                </Form>
+              </React.Fragment>
             );
           }}
         </Formik>

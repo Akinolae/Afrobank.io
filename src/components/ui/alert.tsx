@@ -1,5 +1,6 @@
 import styled, { CSSProperties } from "styled-components";
 import { IoMdClose } from "react-icons/io";
+import { motion } from "framer-motion";
 
 const Wrapper = styled.div<CSSProperties>`
   width: 380px;
@@ -26,10 +27,24 @@ interface AlertProps {
 const Alert = (props: AlertProps) => {
   const { text, type, hasBtn } = props;
 
+  const show = {
+    opacity: 1,
+    display: "block",
+  };
+
+  const hide = {
+    opacity: 0,
+    transitionEnd: {
+      display: "none",
+    },
+  };
+
   return (
-    <>
+    <motion.div
+      animate={!!text ? show : hide}
+      transition={{ duration: "0.4", ease: "easeInOut" }}
+    >
       <Wrapper
-        display={!!text ? "block" : "none"}
         color={type === "success" ? "green" : type === "error" ? "red" : "gold"}
         background={
           type === "success"
@@ -47,7 +62,7 @@ const Alert = (props: AlertProps) => {
           />
         ) : null}
       </Wrapper>
-    </>
+    </motion.div>
   );
 };
 
