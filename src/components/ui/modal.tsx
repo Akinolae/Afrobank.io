@@ -26,10 +26,11 @@ interface ModalProps {
   isOpen: boolean;
   toggle: () => void;
   width?: number | string;
+  showCloseButton?: boolean;
 }
 
 const Modal = (props: ModalProps) => {
-  const { children, isOpen, width, toggle, ...rest } = props;
+  const { children, isOpen, width, toggle, showCloseButton, ...rest } = props;
   return (
     <AnimatePresence>
       <ModalComponent
@@ -38,17 +39,19 @@ const Modal = (props: ModalProps) => {
         animate={isOpen ? { opacity: 1 } : { opacity: 0 }}
         {...rest}
       >
-        <div
-          style={{
-            width: "50px",
-            position: "absolute",
-            transform: "translate(460px, 0px)",
-          }}
-        >
-          <Ui.Button onClick={toggle} style={{ background: "transparent" }}>
-            <AiOutlineClose size={"24px"} />
-          </Ui.Button>
-        </div>
+        {showCloseButton ? (
+          <div
+            style={{
+              width: "50px",
+              position: "absolute",
+              transform: "translate(460px, 0px)",
+            }}
+          >
+            <Ui.Button onClick={toggle} style={{ background: "transparent" }}>
+              <AiOutlineClose size={"24px"} />
+            </Ui.Button>
+          </div>
+        ) : null}
         {children}
       </ModalComponent>
     </AnimatePresence>
