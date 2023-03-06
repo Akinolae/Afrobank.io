@@ -15,9 +15,7 @@ export interface Res {
 }
 
 const extractData = (res: Res): object => {
-  return {
-    data: res.data?.message,
-  };
+  return res.message;
 };
 
 const extractError = (res: Res) => {

@@ -7,7 +7,11 @@ type api = {
 
 const apiFunctionCall = async (params: api) => {
   const { method, url, data, options } = params;
-  const val = !!data ? { body: JSON.stringify(data) } : {};
+  const val = !!data
+    ? { body: typeof data !== "string" ? JSON.stringify(data) : data }
+    : {};
+
+  console.log(val);
 
   const response = await fetch(`http://localhost:3005/Api/v1/${url}`, {
     method: method,

@@ -26,13 +26,14 @@ const login = async (params: object) => {
     });
 
     const data: any = response.extractData(res);
-    if (!data?.data.has2fa) {
+
+    if (!data?.has2fa) {
       store.dispatch(updateSignIn(true));
     }
 
-    store.dispatch(updateUser(data?.data));
+    store.dispatch(updateUser(data?.message));
 
-    return data?.data.has2fa;
+    return data?.has2fa;
   } catch (error: any) {
     throw error.message;
   }
@@ -59,7 +60,7 @@ const getProfile = async () => {
     }
 
     const data: any = response.extractData(res);
-    store.dispatch(updateUser(data?.data));
+    store.dispatch(updateUser(data?.message));
   } catch (error: any) {
     throw error.message;
   }
