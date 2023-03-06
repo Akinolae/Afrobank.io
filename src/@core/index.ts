@@ -1,3 +1,8 @@
+/*
+ used Fetch instead of  Axios
+ exended to accomodate token verification and authorizations
+*/
+
 import { store } from "../@store/store";
 import auth from "./auth/auth";
 import response from "../@utils/response";
@@ -23,9 +28,7 @@ const validateToken = async () => {
     return;
   } catch (error: any) {
     /*
-    
     If error is invalid it runs this bloc of code
-
     */
 
     if (error.includes("invalid") || error.includes("expired")) {
@@ -51,9 +54,9 @@ const apiFunctionCall = async (params: api) => {
     ? { body: typeof data !== "string" ? JSON.stringify(data) : data }
     : {};
 
-  /* 
-    
-    */
+  /*
+    only validate token when @params(hasAuth) => true
+  */
 
   if (hasAuth) {
     try {
