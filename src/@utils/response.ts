@@ -19,7 +19,7 @@ const extractData = (res: Res): object => {
 };
 
 const extractError = (res: Res) => {
-  return res.response?.data.message;
+  return res.message;
 };
 
 export default {

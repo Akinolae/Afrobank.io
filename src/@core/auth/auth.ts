@@ -31,6 +31,8 @@ const login = async (params: object) => {
       store.dispatch(updateSignIn(true));
     }
 
+    console.log(data?.message);
+
     store.dispatch(updateUser(data?.message));
 
     return data?.has2fa;
@@ -50,9 +52,7 @@ const getProfile = async () => {
     const res = await apiFunctionCall.apiFunctionCall({
       url: "getProfile",
       method: "GET",
-      options: {
-        Authorization: `Bearer ${token}`,
-      },
+      hasAuth: true,
     });
 
     if (!!Object.keys(store.getState().user.payLoad).length) {
