@@ -31,9 +31,7 @@ const login = async (params: object) => {
       store.dispatch(updateSignIn(true));
     }
 
-    console.log(data?.message);
-
-    store.dispatch(updateUser(data?.message));
+    store.dispatch(updateUser(data));
 
     return data?.has2fa;
   } catch (error: any) {
@@ -46,8 +44,6 @@ const isSignedIn = (): boolean => {
 };
 
 const getProfile = async () => {
-  const token = getToken();
-
   try {
     const res = await apiFunctionCall.apiFunctionCall({
       url: "getProfile",
@@ -81,14 +77,12 @@ const register = async (params: object) => {
 };
 
 const validate2fa = async (params: string) => {
-  const token = getToken();
-
   try {
     await apiFunctionCall.apiFunctionCall({
       method: "POST",
       url: "validate2fa",
       data: { code: params },
-      options: { Authorization: `Bearer ${token}` },
+      hasAuth: true,
     });
 
     store.dispatch(update2faStatus(true));

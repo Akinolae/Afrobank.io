@@ -9,9 +9,7 @@ const getCards = async (): Promise<void> => {
     const res = await apiFunctionCall.apiFunctionCall({
       url: "userCards",
       method: "GET",
-      options: {
-        Authorization: `Bearer ${token}`,
-      },
+      hasAuth: true,
     });
 
     const data: any = response.extractData(res);
