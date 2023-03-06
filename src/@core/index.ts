@@ -5,7 +5,7 @@ import response from "../@utils/response";
 type api = {
   url: string;
   method: "GET" | "PATCH" | "POST" | "PUT";
-  options?: object | undefined;
+  options?: any;
   data?: any;
   hasAuth?: boolean;
 };
@@ -40,7 +40,13 @@ const validateToken = async () => {
 };
 
 const apiFunctionCall = async (params: api) => {
-  const { method, url, data, options, hasAuth } = params;
+  const {
+    method,
+    url,
+    data,
+    options = { "Content-Type": "application/json" },
+    hasAuth,
+  } = params;
   const val = !!data
     ? { body: typeof data !== "string" ? JSON.stringify(data) : data }
     : {};
@@ -48,22 +54,18 @@ const apiFunctionCall = async (params: api) => {
   /* 
     
     */
-  let opt: any = {
-    "Content-Type": "application/json",
-    ...options,
-  };
 
   if (hasAuth) {
     try {
       await validateToken();
       const token = store.getState().user.payLoad.token;
-      opt.Authorization = `Bearer ${token}`;
+      options.Authorization = `Bearer ${token}`;
     } catch (error) {}
   }
 
   const response = await fetch(`http://localhost:3005/Api/v1/${url}`, {
     method: method,
-    headers: opt,
+    headers: options,
     ...val,
   });
 
