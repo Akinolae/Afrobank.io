@@ -10,15 +10,14 @@ const MainWrapper = styled.div`
 
 const Box = styled.div<CSSProperties>`
   width: ${(props) => props.width};
+  height: 100vh;
 `;
 
 const Main = () => {
   return (
     <MainWrapper className="flex-between">
-      <Box width={"20%"}>
-        <Sidebar />
-      </Box>
-      <Box className="overFlow">
+      <Box width={"20%"}>{/* <Sidebar /> */}</Box>
+      <Box width={"80%"} style={{ background: "yellow" }}>
         <Routes>
           <Route path="/user-dashboard" element={<Dashboard />} />
           <Route path="/user-dashboard/Payment" element={<>payment</>} />

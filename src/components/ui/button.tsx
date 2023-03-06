@@ -30,7 +30,7 @@ const Loader = () => (
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactElement;
-  text: string;
+  text?: string;
   color?: string;
   borderRadius?: string;
   backgroundColor?: string;

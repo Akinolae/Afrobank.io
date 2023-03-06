@@ -1,11 +1,11 @@
 import apiFunctionCall from "..";
-import response, { Res } from "../../@utils/response";
+import response from "../../@utils/response";
 import {
   store,
   updateUser,
+  initialState,
   updateSignIn,
   update2faStatus,
-  initialState,
 } from "../../@store/store";
 
 const getToken = (): string | undefined => {
@@ -19,7 +19,11 @@ const has2fa = (): boolean => {
 
 const login = async (params: object) => {
   try {
-    const res = await apiFunctionCall.axiosApi.post("login", params);
+    const res = await apiFunctionCall.apiFunctionCall({
+      url: "login",
+      method: "POST",
+      data: params,
+    });
 
     const data: any = response.extractData(res);
     if (!data?.data.has2fa) {
@@ -30,7 +34,7 @@ const login = async (params: object) => {
 
     return data?.data.has2fa;
   } catch (error: any) {
-    throw response.extractError(error);
+    throw error.message;
   }
 };
 
@@ -42,8 +46,10 @@ const getProfile = async () => {
   const token = getToken();
 
   try {
-    const res = await apiFunctionCall.axiosApi.get("getProfile", {
-      headers: {
+    const res = await apiFunctionCall.apiFunctionCall({
+      url: "getProfile",
+      method: "GET",
+      options: {
         Authorization: `Bearer ${token}`,
       },
     });
@@ -55,45 +61,41 @@ const getProfile = async () => {
     const data: any = response.extractData(res);
     store.dispatch(updateUser(data?.data));
   } catch (error: any) {
-    throw response.extractError(error);
+    throw error.message;
   }
 };
 
 const register = async (params: object) => {
   try {
-    const res = await apiFunctionCall.axiosApi.post("/register", params);
+    await apiFunctionCall.apiFunctionCall({
+      url: "register",
+      method: "POST",
+      data: params,
+    });
 
-    // const data = localStorage.getItem("user");
-    // console.log();
-
-    // return response.extractData(res);
     return;
   } catch (error: any) {
-    throw response.extractError(error);
+    throw error.message;
   }
 };
 
 const validate2fa = async (params: string) => {
   const token = getToken();
+
   try {
-    const res: any = await apiFunctionCall.axiosApi.post(
-      "validate2fa",
-      {
-        code: params,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    await apiFunctionCall.apiFunctionCall({
+      method: "POST",
+      url: "validate2fa",
+      data: { code: params },
+      options: { Authorization: `Bearer ${token}` },
+    });
 
     store.dispatch(update2faStatus(true));
     store.dispatch(updateSignIn(true));
 
     return;
   } catch (error: any) {
-    throw response.extractError(error);
+    throw error.message;
   }
 };
 

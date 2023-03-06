@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Ui from "../../ui";
 import { FormWrapper, LoginWrapper } from "../login";
-import { Formik, Form, FormikConfig, useFormikContext } from "formik";
+import { Formik, Form } from "formik";
 import * as yup from "yup";
 import { Link } from "react-router-dom";
 import { FaKey } from "react-icons/fa";
@@ -9,6 +9,8 @@ import auth from "../../../@core/auth/auth";
 
 const Register = () => {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
   const validationSchema = yup.object().shape({
     email: yup.string().email("Enter a valid email").required(),
     firstName: yup.string().required(),
@@ -18,10 +20,14 @@ const Register = () => {
   });
 
   const submit = async (params: object) => {
+    setLoading(true);
+    setError("");
     try {
       await auth.register(params);
-    } catch (error) {
-      console.log(error);
+      setLoading(false);
+    } catch (error: any) {
+      setLoading(false);
+      setError(error);
     }
   };
 
@@ -53,6 +59,7 @@ const Register = () => {
             textAlign: "center",
           }}
         />
+        <Ui.Alert type="error" text={error} />
         <Formik
           initialValues={{
             email: "",
