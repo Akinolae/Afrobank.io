@@ -17,7 +17,7 @@ const Main = () => {
   return (
     <MainWrapper className="flex-between">
       <Box width={"20%"}>{/* <Sidebar /> */}</Box>
-      <Box width={"80%"}>
+      <Box width={"80%"} style={{ background: "yellow" }}>
         <Routes>
           <Route path="/user-dashboard" element={<Dashboard />} />
           <Route path="/user-dashboard/Payment" element={<>payment</>} />

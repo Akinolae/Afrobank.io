@@ -1,18 +1,15 @@
-import axios from "axios";
+type api = {
+  url: string;
+  method: "GET" | "PATCH" | "POST" | "PUT";
+  options?: object | undefined;
+  data?: any;
+};
 
-const axiosApi = axios.create({
-  baseURL: "http://localhost:3005/Api/v1/",
-});
-
-const apiFunctionCall = async (
-  url: string,
-  data?: object | undefined | any,
-  method?: "get" | string,
-  options?: object
-) => {
+const apiFunctionCall = async (params: api) => {
+  const { method, url, data, options } = params;
   const val = !!data ? { body: JSON.stringify(data) } : {};
 
-  const response = await fetch(`http://localhost:3005/Api/v1/`, {
+  const response = await fetch(`http://localhost:3005/Api/v1/${url}`, {
     method: method,
     headers: {
       "Content-Type": "application/json",
@@ -21,10 +18,10 @@ const apiFunctionCall = async (
     ...val,
   });
   if (!response?.ok) {
-    console.log(response);
+    throw await response.json();
   }
 
   return response.json();
 };
 
-export default { apiFunctionCall, axiosApi };
+export default { apiFunctionCall };

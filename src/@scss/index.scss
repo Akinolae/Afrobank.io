@@ -28,3 +28,7 @@ select {
   overflow-y: scroll;
   scroll-behavior: smooth;
 }
+
+.scroll-bar::-webkit-scrollbar {
+  display: none;
+}
