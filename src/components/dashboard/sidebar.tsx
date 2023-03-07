@@ -57,7 +57,7 @@ const style = {
 const routes = [
   {
     name: "Dashboard",
-    path: "/user-dashboard",
+    path: "/user-dashboard/",
     icon: <MdOutlineSpaceDashboard style={style} />,
   },
   {
@@ -66,8 +66,8 @@ const routes = [
     icon: <FaRegMoneyBillAlt style={style} />,
   },
   {
-    name: "Loan",
-    path: "/dashboard/loan",
+    name: "Send Money",
+    path: "/user-dashboard/send-money",
     icon: <BiWallet style={style} />,
   },
   {
@@ -81,9 +81,13 @@ const Sidebar = () => {
   return (
     <SideBarWrapper className="flex">
       <Box>
-        {routes.map((route) => {
+        {routes.map((route, i) => {
           return (
-            <Sidelink to={route.path} exact>
+            <Sidelink
+              style={{ textDecoration: "none" }}
+              key={i}
+              to={route.path}
+            >
               <ui.Text text={route.name} />
             </Sidelink>
           );

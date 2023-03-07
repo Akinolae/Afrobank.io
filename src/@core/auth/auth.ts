@@ -51,14 +51,10 @@ const getProfile = async () => {
       hasAuth: true,
     });
 
-    if (!!Object.keys(store.getState().user.payLoad).length) {
-      return;
-    }
-
     const data: any = response.extractData(res);
     store.dispatch(updateUser(data?.message));
   } catch (error: any) {
-    throw error.message;
+    throw error.message || error;
   }
 };
 
@@ -90,7 +86,7 @@ const validate2fa = async (params: string) => {
 
     return;
   } catch (error: any) {
-    throw error.message;
+    throw error.message || error;
   }
 };
 

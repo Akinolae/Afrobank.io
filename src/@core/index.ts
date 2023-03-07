@@ -31,14 +31,14 @@ const validateToken = async () => {
     If error is invalid it runs this bloc of code
     */
 
-    if (error.includes("invalid") || error.includes("expired")) {
+    if (["invalid", "expired"].includes(error)) {
       await apiFunctionCall({
         url: `new-token?${email}`,
         method: "GET",
       });
       await auth.getProfile();
     }
-    throw response.extractError(error);
+    throw response.extractError(error) || error;
   }
 };
 
@@ -59,11 +59,9 @@ const apiFunctionCall = async (params: api) => {
   */
 
   if (hasAuth) {
-    try {
-      await validateToken();
-      const token = store.getState().user.payLoad.token;
-      options.Authorization = `Bearer ${token}`;
-    } catch (error) {}
+    await validateToken();
+    const token = store.getState().user.payLoad.token;
+    options.Authorization = `Bearer ${token}`;
   }
 
   const response = await fetch(`http://localhost:3005/Api/v1/${url}`, {
@@ -73,7 +71,7 @@ const apiFunctionCall = async (params: api) => {
   });
 
   if (!response?.ok) {
-    throw await response.json();
+    throw (await response.json()) || "Network Error";
   }
 
   return response.json();
