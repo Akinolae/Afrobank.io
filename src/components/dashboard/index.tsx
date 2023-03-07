@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
 import styled, { CSSProperties } from "styled-components";
 import Dashboard from "./dashboard";
@@ -16,15 +15,17 @@ const Box = styled.div<CSSProperties>`
 const Main = () => {
   return (
     <MainWrapper className="flex-between">
-      <Box width={"20%"}>{/* <Sidebar /> */}</Box>
+      <Box width={"20%"}>
+        <Sidebar />
+      </Box>
       <Box width={"80%"} style={{ background: "yellow" }}>
         <Routes>
-          <Route path="/user-dashboard" element={<Dashboard />} />
-          <Route path="/user-dashboard/Payment" element={<>payment</>} />
-          <Route path="/user-dashboard" element={<Dashboard />} />
+          <Route index element={<Dashboard />} />
+          <Route path="Payment" element={<>payment</>} />
+          <Route path="send-money" element={<>send money</>} />
           <Route path="/user-dashboard" element={<Dashboard />} />
         </Routes>
-        <Dashboard />
+        {/* <Dashboard /> */}
       </Box>
     </MainWrapper>
   );
