@@ -10,6 +10,9 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import ProtectedRoute from "./protectedoute";
 import "./@scss/index.scss";
+import { initializeIcons } from "@fluentui/react";
+
+initializeIcons();
 
 function App() {
   const route = [
