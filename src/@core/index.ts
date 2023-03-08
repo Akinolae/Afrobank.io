@@ -3,8 +3,8 @@
  exended to accomodate token verification and authorizations
 */
 
-import { store } from "../@store/store";
 import auth from "./auth/auth";
+import { store } from "../@store/store";
 import response from "../@utils/response";
 
 type api = {
