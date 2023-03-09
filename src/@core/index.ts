@@ -18,25 +18,26 @@ type api = {
 //
 const validateToken = async () => {
   const { email, token } = store.getState().user.payLoad;
+
   try {
     await apiFunctionCall({
       url: "verify-token",
       method: "POST",
       data: { token },
     });
-
-    return;
   } catch (error: any) {
     /*
     If error is invalid it runs this bloc of code
     */
 
-    if (["invalid", "expired"].includes(error)) {
+    if (["invalid", "jwt expired"].includes(error.message)) {
       await apiFunctionCall({
-        url: `new-token?${email}`,
+        url: `new-token?email=${email}`,
         method: "GET",
       });
+
       await auth.getProfile();
+      return;
     }
     throw response.extractError(error) || error;
   }
