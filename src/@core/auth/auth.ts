@@ -44,14 +44,15 @@ const isSignedIn = (): boolean => {
 };
 
 const getProfile = async () => {
+  const email = store.getState().user.payLoad.email;
   try {
     const res = await apiFunctionCall.apiFunctionCall({
-      url: "getProfile",
+      url: `getProfile?email=${email}`,
       method: "GET",
-      hasAuth: true,
     });
 
     const data: any = response.extractData(res);
+
     store.dispatch(updateUser(data?.message));
   } catch (error: any) {
     throw error.message || error;

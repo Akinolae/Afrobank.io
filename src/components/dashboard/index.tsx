@@ -20,12 +20,12 @@ const Main = () => {
       </Box>
       <Box width={"80%"} style={{ background: "yellow" }}>
         <Routes>
-          <Route index element={<Dashboard />} />
-          <Route path="Payment" element={<>payment</>} />
-          <Route path="send-money" element={<>send money</>} />
-          <Route path="/user-dashboard" element={<Dashboard />} />
+          <Route path="/user-dashboard/*" element={<Dashboard />}>
+            <Route path="Payment" element={<>payment</>} />
+            <Route path="send-money" element={<>send money</>} />
+          </Route>
         </Routes>
-        {/* <Dashboard /> */}
+        <Dashboard />
       </Box>
     </MainWrapper>
   );
