@@ -37,6 +37,7 @@ const validateToken = async () => {
       });
 
       await auth.getProfile();
+      return;
     }
     throw response.extractError(error) || error;
   }
