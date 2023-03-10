@@ -1,4 +1,3 @@
-import { useCallback, useEffect } from "react";
 import styled, { CSSProperties } from "styled-components";
 import { IoMdClose } from "react-icons/io";
 import { motion } from "framer-motion";
