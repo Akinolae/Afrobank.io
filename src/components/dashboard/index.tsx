@@ -20,7 +20,7 @@ const Main = () => {
       </Box>
       <Box width={"80%"} style={{ background: "yellow" }}>
         <Routes>
-          <Route path="/user-dashboard/*" element={<Dashboard />}>
+          <Route path="/user-dashboard//*" element={<Dashboard />}>
             <Route path="Payment" element={<>payment</>} />
             <Route path="send-money" element={<>send money</>} />
           </Route>

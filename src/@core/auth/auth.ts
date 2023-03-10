@@ -1,5 +1,3 @@
-import apiFunctionCall from "..";
-import response from "../../@utils/response";
 import {
   store,
   updateUser,
@@ -7,6 +5,12 @@ import {
   updateSignIn,
   update2faStatus,
 } from "../../@store/store";
+import { Auth } from "afrobank-sdk";
+import { LoginParams } from "afrobank-sdk/interface/index.interface";
+
+const auth = new Auth(store, "http://localhost:3005/Api/v1/", {
+  updateUser,
+});
 
 const getToken = (): string | undefined => {
   const token = store.getState().user.payLoad.token;
@@ -17,23 +21,15 @@ const has2fa = (): boolean => {
   return store.getState().user.has2fasStatus;
 };
 
-const login = async (params: object) => {
+const login = async (params: LoginParams) => {
   try {
-    const res = await apiFunctionCall.apiFunctionCall({
-      url: "login",
-      method: "POST",
-      data: params,
-    });
+    const res = await auth.login(params);
 
-    const data: any = response.extractData(res);
-
-    if (!data?.has2fa) {
+    if (!res?.has2fa) {
       store.dispatch(updateSignIn(true));
     }
-
-    store.dispatch(updateUser(data));
-
-    return data?.has2fa;
+    store.dispatch(updateUser(res));
+    return res?.has2fa;
   } catch (error: any) {
     throw error.message;
   }
@@ -44,16 +40,8 @@ const isSignedIn = (): boolean => {
 };
 
 const getProfile = async () => {
-  const email = store.getState().user.payLoad.email;
   try {
-    const res = await apiFunctionCall.apiFunctionCall({
-      url: `getProfile?email=${email}`,
-      method: "GET",
-    });
-
-    const data: any = response.extractData(res);
-
-    store.dispatch(updateUser(data?.message));
+    await auth.getProfile();
   } catch (error: any) {
     throw error.message || error;
   }
@@ -61,11 +49,7 @@ const getProfile = async () => {
 
 const register = async (params: object) => {
   try {
-    await apiFunctionCall.apiFunctionCall({
-      url: "register",
-      method: "POST",
-      data: params,
-    });
+    await auth.register(params);
 
     return;
   } catch (error: any) {
@@ -75,12 +59,7 @@ const register = async (params: object) => {
 
 const validate2fa = async (params: string) => {
   try {
-    await apiFunctionCall.apiFunctionCall({
-      method: "POST",
-      url: "validate2fa",
-      data: { code: params },
-      hasAuth: true,
-    });
+    await auth.validate2FA(params);
 
     store.dispatch(update2faStatus(true));
     store.dispatch(updateSignIn(true));

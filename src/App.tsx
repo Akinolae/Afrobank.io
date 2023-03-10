@@ -37,7 +37,7 @@ function App() {
       public: true,
     },
     {
-      path: "/user-dashboard/",
+      path: "/user-dashboard//*",
       element: (
         <React.Suspense fallback={"...loading"}>
           <Main />

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import ui from "../ui";
 import auth from "../../@core/auth/auth";
 import { useNavigate } from "react-router-dom";
