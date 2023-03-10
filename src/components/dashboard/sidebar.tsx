@@ -1,4 +1,3 @@
-import React from "react";
 import styled, { CSSProperties } from "styled-components";
 import { NavLink } from "react-router-dom";
 import { FaRegMoneyBillAlt } from "react-icons/fa";
@@ -24,10 +23,8 @@ const Box = styled.div`
   margin: auto;
 `;
 
-const activeClass = "active";
-export const Sidelink = styled((props) => (
-  <NavLink {...props} activeClassName={activeClass} />
-))`
+// const activeClass = "active";
+export const Sidelink = styled((props) => <NavLink {...props} />)`
     color: ${(props) => props.color};
     font-wight: bold;
     font-size: 16px;
@@ -42,10 +39,6 @@ export const Sidelink = styled((props) => (
     transition: all ease 0.3s;
     &:hover {
       background: yellow,
-      color: red;
-    }
-    &.${activeClass} {
-      background: yellow;
       color: red;
     }
   `;

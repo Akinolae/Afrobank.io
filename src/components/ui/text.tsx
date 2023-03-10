@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from "react";
+import React from "react";
 import styled, { CSSProperties } from "styled-components";
 
 const TextComponent = styled.p<CSSProperties>`

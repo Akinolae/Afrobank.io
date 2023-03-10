@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { errors } from "../../@utils/error";
+import { LoginParams } from "afrobank-sdk/interface/index.interface";
 
 export const LoginWrapper = styled(motion.div)<CSSProperties>`
   width: ${(props) => props.width || "100%"};
@@ -45,7 +46,7 @@ const Login = () => {
     password: yup.string().required(errors.password),
   });
 
-  const login = async (e: object) => {
+  const login = async (e: LoginParams) => {
     setLoading(true);
     setError("");
 
@@ -95,7 +96,7 @@ const Login = () => {
           {({ values, setFieldValue, errors }) => {
             return (
               <React.Fragment>
-                <ui.Alert type="error" text={erorr} />
+                <ui.Alert type="error" text={erorr} hasBtn />
 
                 <Form>
                   <ui.CustomInput

@@ -1,3 +1,4 @@
+import { useCallback, useEffect } from "react";
 import styled, { CSSProperties } from "styled-components";
 import { IoMdClose } from "react-icons/io";
 import { motion } from "framer-motion";
@@ -25,7 +26,7 @@ interface AlertProps {
 }
 
 const Alert = (props: AlertProps) => {
-  const { text, type, hasBtn } = props;
+  const { text = "", type, hasBtn } = props;
 
   const show = {
     opacity: 1,
@@ -45,6 +46,7 @@ const Alert = (props: AlertProps) => {
       transition={{ duration: "0.4", ease: "easeInOut" }}
     >
       <Wrapper
+        id="alert"
         color={type === "success" ? "green" : type === "error" ? "red" : "gold"}
         background={
           type === "success"
