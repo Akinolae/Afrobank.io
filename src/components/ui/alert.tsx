@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import styled, { CSSProperties } from "styled-components";
 import { IoMdClose } from "react-icons/io";
 import { motion } from "framer-motion";
@@ -26,6 +27,11 @@ interface AlertProps {
 
 const Alert = (props: AlertProps) => {
   const { text = "", type, hasBtn } = props;
+  const [visible, setVisible] = useState(!!text ? true : false);
+
+  useEffect(() => {
+    !!text ? setVisible(true) : setVisible(false);
+  }, [setVisible, text]);
 
   const show = {
     opacity: 1,
@@ -41,28 +47,37 @@ const Alert = (props: AlertProps) => {
 
   return (
     <motion.div
-      animate={!!text ? show : hide}
+      initial={{ display: "none" }}
+      animate={visible ? show : hide}
       transition={{ duration: "0.4", ease: "easeInOut" }}
     >
-      <Wrapper
-        id="alert"
-        color={type === "success" ? "green" : type === "error" ? "red" : "gold"}
-        background={
-          type === "success"
-            ? "#59b88c60"
-            : type === "error"
-            ? "#f3765d60"
-            : "#f1c34f8f"
-        }
-      >
-        {text}
-        {hasBtn ? (
-          <IoMdClose
-            style={{ cursor: "pointer" }}
-            onClick={() => alert("heyy")}
-          />
-        ) : null}
-      </Wrapper>
+      {visible ? (
+        <Wrapper
+          id="alert"
+          color={
+            type === "success" ? "green" : type === "error" ? "red" : "gold"
+          }
+          background={
+            type === "success"
+              ? "#59b88c60"
+              : type === "error"
+              ? "#f3765d60"
+              : "#f1c34f8f"
+          }
+        >
+          {text}
+          {visible ? (
+            <>
+              {hasBtn && (
+                <IoMdClose
+                  style={{ cursor: "pointer" }}
+                  onClick={() => setVisible(false)}
+                />
+              )}
+            </>
+          ) : null}
+        </Wrapper>
+      ) : null}
     </motion.div>
   );
 };

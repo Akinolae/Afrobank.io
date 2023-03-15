@@ -46,6 +46,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
 
 const CustomInput = (props: Props) => {
   const { onChange, label, labelColor, error, option, ...rest } = props;
+
   return (
     <>
       {!!label ? <Label color={labelColor}>{label}</Label> : null}
