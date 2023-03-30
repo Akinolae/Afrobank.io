@@ -24,7 +24,6 @@ const has2fa = (): boolean => {
 const login = async (params: LoginParams) => {
   try {
     const res = await auth.login(params);
-
     if (!res?.has2fa) {
       store.dispatch(updateSignIn(true));
     }

@@ -13,7 +13,7 @@
     "@reduxjs/toolkit": "^1.9.3",
     "@types/react-icons": "^3.0.0",
     "@types/styled-components": "^5.1.26",
-    "afrobank-sdk": "file:../afrobank-sdk",
+    "afrobank-sdk": "https://github.com/Akinolae/afrobank-sdk.git#master",
     "formik": "^2.2.9",
     "framer-motion": "^10.0.1",
     "react": "^18.2.0",
