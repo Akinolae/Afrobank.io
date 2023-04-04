@@ -153,8 +153,9 @@ const Register = () => {
             to={"/"}
             style={{
               textDecoration: "none",
-              fontSize: "13px",
+              fontSize: "16px",
               fontWeight: 400,
+              color: "#bdc1c6",
             }}
           >
             I have an account

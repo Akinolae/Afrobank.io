@@ -8,8 +8,10 @@ const Input = styled.input<CSSProperties>`
   height: 100%;
   width: ${(props) => props.width || "100%"};
   padding-right: 15px;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: bold;
+  background: none;
+  color: white;
 `;
 const Label = styled.span<CSSProperties>`
   color: ${(props) => props.color};
@@ -20,7 +22,7 @@ const Label = styled.span<CSSProperties>`
 
 const InputWrapper = styled.div`
   height: 50px;
-  background: white;
+  border: 2px solid #bdc1c6;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -91,12 +93,12 @@ const CustomPasswordInput = (props: Props) => {
           >
             {isVisible ? (
               <AiFillEye
-                style={{ fontSize: "24px" }}
+                style={{ fontSize: "24px", color: "white" }}
                 onClick={() => setIsVisible(!isVisible)}
               />
             ) : (
               <AiFillEyeInvisible
-                style={{ fontSize: "24px" }}
+                style={{ fontSize: "24px", color: "white" }}
                 onClick={() => setIsVisible(!isVisible)}
               />
             )}
