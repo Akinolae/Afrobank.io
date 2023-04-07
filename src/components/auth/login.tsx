@@ -13,7 +13,7 @@ import { LoginParams } from "afrobank-sdk/interface/index.interface";
 
 export const LoginWrapper = styled(motion.div)<CSSProperties>`
   width: ${(props) => props.width || "100%"};
-  background: ${(props) => props.background || "#050406"};
+  background: ${(props) => props.background || ""};
   height: ${(props) => props.height};
   padding: 0px;
   margin: 0px;
@@ -52,7 +52,6 @@ const Login = () => {
 
     try {
       const res = await auth.login(e);
-
       setLoading(false);
       return res ? navigate("/authenticate") : navigate("/user-dashboard");
     } catch (error: any) {
@@ -78,7 +77,6 @@ const Login = () => {
           fontWeight={900}
           style={{
             textAlign: "center",
-            color: "white"
           }}
         />
         <ui.Text
@@ -87,7 +85,6 @@ const Login = () => {
           style={{
             marginBottom: "25px",
             textAlign: "center",
-            color: "white"
           }}
         />
         <Formik
@@ -107,7 +104,6 @@ const Login = () => {
                     placeholder="Enter your email"
                     value={values.email}
                     error={errors.email}
-                    hasIcon={true}
                     onChange={(e: any) =>
                       setFieldValue("email", e.target.value)
                     }
@@ -146,7 +142,7 @@ const Login = () => {
               textDecoration: "none",
               fontSize: "16px",
               fontWeight: 400,
-              color: "#bdc1c6"
+              color: "#bdc1c6",
             }}
           >
             I don't have an account

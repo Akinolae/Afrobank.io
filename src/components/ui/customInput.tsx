@@ -11,7 +11,6 @@ const Input = styled.input<CSSProperties>`
   font-size: 18px;
   font-weight: bold;
   background: none;
-  color: white;
 `;
 const Label = styled.span<CSSProperties>`
   color: ${(props) => props.color};
@@ -20,21 +19,21 @@ const Label = styled.span<CSSProperties>`
   font-weight: 800;
 `;
 
-const InputWrapper = styled.div`
+const InputWrapper = styled.div<CSSProperties>`
   height: 50px;
-  border: 2px solid #bdc1c6;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-left: 15px;
   padding-right: 15px;
   border-radius: 10px;
-  border: 1px solid #858282;
+  border: ${(props) => `1px solid ${props.borderColor}`};
+  transition: all ease 0.9s;
 `;
 
 const Error = styled.span<CSSProperties>`
   color: red;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 12px;
 `;
 
@@ -54,7 +53,7 @@ const CustomInput = (props: Props) => {
       {!!label ? <Label color={labelColor}>{label}</Label> : null}
 
       {rest?.type === "select" ? (
-        <InputWrapper>
+        <InputWrapper borderColor={!!error ? "red" : "#858282"}>
           {option?.map(({ label, value }, i) => {
             return (
               <select key={i} id={Label}>
@@ -64,7 +63,7 @@ const CustomInput = (props: Props) => {
           })}
         </InputWrapper>
       ) : (
-        <InputWrapper>
+        <InputWrapper borderColor={!!error ? "red" : "#858282"}>
           <Input onChange={onChange} {...rest} />
         </InputWrapper>
       )}
@@ -79,7 +78,7 @@ const CustomPasswordInput = (props: Props) => {
   return (
     <>
       {!!label ? <Label>{label}</Label> : null}
-      <InputWrapper>
+      <InputWrapper borderColor={!!error ? "red" : "#858282"}>
         <Input type={isVisible ? "text" : "password"} {...rest} />
         {hasIcon ? (
           <div
@@ -93,12 +92,12 @@ const CustomPasswordInput = (props: Props) => {
           >
             {isVisible ? (
               <AiFillEye
-                style={{ fontSize: "24px", color: "white" }}
+                style={{ fontSize: "24px" }}
                 onClick={() => setIsVisible(!isVisible)}
               />
             ) : (
               <AiFillEyeInvisible
-                style={{ fontSize: "24px", color: "white" }}
+                style={{ fontSize: "24px" }}
                 onClick={() => setIsVisible(!isVisible)}
               />
             )}
