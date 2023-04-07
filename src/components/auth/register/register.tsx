@@ -6,6 +6,7 @@ import * as yup from "yup";
 import { Link } from "react-router-dom";
 import { FaKey } from "react-icons/fa";
 import auth from "../../../@core/auth/auth";
+import { MessageBarType } from "@fluentui/react";
 
 const Register = () => {
   const [loading, setLoading] = useState(false);
@@ -59,7 +60,7 @@ const Register = () => {
             textAlign: "center",
           }}
         />
-        <Ui.Alert type="error" text={error} />
+        <Ui.Alert type={MessageBarType.error} text={error} />
         <Formik
           initialValues={{
             email: "",

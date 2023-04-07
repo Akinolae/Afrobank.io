@@ -4,6 +4,7 @@ import auth from "../../@core/auth/auth";
 import { useNavigate } from "react-router-dom";
 import { HiLockClosed } from "react-icons/hi";
 import { FormWrapper, LoginWrapper } from "./login";
+import { MessageBarType } from "@fluentui/react";
 
 const Auth2fa = () => {
   const [code, setCode] = useState("");
@@ -22,7 +23,6 @@ const Auth2fa = () => {
     try {
       if (!code || code.length !== 6) {
         setLoading(false);
-
         setError("code is required");
       } else {
         setError("");
@@ -67,7 +67,7 @@ const Auth2fa = () => {
             textAlign: "center",
           }}
         />
-        <ui.Alert type="error" text={networkErr} />
+        <ui.Alert type={MessageBarType.error} text={networkErr} />
         <ui.CustomInput
           onChange={(e) => setCode(e.target.value)}
           placeholder="Enter code"
