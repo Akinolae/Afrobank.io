@@ -1,32 +1,20 @@
 import { useEffect, useState } from "react";
-import styled, { CSSProperties } from "styled-components";
-import { IoMdClose } from "react-icons/io";
 import { motion } from "framer-motion";
-
-const Wrapper = styled.div<CSSProperties>`
-  width: 380px;
-  background: ${(props) => props.background};
-  color: ${(props) => props.color};
-  transition: all ease;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  font-weight: 700;
-  font-size: 15px;
-  margin-bottom: 15px;
-  margin-top: 15px;
-  display: ${(props) => props.display};
-`;
+import { MessageBar, MessageBarType } from "@fluentui/react";
 
 interface AlertProps {
   text: string;
-  type: "success" | "error" | "warning";
+  type:
+    | MessageBarType.error
+    | MessageBarType.warning
+    | MessageBarType.success
+    | MessageBarType.info
+    | MessageBarType.severeWarning;
   hasBtn?: boolean;
 }
 
 const Alert = (props: AlertProps) => {
-  const { text = "", type, hasBtn } = props;
+  const { text = "", type } = props;
   const [visible, setVisible] = useState(!!text ? true : false);
 
   useEffect(() => {
@@ -52,31 +40,14 @@ const Alert = (props: AlertProps) => {
       transition={{ duration: "0.4", ease: "easeInOut" }}
     >
       {visible ? (
-        <Wrapper
+        <MessageBar
           id="alert"
-          color={
-            type === "success" ? "green" : type === "error" ? "red" : "gold"
-          }
-          background={
-            type === "success"
-              ? "#59b88c60"
-              : type === "error"
-              ? "#f3765d60"
-              : "#f1c34f8f"
-          }
+          messageBarType={type}
+          dismissButtonAriaLabel="Close"
+          onDismiss={() => setVisible(false)}
         >
           {text}
-          {visible ? (
-            <>
-              {hasBtn && (
-                <IoMdClose
-                  style={{ cursor: "pointer" }}
-                  onClick={() => setVisible(false)}
-                />
-              )}
-            </>
-          ) : null}
-        </Wrapper>
+        </MessageBar>
       ) : null}
     </motion.div>
   );

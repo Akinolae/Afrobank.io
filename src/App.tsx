@@ -12,6 +12,7 @@ import ProtectedRoute from "./protectedoute";
 import "./@scss/index.scss";
 import { initializeIcons } from "@fluentui/react";
 import ErrorBoundary from "./ErrorBoundary";
+import { AnimatePresence, motion } from "framer-motion";
 
 initializeIcons();
 
@@ -53,17 +54,21 @@ function App() {
       data.element
     ),
     path: data.path,
-    errorElement: <ErrorBoundary />
+    errorElement: <ErrorBoundary />,
   }));
 
   const routes = createBrowserRouter([...route]);
 
+
+
   return (
-    <Provider store={appStore}>
-      <PersistGate loading={null} persistor={persistor}>
-        <RouterProvider router={routes} />
-      </PersistGate>
-    </Provider>
+    <AnimatePresence>
+      <Provider store={appStore}>
+        <PersistGate loading={null} persistor={persistor}>
+          <RouterProvider router={routes} />
+        </PersistGate>
+      </Provider>
+    </AnimatePresence>
   );
 }
 
