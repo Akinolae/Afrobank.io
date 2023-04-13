@@ -1,18 +1,19 @@
+import "./@scss/index.scss";
+import Main from "./components/dashboard";
 import React from "react";
 import Login from "./components/auth/login";
-import Register from "./components/auth/register/register";
-import Auth2fa from "./components/auth/auth2fa";
-import Main from "./components/dashboard";
 import LogOut from "./components/auth/logOut";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { persistor, store as appStore } from "./@store/store";
+import Auth2fa from "./components/auth/auth2fa";
+import Homepage from "./components/pages/Homepage";
+import Register from "./components/auth/register/register";
 import { Provider } from "react-redux";
+import ErrorBoundary from "./ErrorBoundary";
 import { PersistGate } from "redux-persist/integration/react";
 import ProtectedRoute from "./protectedoute";
-import "./@scss/index.scss";
 import { initializeIcons } from "@fluentui/react";
-import ErrorBoundary from "./ErrorBoundary";
 import { AnimatePresence, motion } from "framer-motion";
+import { persistor, store as appStore } from "./@store/store";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 initializeIcons();
 
@@ -20,6 +21,11 @@ function App() {
   const route = [
     {
       path: "/",
+      element: <Homepage />,
+      public: true,
+    },
+    {
+      path: "/login",
       element: <Login />,
       public: true,
     },
@@ -58,8 +64,6 @@ function App() {
   }));
 
   const routes = createBrowserRouter([...route]);
-
-
 
   return (
     <AnimatePresence>
