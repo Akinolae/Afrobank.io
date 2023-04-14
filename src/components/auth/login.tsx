@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { errors } from "../../@utils/error";
 import { LoginParams } from "afrobank-sdk/interface/index.interface";
-import {MessageBarType} from "@fluentui/react"
+import { MessageBarType } from "@fluentui/react";
 
 export const LoginWrapper = styled(motion.div)<CSSProperties>`
   width: ${(props) => props.width || "100%"};
@@ -20,17 +20,21 @@ export const LoginWrapper = styled(motion.div)<CSSProperties>`
   margin: 0px;
   overflow-y: scroll;
   transition: all ease 0.03s;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const FormWrapper = styled.div`
-  min-width: 375px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 30rem;
+  margin: auto;
   transition: all ease 0.3s;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  padding: 1.8%;
+  background: white;
+  border-radius: 10px;
 `;
 
 const Login = () => {
@@ -62,7 +66,7 @@ const Login = () => {
   };
 
   return (
-    <LoginWrapper height="100vh">
+    <LoginWrapper background={"#E8E9E7"} height="100vh">
       <FormWrapper>
         <ui.Badge
           background="#b5f7cd"
@@ -74,7 +78,7 @@ const Login = () => {
         </ui.Badge>
         <ui.Text
           text="Welcome Back"
-          fontSize="28px"
+          fontSize="24px"
           fontWeight={900}
           style={{
             textAlign: "center",
@@ -82,6 +86,7 @@ const Login = () => {
         />
         <ui.Text
           text="Welcome Back! please enter your details"
+          fontSize="14px"
           fontWeight={500}
           style={{
             marginBottom: "25px",
@@ -125,7 +130,7 @@ const Login = () => {
                   <ui.Button
                     isLoading={loading}
                     text="Login"
-                    fontSize={18}
+                    fontSize={16}
                     color={"white"}
                     backgroundColor={"#3B1FA4"}
                     style={{ margin: "30px auto", fontWeight: 500 }}
@@ -141,15 +146,24 @@ const Login = () => {
             to={"/signup"}
             style={{
               textDecoration: "none",
-              fontSize: "16px",
+              fontSize: "14px",
               fontWeight: 400,
-              color: "#bdc1c6",
             }}
           >
             I don't have an account
           </Link>
         </div>
       </FormWrapper>
+
+      <ui.Text
+        text={`${new Date().getFullYear()}`}
+        fontSize="12px"
+        fontWeight={900}
+        style={{
+          textAlign: "center",
+          paddingBottom: '20px'
+        }}
+      />
     </LoginWrapper>
   );
 };

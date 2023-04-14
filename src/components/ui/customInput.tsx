@@ -6,15 +6,15 @@ const Input = styled.input<CSSProperties>`
   border: none;
   outline: none;
   height: 100%;
-  width: ${(props) => props.width || "100%"};
+  width: 100%;
   padding-right: 15px;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
   background: none;
 `;
 const Label = styled.span<CSSProperties>`
   color: ${(props) => props.color};
-  font-size: ${(props) => props.fontSize};
+  font-size: ${(props) => props.fontSize || "12px"};
   text-transform: capitalize;
   font-weight: 800;
 `;
@@ -29,6 +29,7 @@ const InputWrapper = styled.div<CSSProperties>`
   border-radius: 10px;
   border: ${(props) => `1px solid ${props.borderColor}`};
   transition: all ease 0.9s;
+  width: ${(props) => props.width};
 `;
 
 const Error = styled.span<CSSProperties>`
@@ -50,7 +51,9 @@ const CustomInput = (props: Props) => {
 
   return (
     <>
-      {!!label ? <Label color={labelColor}>{label}</Label> : null}
+      {!!label ? (
+        <Label color={!!error ? "red" : labelColor}>{label}</Label>
+      ) : null}
 
       {rest?.type === "select" ? (
         <InputWrapper borderColor={!!error ? "red" : "#858282"}>
@@ -77,7 +80,9 @@ const CustomPasswordInput = (props: Props) => {
   const [isVisible, setIsVisible] = useState<React.ComponentState>(false);
   return (
     <>
-      {!!label ? <Label>{label}</Label> : null}
+      {!!label ? (
+        <Label color={!!error ? "red" : rest?.labelColor}>{label}</Label>
+      ) : null}
       <InputWrapper borderColor={!!error ? "red" : "#858282"}>
         <Input type={isVisible ? "text" : "password"} {...rest} />
         {hasIcon ? (
@@ -92,12 +97,12 @@ const CustomPasswordInput = (props: Props) => {
           >
             {isVisible ? (
               <AiFillEye
-                style={{ fontSize: "24px" }}
+                style={{ fontSize: "20px" }}
                 onClick={() => setIsVisible(!isVisible)}
               />
             ) : (
               <AiFillEyeInvisible
-                style={{ fontSize: "24px" }}
+                style={{ fontSize: "20px" }}
                 onClick={() => setIsVisible(!isVisible)}
               />
             )}

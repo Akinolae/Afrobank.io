@@ -33,7 +33,7 @@ const Register = () => {
   };
 
   return (
-    <LoginWrapper height="100%">
+    <LoginWrapper background={"#E8E9E7"} height="100vh">
       <FormWrapper>
         <Ui.Badge
           background="#b5f7cd"
@@ -88,27 +88,37 @@ const Register = () => {
                       }
                     />
                   </div>
-                  <div style={{ marginBottom: "20px" }}>
-                    <Ui.CustomInput
-                      label="First name"
-                      placeholder="Enter your first name"
-                      value={values.firstName}
-                      error={errors.firstName}
-                      onChange={(e: any) =>
-                        setFieldValue("firstName", e.target.value)
-                      }
-                    />
-                  </div>
-                  <div style={{ marginBottom: "20px" }}>
-                    <Ui.CustomInput
-                      label="Last name"
-                      placeholder="Enter your last name"
-                      value={values.lastName}
-                      error={errors.lastName}
-                      onChange={(e: any) =>
-                        setFieldValue("lastName", e.target.value)
-                      }
-                    />
+
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      marginBottom: "20px",
+                    }}
+                  >
+                    <div style={{ width: "48%" }}>
+                      <Ui.CustomInput
+                        label="Last name"
+                        placeholder="Enter your last name"
+                        width={"45px"}
+                        value={values.lastName}
+                        error={errors.lastName}
+                        onChange={(e: any) =>
+                          setFieldValue("lastName", e.target.value)
+                        }
+                      />
+                    </div>
+                    <div style={{ width: "48%" }}>
+                      <Ui.CustomInput
+                        label="First name"
+                        placeholder="Enter your first name"
+                        value={values.firstName}
+                        error={errors.firstName}
+                        onChange={(e: any) =>
+                          setFieldValue("firstName", e.target.value)
+                        }
+                      />
+                    </div>
                   </div>
                   <div style={{ marginBottom: "20px" }}>
                     <Ui.CustomInput
@@ -139,7 +149,7 @@ const Register = () => {
                 <Ui.Button
                   isLoading={loading}
                   text="Register"
-                  fontSize={18}
+                  fontSize={16}
                   color={"white"}
                   backgroundColor={"#3B1FA4"}
                   style={{ margin: "22px auto", fontWeight: 500 }}
@@ -151,18 +161,26 @@ const Register = () => {
         </Formik>
         <div style={{ display: "flex", placeContent: "center" }}>
           <Link
-            to={"/"}
+            to={"/login"}
             style={{
               textDecoration: "none",
-              fontSize: "16px",
+              fontSize: "14px",
               fontWeight: 400,
-              color: "#bdc1c6",
             }}
           >
             I have an account
           </Link>
         </div>
       </FormWrapper>
+      <Ui.Text
+        text={`${new Date().getFullYear()}`}
+        fontSize="12px"
+        fontWeight={900}
+        style={{
+          textAlign: "center",
+          paddingBottom: "20px",
+        }}
+      />
     </LoginWrapper>
   );
 };
