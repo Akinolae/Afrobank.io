@@ -70,8 +70,10 @@ const Login = () => {
       <FormWrapper>
         <ui.Badge
           background="#b5f7cd"
+          borderRadius="50%"
           style={{
             marginBottom: "10px",
+            height: "50px",
           }}
         >
           <FaKey color="green" />
@@ -161,7 +163,7 @@ const Login = () => {
         fontWeight={900}
         style={{
           textAlign: "center",
-          paddingBottom: '20px'
+          paddingBottom: "20px",
         }}
       />
     </LoginWrapper>

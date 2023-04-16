@@ -4,11 +4,10 @@ import styled, { CSSProperties } from "styled-components";
 const Wrapper = styled.div<CSSProperties>`
   background: ${(props) => props.background};
   width: 50px;
-  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
+  border-radius: ${(props) => props.borderRadius || "50%"};
   margin: auto;
 `;
 
@@ -16,12 +15,13 @@ interface Props {
   children: React.ReactElement;
   style: CSSProperties;
   background: string;
+  borderRadius: string;
 }
 
 const Badge = (props: Props) => {
-  const { background, children, ...rest } = props;
+  const { background, children, borderRadius, ...rest } = props;
   return (
-    <Wrapper background={background} {...rest}>
+    <Wrapper background={background} borderRadius={borderRadius} {...rest}>
       {children}
     </Wrapper>
   );

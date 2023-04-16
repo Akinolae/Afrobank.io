@@ -36,9 +36,11 @@ const Register = () => {
     <LoginWrapper background={"#E8E9E7"} height="100vh">
       <FormWrapper>
         <Ui.Badge
+          borderRadius="50%"
           background="#b5f7cd"
           style={{
             marginBottom: "10px",
+            height: "50px",
           }}
         >
           <FaKey color="green" />
