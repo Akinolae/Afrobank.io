@@ -8,7 +8,6 @@ import { MdOutlineCopyright } from "react-icons/md";
 
 const Wrapper = styled.div<CSSProperties>`
   width: ${(props) => props.width || "100%"};
-  background: ${(props) => props.background || ""};
   height: ${(props) => props.height};
   padding: 0px;
   margin: 0px;
@@ -41,7 +40,7 @@ interface Props {
 
 const AuthWrapper = (props: Props) => {
   return (
-    <Wrapper background={"#E8E9E7"} height="100vh">
+    <Wrapper className="bg-dots" height="100vh">
       <FormWrapper>
         <ui.Badge
           background="#b5f7cd"
