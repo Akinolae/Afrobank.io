@@ -2,9 +2,7 @@ import { useState, useEffect } from "react";
 import ui from "../ui";
 import auth from "../../@core/auth/auth";
 import { useNavigate } from "react-router-dom";
-import { HiLockClosed } from "react-icons/hi";
-import { FormWrapper, LoginWrapper } from "./login";
-import { MessageBarType } from "@fluentui/react";
+import AuthWrapper from "./authWrapper";
 
 const Auth2fa = () => {
   const [code, setCode] = useState("");
@@ -39,35 +37,12 @@ const Auth2fa = () => {
   };
 
   return (
-    <LoginWrapper>
-      <FormWrapper>
-        <ui.Badge
-          background="#b5f7cd"
-          style={{
-            marginBottom: "10px",
-          }}
-        >
-          <HiLockClosed color="green" />
-        </ui.Badge>
-        {/* <ui.PinInput length={6} onChange={(e) => console.log(e)} /> */}
-        <ui.Text
-          text="2FA Authentication"
-          fontSize="28px"
-          fontWeight={900}
-          style={{
-            textAlign: "center",
-          }}
-        />
-
-        <ui.Text
-          text="Enter the 6 digit authentication code"
-          fontWeight={500}
-          style={{
-            marginBottom: "25px",
-            textAlign: "center",
-          }}
-        />
-        <ui.Alert type={MessageBarType.error} text={networkErr} />
+    <AuthWrapper
+      headerText="2FA Authentication"
+      subText="Enter the 6 digit authentication code"
+      error={networkErr}
+    >
+      <>
         <ui.CustomInput
           onChange={(e) => setCode(e.target.value)}
           placeholder="Enter code"
@@ -83,8 +58,8 @@ const Auth2fa = () => {
           backgroundColor={"#3B1FA4"}
           style={{ margin: "22px auto", fontWeight: 500 }}
         />
-      </FormWrapper>
-    </LoginWrapper>
+      </>
+    </AuthWrapper>
   );
 };
 
