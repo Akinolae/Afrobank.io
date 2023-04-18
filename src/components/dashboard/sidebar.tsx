@@ -7,36 +7,29 @@ import { MdOutlineSpaceDashboard } from "react-icons/md";
 import ui from "../ui";
 
 const SideBarWrapper = styled.div<CSSProperties>`
-  width: 16%;
-  background: red;
-  padding: 2%;
+  width: 90%;
   flex-direction: column;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
 `;
 
 const Box = styled.div`
-  width: 80%;
+  width: 100%;
   margin: auto;
 `;
 
 // const activeClass = "active";
 export const Sidelink = styled((props) => <NavLink {...props} />)`
-    color: ${(props) => props.color};
-    font-wight: bold;
-    font-size: 16px;
+    color: ${(props) => props.color || "black"};
+    font-weight: 900;
+    font-size: 15px;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    height: 47px;
-    margin-top: ${(props) => (props.index === 0 ? "" : "25px")};
     padding-left: 15px;
+    line-height: 45px;
     border-radius: 10px;
     transition: all ease 0.3s;
+    opacity: 0.8;
     &:hover {
       background: yellow,
       color: red;
@@ -44,7 +37,8 @@ export const Sidelink = styled((props) => <NavLink {...props} />)`
   `;
 
 const style = {
-  fontSize: "24px",
+  fontSize: "14px",
+  paddingRight: "10px",
 };
 
 const routes = [
@@ -72,7 +66,7 @@ const routes = [
 
 const Sidebar = () => {
   return (
-    <SideBarWrapper className="flex">
+    <SideBarWrapper>
       <Box>
         {routes.map((route, i) => {
           return (
@@ -81,6 +75,7 @@ const Sidebar = () => {
               key={i}
               to={route.path}
             >
+              {route.icon}
               <ui.Text text={route.name} />
             </Sidelink>
           );

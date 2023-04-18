@@ -27,6 +27,9 @@ const FormWrapper = styled.div`
   padding: 1.8%;
   background: white;
   border-radius: 10px;
+  box-shadow: -18px 7px 82px 0px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: -18px 7px 82px 0px rgba(0, 0, 0, 0.23);
+  -moz-box-shadow: -18px 7px 82px 0px rgba(0, 0, 0, 0.23);
 `;
 
 interface Props {

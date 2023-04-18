@@ -4,14 +4,14 @@ import React from "react";
 import Login from "./components/auth/login";
 import LogOut from "./components/auth/logOut";
 import Auth2fa from "./components/auth/auth2fa";
-import Homepage from "./components/pages/Homepage";
+import Homepage from "./components/pages/homepage/Homepage";
 import Register from "./components/auth/register/register";
 import { Provider } from "react-redux";
 import ErrorBoundary from "./ErrorBoundary";
 import { PersistGate } from "redux-persist/integration/react";
 import ProtectedRoute from "./protectedoute";
 import { initializeIcons } from "@fluentui/react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { persistor, store as appStore } from "./@store/store";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -51,7 +51,7 @@ function App() {
           <Main />
         </React.Suspense>
       ),
-      public: false,
+      public: true,
     },
   ].map((data) => ({
     element: !data.public ? (

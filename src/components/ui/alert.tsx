@@ -45,6 +45,7 @@ const Alert = (props: AlertProps) => {
           messageBarType={type}
           dismissButtonAriaLabel="Close"
           onDismiss={() => setVisible(false)}
+          style={{ fontWeight: "bolder" }}
         >
           {text}
         </MessageBar>

@@ -34,7 +34,7 @@ const InputWrapper = styled.div<CSSProperties>`
 
 const Error = styled.span<CSSProperties>`
   color: red;
-  font-weight: 700;
+  font-weight: bold;
   font-size: 12px;
 `;
 
