@@ -122,16 +122,21 @@ const Register = () => {
                   }
                 />
               </div>
-
-              <Ui.Button
-                isLoading={loading}
-                text="Register"
-                fontSize={16}
-                color={"white"}
-                backgroundColor={"#3B1FA4"}
-                style={{ margin: "22px auto", fontWeight: 500 }}
-                type="submit"
-              />
+              <div className="flex-center">
+                <Ui.Button
+                  isLoading={loading}
+                  text="Register"
+                  fontSize={16}
+                  color={"white"}
+                  backgroundColor={"#3B1FA4"}
+                  style={{
+                    marginTop: "22px",
+                    marginBottom: "22px",
+                    fontWeight: 500,
+                  }}
+                  type="submit"
+                />
+              </div>
             </Form>
           );
         }}
