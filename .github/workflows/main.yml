@@ -1,3 +1,11 @@
 name: deploy
 
 on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: npm install
+        uses: npm
