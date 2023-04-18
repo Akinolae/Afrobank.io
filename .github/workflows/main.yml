@@ -8,5 +8,9 @@ jobs:
 
     steps:
       - name: npm install 
-        uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+        env:
+          CI: true
+        run: |
+          rm -rf node_modules
+          yarn install
+          yarn run build
