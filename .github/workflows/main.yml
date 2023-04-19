@@ -11,7 +11,4 @@ jobs:
         env:
           CI: true
         run: |
-          cd ./
-          rm -rf node_modules
-          yarn install
-          yarn run build
+            ls
