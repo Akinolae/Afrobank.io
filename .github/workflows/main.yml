@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v2
         with:
-          version: "14"
+          node-version: "14"
           cache: yarn
-          cache-dependency-path: "./Afrobank/yarn.lock"
+          cache-dependency-path: "../Afrobank/yarn.lock"
       - run: yarn install
