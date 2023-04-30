@@ -26,10 +26,7 @@ jobs:
         with:
           cmd: build
 
-      - name: DEPLOY
-        uses: borales/actions-yarn@v4
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          repository: https://github.com/Akinolae/Afrobank
-          token: ${{ secrets.GITHUB_TOKEN }}
-          username: ${{ secrets.USERNAME }}
-          cmd: deploy
+          folder: dist
