@@ -5,7 +5,9 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: ./Afrobank
     steps:
       - uses: actions/setup-node@v2
         with:
