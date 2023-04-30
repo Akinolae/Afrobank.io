@@ -25,8 +25,11 @@ jobs:
         uses: borales/actions-yarn@v4
         with:
           cmd: build
-      
+
       - name: DEPLOY
         uses: borales/actions-yarn@v4
         with:
+          repository: ${{github.repository}}
+          token: ${{secrets.PAT}}
+          username: ${{secrets.USERNAME}}
           cmd: deploy
