@@ -2,7 +2,7 @@
   "name": "afrobank",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://github.com/Akinolae/Afrobank.io",
+  "homepage": "http://Akinolae.github.io/Afrobank",
   "type": "module",
   "scripts": {
     "dev": "vite",
