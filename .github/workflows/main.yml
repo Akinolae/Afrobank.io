@@ -29,7 +29,7 @@ jobs:
       - name: DEPLOY
         uses: borales/actions-yarn@v4
         with:
-          repository: ${{ github.repository }}
+          repository: https://github.com/Akinolae/Afrobank
           token: ${{ secrets.PAT }}
           username: ${{ secrets.USERNAME }}
           cmd: deploy
