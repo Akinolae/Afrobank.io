@@ -30,6 +30,6 @@ jobs:
         uses: borales/actions-yarn@v4
         with:
           repository: https://github.com/Akinolae/Afrobank
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           username: ${{ secrets.USERNAME }}
           cmd: deploy
