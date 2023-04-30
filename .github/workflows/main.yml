@@ -8,7 +8,4 @@ jobs:
 
     steps:
       - name: npm install
-        env:
-          CI: true
-        run: |
-            ls
+        run: yarn install
