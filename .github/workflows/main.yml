@@ -8,4 +8,4 @@ jobs:
 
     steps:
       - name: npm install
-        run: yarn install
+        run: ls
