@@ -2,20 +2,23 @@
   "name": "afrobank",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://github.com/Akinolae/Afrobank",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@fluentui/react": "^8.106.2",
     "@reduxjs/toolkit": "^1.9.3",
     "@types/react-icons": "^3.0.0",
     "@types/styled-components": "^5.1.26",
-    "afrobank-sdk": "https://github.com/Akinolae/afrobank-sdk.git#master",
     "formik": "^2.2.9",
     "framer-motion": "^10.0.1",
+    "gh-pages": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",

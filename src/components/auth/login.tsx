@@ -5,7 +5,7 @@ import auth from "../../@core/auth/auth";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { errors } from "../../@utils/error";
-import { LoginParams } from "afrobank-sdk/interface/index.interface";
+// import { LoginParams } from "afrobank-sdk/interface/index.interface";
 import AuthWrapper from "./authWrapper";
 
 const Login = () => {
@@ -22,14 +22,14 @@ const Login = () => {
     password: yup.string().required(errors.password),
   });
 
-  const login = async (e: LoginParams) => {
+  const login = async (e: any) => {
     setLoading(true);
     setError("");
 
     try {
       const res = await auth.login(e);
       setLoading(false);
-      return res ? navigate("/authenticate") : navigate("/user-dashboard");
+      // return res ? navigate("/authenticate") : navigate("/user-dashboard");
     } catch (error: any) {
       setError(error);
       setLoading(false);

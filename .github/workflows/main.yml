@@ -4,11 +4,29 @@ on: push
 
 jobs:
   build:
+    name: Install packages
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: ./Afrobank
     steps:
-      - name: npm install
-        env:
-          CI: true
-        run: |
-            ls
+      - uses: actions/checkout@v3
+
+      - name: Set Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+      - name: Run install
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install
+
+      - name: BUILD
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
