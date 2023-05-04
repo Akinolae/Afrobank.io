@@ -13,11 +13,17 @@ const Box = styled.div`
 
 const Nav = styled(Box)`
   @media only screen and (max-width: 595px) {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #e8e9e7;
   }
 `;
 const Body = styled(Box)`
+  height: 100vh;
   ${xScreen} {
     width: 90%;
+    height: 70vh;
   }
 `;
 const FirstSection = () => {
@@ -30,7 +36,7 @@ const FirstSection = () => {
         backgroundColor: "#E8E9E7",
       }}
     >
-      <Box
+      <Nav
         className="flex-between"
         style={{
           padding: "1%",
@@ -66,8 +72,8 @@ const FirstSection = () => {
             />
           </Link>
         </div>
-      </Box>
-      <Body className="flex-center flex-column bg" style={{ height: "100vh" }}>
+      </Nav>
+      <Body className="flex-center flex-column bg">
         <Box
           style={{
             textAlign: "center",
@@ -102,14 +108,11 @@ const FirstSection = () => {
             />
           </Link>
         </motion.div>
-        <Box
-          style={{ marginTop: "10px", width: "50%" }}
-          className="flex-center"
-        >
+        <Box style={{ marginTop: "10px" }} className="flex-center">
           <Ui.Badge
             background="#f2edc9"
             borderRadius="10px"
-            style={{ padding: "5px", textAlign: "center", width: "28%" }}
+            style={{ padding: "5px", textAlign: "center", width: "250px" }}
           >
             <>
               <IoIosInformationCircleOutline

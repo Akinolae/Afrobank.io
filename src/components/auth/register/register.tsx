@@ -51,7 +51,7 @@ const Register = () => {
       >
         {({ values, setFieldValue, errors }) => {
           return (
-            <Form>
+            <Form style={{ padding: "10px" }}>
               <div>
                 <div style={{ marginBottom: "20px" }}>
                   <Ui.CustomInput

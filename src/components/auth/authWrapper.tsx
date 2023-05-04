@@ -5,16 +5,22 @@ import { FaKey } from "react-icons/fa";
 import { MessageBarType } from "@fluentui/react";
 import { Link } from "react-router-dom";
 import { MdOutlineCopyright } from "react-icons/md";
+import { breakpoints } from "../../breakpoints";
+
+const { xScreen } = breakpoints();
 
 const Wrapper = styled.div<CSSProperties>`
   width: ${(props) => props.width || "100%"};
-  height: ${(props) => props.height};
-  padding: 0px;
-  margin: 0px;
+  height: ${(props) => props.height || "100vh"};
   overflow-y: scroll;
   transition: all ease 0.03s;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 3%;
+  ${xScreen} {
+    width: 95%;
+  }
 `;
 const FormWrapper = styled.div`
   width: 100%;
@@ -30,6 +36,10 @@ const FormWrapper = styled.div`
   box-shadow: -18px 7px 82px 0px rgba(0, 0, 0, 0.23);
   -webkit-box-shadow: -18px 7px 82px 0px rgba(0, 0, 0, 0.23);
   -moz-box-shadow: -18px 7px 82px 0px rgba(0, 0, 0, 0.23);
+
+  ${xScreen} {
+    width: 95%;
+  }
 `;
 
 interface Props {
@@ -43,7 +53,7 @@ interface Props {
 
 const AuthWrapper = (props: Props) => {
   return (
-    <Wrapper className="bg-dots" height="100vh">
+    <Wrapper className="bg-dots">
       <FormWrapper>
         <ui.Badge
           background="#b5f7cd"

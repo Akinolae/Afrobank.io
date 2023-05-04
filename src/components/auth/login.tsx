@@ -52,7 +52,7 @@ const Login = () => {
         {({ values, setFieldValue, errors }) => {
           return (
             <React.Fragment>
-              <Form style={{ paddingTop: "10px" }}>
+              <Form style={{ padding: "10px" }}>
                 <ui.CustomInput
                   type={"email"}
                   label="email"
