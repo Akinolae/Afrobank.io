@@ -27,7 +27,6 @@ const Body = styled(Box)`
   height: 100vh;
   ${xScreen} {
     width: 90%;
-    height: 55vh;
   }
 `;
 const FirstSection = () => {
