@@ -27,6 +27,6 @@ jobs:
           cmd: build
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: rdarida/simple-github-pages-deploy-action@v1
         with:
-          folder: "dist"
+          git-base-folder: "dist"
