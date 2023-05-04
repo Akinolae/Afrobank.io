@@ -7,13 +7,12 @@ import { MdOutlineSpaceDashboard } from "react-icons/md";
 import ui from "../ui";
 
 const SideBarWrapper = styled.div<CSSProperties>`
-  width: 90%;
+  width: 100%;
   flex-direction: column;
 `;
 
 const Box = styled.div`
   width: 100%;
-  margin: auto;
 `;
 
 // const activeClass = "active";
@@ -26,7 +25,7 @@ export const Sidelink = styled((props) => <NavLink {...props} />)`
     align-items: center;
     justify-content: flex-start;
     padding-left: 15px;
-    line-height: 45px;
+    line-height: 55px;
     border-radius: 10px;
     transition: all ease 0.3s;
     opacity: 0.8;
@@ -67,7 +66,16 @@ const routes = [
 const Sidebar = () => {
   return (
     <SideBarWrapper>
-      <Box>
+      <Box
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          flexFlow: "wrap",
+        }}
+      >
         {routes.map((route, i) => {
           return (
             <Sidelink

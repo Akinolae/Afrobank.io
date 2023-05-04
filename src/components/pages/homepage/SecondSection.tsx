@@ -1,9 +1,25 @@
 import styled from "styled-components";
 import Ui from "../../ui";
 import image from "../../../assets/img.jpeg";
+import { breakpoints } from "../../../breakpoints";
 
+const { xScreen } = breakpoints();
 const Box = styled.div`
   width: 100%;
+`;
+
+const Body = styled(Box)`
+  ${xScreen} {
+    flex-direction: column;
+    width: 100%;
+  }
+`;
+
+const ImageWrapper = styled(Box)`
+  width: 50%, ${xScreen} {
+    background: red;
+    width: 90%;
+  }
 `;
 
 const SecondSection = () => {
@@ -14,7 +30,7 @@ const SecondSection = () => {
       }}
       className="bg-dots flex-center"
     >
-      <Box
+      <Body
         className="flex-between"
         style={{
           height: "60vh",
@@ -22,9 +38,8 @@ const SecondSection = () => {
           borderRadius: "28px",
         }}
       >
-        <Box
+        <ImageWrapper
           style={{
-            width: "50%",
             height: "100%",
             background: "#E8E9E7",
             borderTopLeftRadius: "28px",
@@ -45,10 +60,9 @@ const SecondSection = () => {
             text="Not sure which plan to go with?
               Our team can help!"
           />
-        </Box>
-        <Box
+        </ImageWrapper>
+        <ImageWrapper
           style={{
-            width: "50%",
             height: "100%",
           }}
         >
@@ -62,8 +76,8 @@ const SecondSection = () => {
               borderBottomRightRadius: "28px",
             }}
           />
-        </Box>
-      </Box>
+        </ImageWrapper>
+      </Body>
     </Box>
   );
 };

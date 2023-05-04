@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { CSSProperties } from "styled-components";
+import { breakpoints } from "../../breakpoints";
 
 const TextComponent = styled.p<CSSProperties>`
   color: ${(props) => props.color};

@@ -3,11 +3,23 @@ import Ui from "../../ui";
 import { motion } from "framer-motion";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { breakpoints } from "../../../breakpoints";
+
+const { xScreen } = breakpoints();
 
 const Box = styled.div`
   width: 100%;
 `;
 
+const Nav = styled(Box)`
+  @media only screen and (max-width: 595px) {
+  }
+`;
+const Body = styled(Box)`
+  ${xScreen} {
+    width: 90%;
+  }
+`;
 const FirstSection = () => {
   return (
     <Box
@@ -55,10 +67,9 @@ const FirstSection = () => {
           </Link>
         </div>
       </Box>
-      <Box className="flex-center flex-column bg" style={{ height: "100vh" }}>
+      <Body className="flex-center flex-column bg" style={{ height: "100vh" }}>
         <Box
           style={{
-            width: "50%",
             textAlign: "center",
           }}
         >
@@ -112,7 +123,7 @@ const FirstSection = () => {
             </>
           </Ui.Badge>
         </Box>
-      </Box>
+      </Body>
     </Box>
   );
 };

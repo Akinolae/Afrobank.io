@@ -25,7 +25,7 @@ const Dashboard = () => {
 
   return (
     <Box style={{ display: "flex", justifyContent: "space-between" }}>
-      <Box style={{ width: "63%" }}>
+      <Box style={{ width: "63%", backgroundColor: "yellow" }}>
         <Card
           style={{
             width: "100%",
@@ -62,7 +62,7 @@ const Dashboard = () => {
               <Ui.Text text="Info" />
               <Ui.Text text="Info 2" />
             </Box>
-            <Box style={{marginTop: "20%"}} className="flex-between">
+            <Box style={{ marginTop: "20%" }} className="flex-between">
               <Ui.Text text="Info" />
               <Ui.Text text="Info 2" />
             </Box>
