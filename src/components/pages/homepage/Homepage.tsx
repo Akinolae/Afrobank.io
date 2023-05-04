@@ -4,9 +4,11 @@ import { MdOutlineCopyright } from "react-icons/md";
 
 import FirstSection from "./FirstSection";
 import SecondSection from "./SecondSection";
+import ThirdSection from "./ThirdSection";
 
 const Box = styled.div`
   width: 100%;
+  overflow: hidden;
 `;
 
 const Footer = () => (
@@ -39,6 +41,7 @@ const Homepage = () => {
     <Box>
       <FirstSection />
       <SecondSection />
+      <ThirdSection />
       <Footer />
       {/* <FirstPage /> */}
     </Box>

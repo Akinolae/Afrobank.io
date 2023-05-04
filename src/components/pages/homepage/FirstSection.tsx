@@ -15,6 +15,10 @@ const Nav = styled(Box)`
   @media only screen and (max-width: 595px) {
     position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
     width: 100%;
     background: #e8e9e7;
   }
