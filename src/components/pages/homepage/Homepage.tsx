@@ -4,38 +4,34 @@ import { MdOutlineCopyright } from "react-icons/md";
 
 import FirstSection from "./FirstSection";
 import SecondSection from "./SecondSection";
+import ThirdSection from "./ThirdSection";
 
 const Box = styled.div`
   width: 100%;
+  overflow: hidden;
 `;
 
 const Footer = () => (
   <Box
     style={{
       backgroundColor: "#E8E9E7",
+      padding: "2%",
     }}
   >
     <Box
       style={{
-        padding: "1%",
         display: "flex",
+        padding: 0,
       }}
     >
       <MdOutlineCopyright />
       <Ui.Text
-        text={`${new Date().getFullYear()}`}
+        text={`${new Date().getFullYear()} `}
         fontSize="12px"
         fontWeight={900}
       />
-    </Box>
-    <Box
-      style={{
-        paddingLeft: "1%",
-        paddingBottom: "1%",
-        lineHeight: "1px",
-      }}
-    >
-      <Ui.Text fontSize="12px" fontWeight={900} text="All rights reserved" />
+      <br />
+      <Ui.Text fontSize="12px" fontWeight={900} text=" All rights reserved" />
     </Box>
   </Box>
 );
@@ -45,6 +41,7 @@ const Homepage = () => {
     <Box>
       <FirstSection />
       <SecondSection />
+      <ThirdSection />
       <Footer />
       {/* <FirstPage /> */}
     </Box>

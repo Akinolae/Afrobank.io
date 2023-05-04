@@ -16,9 +16,12 @@ const Body = styled(Box)`
 `;
 
 const ImageWrapper = styled(Box)`
-  width: 50%, ${xScreen} {
-    background: red;
+  width: 50%:
+  ${xScreen} {
     width: 90%;
+    img {
+      display: none;
+    }
   }
 `;
 
@@ -49,13 +52,13 @@ const SecondSection = () => {
           className="flex-center"
         >
           <Ui.Text
-            fontSize="26px"
+            fontSize="20px"
             fontWeight={900}
             text="Find which plan
               works best for you"
           />
           <Ui.Text
-            fontSize="18px"
+            fontSize="14px"
             fontWeight={900}
             text="Not sure which plan to go with?
               Our team can help!"

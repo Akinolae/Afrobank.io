@@ -15,6 +15,10 @@ const Nav = styled(Box)`
   @media only screen and (max-width: 595px) {
     position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
     width: 100%;
     background: #e8e9e7;
   }
@@ -23,7 +27,7 @@ const Body = styled(Box)`
   height: 100vh;
   ${xScreen} {
     width: 90%;
-    height: 70vh;
+    height: 55vh;
   }
 `;
 const FirstSection = () => {
@@ -80,15 +84,15 @@ const FirstSection = () => {
           }}
         >
           <Ui.Text
-            fontSize="44px"
+            fontSize="20px"
             style={{
               paddingBottom: "12px",
-              lineHeight: "54px",
-              fontWeight: "700",
+              lineHeight: "25px",
+              fontWeight: "900",
             }}
             text="The modern way to send and recieve money"
           />
-          <Ui.Text text="Fast free and efficient" fontSize="22px" />
+          <Ui.Text text="Fast free and efficient" />
         </Box>
         <motion.div
           whileHover={{ scale: 1.1 }}
