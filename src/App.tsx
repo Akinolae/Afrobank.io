@@ -63,7 +63,9 @@ function App() {
     errorElement: <ErrorBoundary />,
   }));
 
-  const routes = createBrowserRouter([...route]);
+  const routes = createBrowserRouter([...route], {
+    basename: "/Afrobank",
+  });
 
   return (
     <AnimatePresence>
