@@ -3,7 +3,7 @@ import Ui from "../../ui";
 import image from "../../../assets/img.jpeg";
 import { breakpoints } from "../../../breakpoints";
 
-const { xScreen } = breakpoints();
+const { xScreen, mediumScreen,largeScreen } = breakpoints();
 const Box = styled.div`
   width: 100%;
 `;
@@ -13,15 +13,16 @@ const Body = styled(Box)`
     flex-direction: column;
     width: 100%;
   }
+  ${largeScreen} {
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 
 const ImageWrapper = styled(Box)`
   width: 50%:
   ${xScreen} {
     width: 90%;
-    img {
-      display: none;
-    }
   }
 `;
 
