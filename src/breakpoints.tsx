@@ -1,4 +1,4 @@
-const breakpoints = (xs = 595, sm = 600, md = 768, lg = 889, xl = 1200) => {
+const breakpoints = (xs = 400, sm = 600, md = 768, lg = 985, xl = 1200) => {
   return {
     xScreen: `@media only screen and (max-width: ${xs}px)`,
     smallScreen: `@media only screen and (max-width: ${sm}px)`,

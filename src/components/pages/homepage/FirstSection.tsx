@@ -7,7 +7,7 @@ import { breakpoints } from "../../../breakpoints";
 
 const { xScreen } = breakpoints();
 
-const Box = styled.div`
+const Box = styled(motion.div)`
   width: 100%;
 `;
 
@@ -78,6 +78,16 @@ const FirstSection = () => {
       </Nav>
       <Body className="flex-center flex-column bg">
         <Box
+          initial={{
+            x: "-100vw",
+          }}
+          animate={{
+            x: 0,
+          }}
+          transition={{
+            type: "spring",
+            duration: 3,
+          }}
           style={{
             textAlign: "center",
           }}

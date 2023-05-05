@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { breakpoints } from "../../../breakpoints";
-import { motion } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 import Ui from "../../ui";
 
 const { xScreen, mediumScreen, largeScreen } = breakpoints();
@@ -16,9 +16,13 @@ const CardWrapper = styled(Box)`
   grid-template-rows: auto;
   width: 75%;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px 5px;
   margin: 0px auto;
   justify-content: center;
+  ${mediumScreen} {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+
   ${xScreen} {
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 10px;
@@ -36,35 +40,68 @@ const Wrapper = styled(Box)`
 `;
 
 const Card = styled(Box)`
-  height: 345px;
-  width: 350px;
+  height: 340px;
+  width: 340px;
   background-color: #fefbf8;
   border-radius: 20px;
   transition: all ease 0.3s;
+  cursor: pointer;
   &:hover {
-    transform: scale(1.019);
     opacity: 0.9;
   }
 `;
 
+const cardInfo = [
+  {
+    info: "easy deals",
+  },
+  {
+    info: "easy deals",
+  },
+  {
+    info: "easy deals",
+  },
+  {
+    info: "easy deals",
+  },
+  {
+    info: "easy deals",
+  },
+  {
+    info: "easy deals",
+  },
+];
+
 const ThirdSection = () => {
-  const cardInfo = [
-    {
-      info: "easy deals",
-    },
-    {
-      info: "easy deals",
-    },
-    {
-      info: "easy deals",
-    },
-  ];
+  const ref = useRef(null);
+  const inView = useInView(ref);
+  const animation = useAnimation();
+
+  useEffect(() => {
+    console.log(inView);
+    if (inView) {
+      animation.start({
+        y: 0,
+        transition: {
+          type: "spring",
+          duration: 1,
+          bounce: 1.2,
+        },
+      });
+    }
+    if (!inView) {
+      animation.start({
+        y: "100vh",
+      });
+    }
+  }, [inView]);
+
   return (
     <Wrapper>
       <Box
         style={{
           paddingTop: "80px",
-          paddingBottom: "40px",
+          paddingBottom: "50px",
           width: "70%",
           display: "flex",
           flexFlow: "wrap",
@@ -91,10 +128,10 @@ const ThirdSection = () => {
           }}
         />
       </Box>
-      <CardWrapper>
+      <CardWrapper ref={ref}>
         {cardInfo.map((data: any, i: number) => {
           return (
-            <Card key={i}>
+            <Card animate={animation} whileHover={{ scale: 1.005 }} key={i}>
               <Box style={{ padding: "5%" }}>
                 <Ui.Text text={data.info} />
               </Box>
