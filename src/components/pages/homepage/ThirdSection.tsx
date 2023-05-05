@@ -64,7 +64,7 @@ const ThirdSection = () => {
       <Box
         style={{
           paddingTop: "80px",
-          marginBottom: "40px",
+          paddingBottom: "40px",
           width: "70%",
           display: "flex",
           flexFlow: "wrap",
@@ -76,7 +76,7 @@ const ThirdSection = () => {
         <Ui.Text
           fontSize="24px"
           fontWeight={500}
-          text="Faster finances, smarter business"
+          text="Afrobank, smarter business"
           style={{
             color: "white",
             textAlign: "center",
@@ -84,7 +84,7 @@ const ThirdSection = () => {
         />
         <Ui.Text
           fontSize="16px"
-          text="There’s only one smart choice: Friday Finance. Grow your company with ease, simplify processes, implement best practices, and gather real-time insights to help you focus on what matters most. From MVP to IPO, Friday Finance has your back."
+          text="There’s only one smart choice: Afrobank. Grow your company with ease, simplify processes, implement best practices, and gather real-time insights to help you focus on what matters most. From MVP to IPO, Afrobank has your back."
           style={{
             color: "whitesmoke",
             textAlign: "center",
@@ -95,10 +95,9 @@ const ThirdSection = () => {
         {cardInfo.map((data: any, i: number) => {
           return (
             <Card key={i}>
-                <Box style={{padding: '5%'}}>
-
-              <Ui.Text text={data.info} />
-                </Box>
+              <Box style={{ padding: "5%" }}>
+                <Ui.Text text={data.info} />
+              </Box>
             </Card>
           );
         })}
