@@ -23,8 +23,7 @@ const Wrapper = styled.div<CSSProperties>`
   }
 `;
 const FormWrapper = styled.div`
-  width: 100%;
-  max-width: 30rem;
+  width: 30rem;
   margin: auto;
   transition: all ease 0.3s;
   display: flex;

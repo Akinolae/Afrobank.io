@@ -3,7 +3,7 @@ import Ui from "../../ui";
 import image from "../../../assets/img.jpeg";
 import { breakpoints } from "../../../breakpoints";
 
-const { xScreen, mediumScreen,largeScreen } = breakpoints();
+const { xScreen, largeScreen } = breakpoints();
 const Box = styled.div`
   width: 100%;
 `;
@@ -55,6 +55,7 @@ const SecondSection = () => {
           <Ui.Text
             fontSize="20px"
             fontWeight={900}
+            className="sm:text-sm"
             text="Find which plan
               works best for you"
           />
