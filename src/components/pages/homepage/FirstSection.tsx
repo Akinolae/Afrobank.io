@@ -105,8 +105,6 @@ const FirstSection = () => {
         </Box>
         <motion.div
           whileHover={{ scale: 1.1 }}
-          onHoverStart={(e) => {}}
-          onHoverEnd={(e) => {}}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
         >
           <Link to="/signup">

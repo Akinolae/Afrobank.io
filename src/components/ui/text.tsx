@@ -18,11 +18,16 @@ interface Props {
   style?: React.CSSProperties;
   fontWeight?: string | number;
   fontSize?: string;
+  className?: string;
 }
 
 const Text = (props: Props) => {
-  const { text, ...rest } = props;
-  return <TextComponent {...rest}>{text}</TextComponent>;
+  const { text, className, ...rest } = props;
+  return (
+    <TextComponent className={className} {...rest}>
+      {text}
+    </TextComponent>
+  );
 };
 
 export default Text;
