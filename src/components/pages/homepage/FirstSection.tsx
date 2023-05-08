@@ -24,7 +24,7 @@ const Nav = styled(Box)`
   }
 `;
 const Body = styled(Box)`
-  height: 100vh;
+  height: 80vh;
   ${xScreen} {
     width: 90%;
   }
@@ -62,16 +62,10 @@ const FirstSection = () => {
           <Link to="/login">
             <Ui.Button
               text="Login"
-              height={"45px"}
-              fontSize={16}
               color={"white"}
-              className="hover"
+              className="hover h-10 text-sm w-28 font-black"
               backgroundColor={"#3B1FA4"}
-              style={{
-                fontWeight: 900,
-                minWidth: "150px",
-                borderRadius: "50px",
-              }}
+              borderRadius="50px"
             />
           </Link>
         </div>
@@ -93,11 +87,12 @@ const FirstSection = () => {
           }}
         >
           <Ui.Text
-            fontSize="20px"
+            className="lg:text-4xl md:text-3xl sm:text-2xl w-3/5 text-center font-black"
             style={{
               paddingBottom: "12px",
-              lineHeight: "25px",
               fontWeight: "900",
+              margin: "auto",
+              backgroundSize: "10px",
             }}
             text="The modern way to send and recieve money"
           />
@@ -115,6 +110,7 @@ const FirstSection = () => {
               fontSize={16}
               color={"white"}
               backgroundColor={"#3B1FA4"}
+              borderRadius="10px"
               style={{ fontWeight: 500, marginTop: "10px" }}
             />
           </Link>

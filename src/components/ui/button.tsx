@@ -38,16 +38,25 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   height?: number | string;
   isLoading?: boolean;
   width?: string | string;
+  className?: string;
 }
 
 const Button = (props: Props) => {
-  const { isLoading, children, ...rest } = props;
+  const {
+    isLoading,
+    children,
+    className,
+    width,
+    height,
+    borderRadius,
+    ...rest
+  } = props;
   return (
     <ButtonComponent
-      className="flex justify-center items-center"
-      width={isLoading ? "45px" : "100%"}
-      height={isLoading ? "45px" : "50px"}
-      borderRadius={isLoading ? "50%" : "10px"}
+      className={`flex justify-center items-center ${className}`}
+      width={isLoading ? "45px" : width}
+      height={isLoading ? "45px" : height}
+      borderRadius={isLoading ? "50%" : borderRadius}
       disabled={isLoading}
       {...rest}
     >

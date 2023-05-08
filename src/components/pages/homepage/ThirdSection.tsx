@@ -83,29 +83,22 @@ const ThirdSection = () => {
   return (
     <Wrapper>
       <Box
+      className="flex flex-col"
         style={{
-          paddingTop: "80px",
+          paddingTop: "40px",
           paddingBottom: "50px",
-          width: "70%",
-          display: "flex",
-          flexFlow: "wrap",
-          alignItems: "center",
-          justifyContent: "center",
-          margin: "auto",
         }}
       >
         <Ui.Text
-          fontSize="24px"
-          fontWeight={500}
           text="Afrobank, smarter business"
-          className="font-bold text-center text-white"
+          className="font-black text-4xl text-center py-5 text-white"
         />
         <Ui.Text
-          fontSize="16px"
-          className="text-center"
+          className="text-center text-sm w-3/4"
           text="There’s only one smart choice: Afrobank. Grow your company with ease, simplify processes, implement best practices, and gather real-time insights to help you focus on what matters most. From MVP to IPO, Afrobank has your back."
           style={{
             color: "whitesmoke",
+            margin: "auto"
           }}
         />
       </Box>

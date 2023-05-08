@@ -50,18 +50,14 @@ const SecondSection = () => {
             borderBottomLeftRadius: "28px",
             flexDirection: "column",
           }}
-          className="flex-center"
+          className="flex justify-center align-middle text-center"
         >
           <Ui.Text
-            fontSize="20px"
-            fontWeight={900}
-            className="sm:text-sm"
-            text="Find which plan
-              works best for you"
+            className="font-black text-2xl"
+            text="Find which plan works best for you"
           />
           <Ui.Text
-            fontSize="14px"
-            fontWeight={900}
+            className="font-black text-sm"
             text="Not sure which plan to go with?
               Our team can help!"
           />
@@ -73,10 +69,9 @@ const SecondSection = () => {
         >
           <img
             src={image}
-            height={"100%"}
+            height={"auto"}
             width={"100%"}
             style={{
-              objectFit: "cover",
               borderTopRightRadius: "28px",
               borderBottomRightRadius: "28px",
             }}
