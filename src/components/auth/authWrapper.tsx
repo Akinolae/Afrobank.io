@@ -82,7 +82,7 @@ const AuthWrapper = (props: Props) => {
             to={props?.linkto || ""}
             style={{
               textDecoration: "none",
-              fontSize: "14px",
+              fontSize: "12px",
               fontWeight: 400,
             }}
           >

@@ -34,6 +34,9 @@ const InputWrapper = styled.div<CSSProperties>`
 const Error = styled.p<CSSProperties>`
   color: red;
   font-size: 10px;
+  &::first-letter {
+    text-transform: capitalize;
+  }
 `;
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
