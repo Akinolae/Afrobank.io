@@ -3,7 +3,7 @@ import ui from "../ui";
 import { Formik, Form } from "formik";
 import auth from "../../@core/auth/auth";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { errors } from "../../@utils/error";
 // import { LoginParams } from "afrobank-sdk/interface/index.interface";
 import AuthWrapper from "./authWrapper";
@@ -55,31 +55,31 @@ const Login = () => {
               <Form style={{ padding: "10px" }}>
                 <ui.CustomInput
                   type={"email"}
-                  label="email"
                   placeholder="Enter your email"
                   value={values.email}
                   error={errors.email}
                   onChange={(e: any) => setFieldValue("email", e.target.value)}
                 />
-                <div style={{ marginTop: "10px" }}>
+                <div style={{ marginTop: "15px" }}>
                   <ui.CustomPasswordInput
                     value={values.password}
                     placeholder="Enter your password"
                     hasIcon={true}
                     error={errors.password}
-                    label="password"
                     onChange={(e: any) =>
                       setFieldValue("password", e.target.value)
                     }
                   />
                 </div>
+
                 <ui.Button
                   isLoading={loading}
                   text="Login"
-                  fontSize={16}
                   color={"white"}
+                  className="hover h-12  text-sm font-black"
+                  borderRadius="10px"
                   backgroundColor={"#3B1FA4"}
-                  style={{ margin: "30px auto", fontWeight: 500 }}
+                  style={{ margin: "30px auto" }}
                   type="submit"
                 />
               </Form>

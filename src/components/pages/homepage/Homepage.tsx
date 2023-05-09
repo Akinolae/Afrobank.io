@@ -43,7 +43,6 @@ const Homepage = () => {
       <SecondSection />
       <ThirdSection />
       <Footer />
-      {/* <FirstPage /> */}
     </Box>
   );
 };

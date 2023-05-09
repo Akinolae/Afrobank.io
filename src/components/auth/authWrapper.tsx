@@ -6,10 +6,11 @@ import { MessageBarType } from "@fluentui/react";
 import { Link } from "react-router-dom";
 import { MdOutlineCopyright } from "react-icons/md";
 import { breakpoints } from "../../breakpoints";
+import { motion } from "framer-motion";
 
 const { xScreen } = breakpoints();
 
-const Wrapper = styled.div<CSSProperties>`
+const Wrapper = styled(motion.div)<CSSProperties | any>`
   width: ${(props) => props.width || "100%"};
   height: ${(props) => props.height || "100vh"};
   overflow-y: scroll;
@@ -18,11 +19,8 @@ const Wrapper = styled.div<CSSProperties>`
   flex-direction: column;
   align-items: center;
   padding: 3%;
-  ${xScreen} {
-    width: 95%;
-  }
 `;
-const FormWrapper = styled.div`
+const FormWrapper = styled(motion.div)`
   width: 30rem;
   margin: auto;
   transition: all ease 0.3s;
@@ -35,10 +33,6 @@ const FormWrapper = styled.div`
   box-shadow: -18px 7px 82px 0px rgba(0, 0, 0, 0.23);
   -webkit-box-shadow: -18px 7px 82px 0px rgba(0, 0, 0, 0.23);
   -moz-box-shadow: -18px 7px 82px 0px rgba(0, 0, 0, 0.23);
-
-  ${xScreen} {
-    width: 95%;
-  }
 `;
 
 interface Props {
@@ -53,7 +47,7 @@ interface Props {
 const AuthWrapper = (props: Props) => {
   return (
     <Wrapper className="bg-dots">
-      <FormWrapper>
+      <FormWrapper className="sm:w-3 md:w-1">
         <ui.Badge
           background="#b5f7cd"
           borderRadius="50%"
@@ -88,7 +82,7 @@ const AuthWrapper = (props: Props) => {
             to={props?.linkto || ""}
             style={{
               textDecoration: "none",
-              fontSize: "14px",
+              fontSize: "12px",
               fontWeight: 400,
             }}
           >
