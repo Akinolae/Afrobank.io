@@ -73,12 +73,20 @@ select {
 }
 .bg {
   // background-image: radial-gradient(#000000 1px, transparent 1px);
-  // background-size: 12px 12px;
-  // background-color: #e8e9e7;
+  // background-size: -1px 1px;
+  width: fit-content;
+  background-position-y: -100px;
 }
 
 .bg-dots {
   background-color: #e8e9e7;
   background-image: radial-gradient(#000000 0.5px, #e8e9e7 0.5px);
   background-size: 10px 10px;
+}
+
+.text-gradient {
+  background: -webkit-linear-gradient(to left top,  #333, #eee,);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

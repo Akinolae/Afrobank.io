@@ -56,8 +56,7 @@ const Register = () => {
                 <div style={{ marginBottom: "20px" }}>
                   <Ui.CustomInput
                     type={"email"}
-                    label="Email"
-                    placeholder="Enter your email"
+                    placeholder="Enter email"
                     value={values.email}
                     error={errors.email}
                     onChange={(e: any) =>
@@ -75,8 +74,7 @@ const Register = () => {
                 >
                   <div style={{ width: "48%" }}>
                     <Ui.CustomInput
-                      label="Last name"
-                      placeholder="Enter your last name"
+                      placeholder="Enter last name"
                       width={"45px"}
                       value={values.lastName}
                       error={errors.lastName}
@@ -87,8 +85,7 @@ const Register = () => {
                   </div>
                   <div style={{ width: "48%" }}>
                     <Ui.CustomInput
-                      label="First name"
-                      placeholder="Enter your first name"
+                      placeholder="Enter first name"
                       value={values.firstName}
                       error={errors.firstName}
                       onChange={(e: any) =>
@@ -99,9 +96,8 @@ const Register = () => {
                 </div>
                 <div style={{ marginBottom: "20px" }}>
                   <Ui.CustomInput
-                    label="Phone number"
                     type={"tel"}
-                    placeholder="Enter your phone number"
+                    placeholder="Enter phone number"
                     value={values.phoneNumber}
                     error={errors.phoneNumber}
                     onChange={(e: any) =>
@@ -113,10 +109,9 @@ const Register = () => {
               <div style={{ marginTop: "20px" }}>
                 <Ui.CustomPasswordInput
                   value={values.password}
-                  placeholder="Enter your password"
+                  placeholder="Enter password"
                   hasIcon={true}
                   error={errors.password}
-                  label="password"
                   onChange={(e: any) =>
                     setFieldValue("password", e.target.value)
                   }
@@ -126,13 +121,13 @@ const Register = () => {
                 <Ui.Button
                   isLoading={loading}
                   text="Register"
-                  fontSize={16}
+                  className="hover h-12  text-sm font-black"
                   color={"white"}
                   backgroundColor={"#3B1FA4"}
+                  borderRadius="10px"
                   style={{
                     marginTop: "22px",
                     marginBottom: "22px",
-                    fontWeight: 500,
                   }}
                   type="submit"
                 />

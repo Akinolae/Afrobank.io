@@ -54,7 +54,7 @@ const Button = (props: Props) => {
   return (
     <ButtonComponent
       className={`flex justify-center items-center ${className}`}
-      width={isLoading ? "45px" : width}
+      width={isLoading ? "45px" : !!width ? width : "100%"}
       height={isLoading ? "45px" : height}
       borderRadius={isLoading ? "50%" : borderRadius}
       disabled={isLoading}

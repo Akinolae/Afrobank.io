@@ -3,9 +3,6 @@ import Ui from "../../ui";
 import { motion } from "framer-motion";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { Link } from "react-router-dom";
-import { breakpoints } from "../../../breakpoints";
-
-const { xScreen } = breakpoints();
 
 const Box = styled(motion.div)`
   width: 100%;
@@ -25,52 +22,40 @@ const Nav = styled(Box)`
 `;
 const Body = styled(Box)`
   height: 80vh;
-  ${xScreen} {
-    width: 90%;
-  }
 `;
+
 const FirstSection = () => {
   return (
     <Box
-      className="flex-center"
+      className="py-5 px-6"
       style={{
-        flexDirection: "column",
         overflow: "hidden",
         backgroundColor: "#E8E9E7",
       }}
     >
       <Nav
-        className="flex-between"
+        className="flex justify-between align-middle"
         style={{
-          padding: "1%",
           height: "50px",
-          border: "1px solid #e3e1e1",
         }}
       >
-        <div
-          style={{
-            paddingLeft: "5%",
-          }}
-        >
+        <div>
           <Ui.Text text="Logo" />
         </div>
-        <div
-          style={{
-            padding: "5%",
-          }}
-        >
+        <div>
           <Link to="/login">
             <Ui.Button
               text="Login"
               color={"white"}
-              className="hover h-10 text-sm w-28 font-black"
+              className="hover h-10 text-sm font-black"
+              width="7rem"
               backgroundColor={"#3B1FA4"}
               borderRadius="50px"
             />
           </Link>
         </div>
       </Nav>
-      <Body className="flex-center flex-column bg">
+      <Body className="flex-center flex-column">
         <Box
           initial={{
             x: "-100vw",
@@ -94,7 +79,18 @@ const FirstSection = () => {
               margin: "auto",
               backgroundSize: "10px",
             }}
-            text="The modern way to send and recieve money"
+            text="The modern way to send"
+          />
+          <Ui.Text
+            className="lg:text-4xl md:text-3xl sm:text-2xl w-3/5 text-center font-black"
+            style={{
+              paddingBottom: "12px",
+              fontWeight: "900",
+              margin: "auto",
+              backgroundSize: "10px",
+              
+            }}
+            text="and recieve money"
           />
           <Ui.Text text="Fast free and efficient" />
         </Box>

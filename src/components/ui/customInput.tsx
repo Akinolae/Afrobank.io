@@ -8,8 +8,7 @@ const Input = styled.input<CSSProperties>`
   height: 100%;
   width: 100%;
   padding-right: 15px;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 12px;
   background: none;
 `;
 const Label = styled.span<CSSProperties>`
@@ -20,7 +19,7 @@ const Label = styled.span<CSSProperties>`
 `;
 
 const InputWrapper = styled.div<CSSProperties>`
-  height: 50px;
+  height: 45px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,10 +31,9 @@ const InputWrapper = styled.div<CSSProperties>`
   width: ${(props) => props.width};
 `;
 
-const Error = styled.span<CSSProperties>`
+const Error = styled.p<CSSProperties>`
   color: red;
-  font-weight: bold;
-  font-size: 12px;
+  font-size: 10px;
 `;
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -52,11 +50,13 @@ const CustomInput = (props: Props) => {
   return (
     <>
       {!!label ? (
-        <Label color={!!error ? "red" : labelColor}>{label}</Label>
+        <Label color={labelColor} className="font-black">
+          {label}
+        </Label>
       ) : null}
 
       {rest?.type === "select" ? (
-        <InputWrapper borderColor={!!error ? "red" : "#858282"}>
+        <InputWrapper borderColor={"#858282"}>
           {option?.map(({ label, value }, i) => {
             return (
               <select key={i} id={Label}>
@@ -66,11 +66,11 @@ const CustomInput = (props: Props) => {
           })}
         </InputWrapper>
       ) : (
-        <InputWrapper borderColor={!!error ? "red" : "#858282"}>
+        <InputWrapper borderColor={"#858282"}>
           <Input onChange={onChange} {...rest} />
         </InputWrapper>
       )}
-      {!!error ? <Error>{error}</Error> : null}
+      {!!error ? <Error className="font-black text-xs">{error}</Error> : null}
     </>
   );
 };
@@ -80,10 +80,8 @@ const CustomPasswordInput = (props: Props) => {
   const [isVisible, setIsVisible] = useState<React.ComponentState>(false);
   return (
     <>
-      {!!label ? (
-        <Label color={!!error ? "red" : rest?.labelColor}>{label}</Label>
-      ) : null}
-      <InputWrapper borderColor={!!error ? "red" : "#858282"}>
+      {!!label ? <Label color={rest?.labelColor}>{label}</Label> : null}
+      <InputWrapper borderColor={"#858282"}>
         <Input type={isVisible ? "text" : "password"} {...rest} />
         {hasIcon ? (
           <div
@@ -109,7 +107,7 @@ const CustomPasswordInput = (props: Props) => {
           </div>
         ) : null}
       </InputWrapper>
-      {!!error ? <Error>{error}</Error> : null}
+      {!!error ? <Error className="font-black text-xs">{error}</Error> : null}
     </>
   );
 };
