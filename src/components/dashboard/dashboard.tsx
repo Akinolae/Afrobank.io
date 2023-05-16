@@ -4,9 +4,7 @@ import auth from "../../@core/auth/auth";
 import styled from "styled-components";
 import Ui from "../ui";
 
-const Box = styled.div`
-  width: 100%;
-`;
+const Box = styled.div``;
 
 const Card = styled.div`
   border-radius: 10px;
@@ -24,40 +22,27 @@ const Dashboard = () => {
   // const card = [{ id: 1 }, { id: 2 }, { id: 3 }];
 
   return (
-    <Box style={{ display: "flex", justifyContent: "space-between" }}>
-      <Box style={{ width: "63%", backgroundColor: "yellow" }}>
+    <Box className="flex justify-between w-full">
+      <Box className="w-9/12">
         <Card
           style={{
-            width: "100%",
             background: "white",
             height: "500px",
             marginBottom: "20px",
           }}
         ></Card>
-        <Card
-          style={{ width: "100%", background: "white", height: "300px" }}
-        ></Card>
+        <Card style={{ background: "white", height: "300px" }}></Card>
       </Box>
 
       {/*  */}
-      <Box style={{ width: "35%" }}>
+      <Box className="w-2/5 ml-8">
         <Card
+          className="bg-white mb-5 w-full p-4"
           style={{
-            width: "100%",
-            background: "white",
             height: "270px",
-            marginBottom: "20px",
           }}
         >
-          <Box
-            className="flex-column"
-            style={{
-              width: "80%",
-              paddingTop: "20px",
-              margin: "auto",
-              display: "flex",
-            }}
-          >
+          <Box className="flex justify-center items-center flex-col h-full">
             <Box className="flex-between">
               <Ui.Text text="Info" />
               <Ui.Text text="Info 2" />

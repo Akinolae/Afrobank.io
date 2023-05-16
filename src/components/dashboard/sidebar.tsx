@@ -15,28 +15,12 @@ const Box = styled.div`
   width: 100%;
 `;
 
-// const activeClass = "active";
 export const Sidelink = styled((props) => <NavLink {...props} />)`
-    color: ${(props) => props.color || "black"};
-    font-weight: 900;
-    font-size: 15px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding-left: 15px;
-    line-height: 55px;
-    border-radius: 10px;
-    transition: all ease 0.3s;
-    opacity: 0.8;
-    &:hover {
-      background: yellow,
-      color: red;
-    }
-  `;
+  transition: all ease 0.3s;
+`;
 
 const style = {
-  fontSize: "14px",
+  fontSize: "21px",
   paddingRight: "10px",
 };
 
@@ -79,6 +63,7 @@ const Sidebar = () => {
         {routes.map((route, i) => {
           return (
             <Sidelink
+              className="flex opacity-80 hover:bg-yellow-300 hover:text-red-500 text-black leading-10 rounded font-black w-full justify-start pl-5 items-center text-xs"
               style={{ textDecoration: "none" }}
               key={i}
               to={route.path}

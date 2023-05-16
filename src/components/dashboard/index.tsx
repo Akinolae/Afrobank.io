@@ -4,39 +4,19 @@ import Dashboard from "./dashboard";
 import Sidebar from "./sidebar";
 
 const MainWrapper = styled.div`
-  width: 100%;
   background: #e8e9e7;
-
-  position: relative;
-  height: 100vh;
 `;
 
-const Box = styled.div<CSSProperties>`
-  width: ${(props) => props.width || "100px"};
-  height: 100%;
-`;
+const Box = styled.div<CSSProperties>``;
 
 const Main = () => {
   return (
-    <MainWrapper>
-      <Box
-        style={{
-          width: "80%",
-          height: "100%",
-          margin: "auto",
-          display: "flex",
-          paddingTop: "2%",
-        }}
-      >
-        <Box
-          width={"100%"}
-          style={{
-            maxWidth: "150px",
-          }}
-        >
+    <MainWrapper className="w-full overflow-hidden relative pt-10 pb-10">
+      <Box className="flex h-full justify-center py-2.5">
+        <Box className="w-40 mr-8">
           <Sidebar />
         </Box>
-        <Box width={"80%"}>
+        <Box className="w-4/5">
           <Routes>
             <Route path="/user-dashboard//*" element={<Dashboard />}>
               <Route path="Payment" element={<>payment</>} />

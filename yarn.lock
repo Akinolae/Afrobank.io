@@ -669,7 +669,7 @@
 
 "afrobank-sdk@https://github.com/Akinolae/afrobank-sdk.git":
   version "1.0.0"
-  resolved "https://github.com/Akinolae/afrobank-sdk.git#777634e0532dd828b45d40d905b5effbecb3584a"
+  resolved "https://github.com/Akinolae/afrobank-sdk.git#e52b5d30e186a2aef2bef8e55fe72bb0f29bb8ea"
 
 ansi-styles@^3.2.1:
   version "3.2.1"
