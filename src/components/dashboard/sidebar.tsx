@@ -4,11 +4,13 @@ import { FaRegMoneyBillAlt } from "react-icons/fa";
 import { BiWallet } from "react-icons/bi";
 import { FiSettings } from "react-icons/fi";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
+import { AiOutlinePoweroff } from "react-icons/ai";
 import ui from "../ui";
 
 const SideBarWrapper = styled.div<CSSProperties>`
   width: 100%;
   flex-direction: column;
+  height: 80%;
 `;
 
 const Box = styled.div`
@@ -49,17 +51,8 @@ const routes = [
 
 const Sidebar = () => {
   return (
-    <SideBarWrapper>
-      <Box
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          flexFlow: "wrap",
-        }}
-      >
+    <SideBarWrapper className="flex justify-between">
+      <Box className="h-44 flex flex-col justify-center items-center">
         {routes.map((route, i) => {
           return (
             <Sidelink
@@ -73,6 +66,12 @@ const Sidebar = () => {
             </Sidelink>
           );
         })}
+      </Box>
+      <Box className="h-10 flex justify-center items-center">
+        <Sidelink to="/" className="flex justify-start items-center text-xs">
+          <AiOutlinePoweroff style={style} />
+          <ui.Text text="log out" />
+        </Sidelink>
       </Box>
     </SideBarWrapper>
   );
