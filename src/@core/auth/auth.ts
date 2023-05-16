@@ -5,12 +5,12 @@ import {
   updateSignIn,
   update2faStatus,
 } from "../../@store/store";
-// import { Auth } from "afrobank-sdk";
-// import { LoginParams } from "afrobank-sdk/interface/index.interface";
+import { Auth } from "afrobank-sdk";
+import { LoginParams } from "afrobank-sdk/interface/index.interface";
 
-// const auth = new Auth(store, "http://localhost:3005/Api/v1/", {
-//   updateUser,
-// });
+const auth = new Auth(store, "http://localhost:3005/Api/v1/", {
+  updateUser,
+});
 
 const getToken = (): string | undefined => {
   const token = store.getState().user.payLoad.token;
@@ -23,12 +23,12 @@ const has2fa = (): boolean => {
 
 const login = async (params: any) => {
   try {
-    // const res = await auth.login(params);
-    // if (!res?.has2fa) {
-    //   store.dispatch(updateSignIn(true));
-    // }
+    const res = await auth.login(params);
+    if (!res?.has2fa) {
+      store.dispatch(updateSignIn(true));
+    }
     store.dispatch(updateUser({}));
-    // return res?.has2fa;
+    return res?.has2fa;
   } catch (error: any) {
     throw error.message;
   }
@@ -40,7 +40,7 @@ const isSignedIn = (): boolean => {
 
 const getProfile = async () => {
   try {
-    // await auth.getProfile();
+    await auth.getProfile();
   } catch (error: any) {
     throw error.message || error;
   }
@@ -48,7 +48,7 @@ const getProfile = async () => {
 
 const register = async (params: object) => {
   try {
-    // await auth.register(params);
+    await auth.register(params);
 
     return {};
   } catch (error: any) {
@@ -58,7 +58,7 @@ const register = async (params: object) => {
 
 const validate2fa = async (params: string) => {
   try {
-    // await auth.validate2FA(params);
+    await auth.validate2FA(params);
 
     store.dispatch(update2faStatus(true));
     store.dispatch(updateSignIn(true));
