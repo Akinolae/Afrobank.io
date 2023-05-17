@@ -21,7 +21,7 @@ jobs:
       - name: Checkout Core services
         uses: actions/checkout@v2
         with:
-          path: packages/flex-core-services
+          path: packages/afrobank-sdk
           repository: Akinolae/afrobank-sdk
           token: ${{ secrets.GIT_DEFAULT_ACCESSS_TOKEN }}
       - name: Run install
