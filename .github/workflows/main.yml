@@ -23,7 +23,7 @@ jobs:
         with:
           path: packages/afrobank-sdk
           repository: Akinolae/afrobank-sdk
-          token: ${{ secrets.GIT_DEFAULT_ACCESSS_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Run install
         uses: borales/actions-yarn@v4
         with:
