@@ -6,7 +6,7 @@ const LogOut = () => {
   const navigate = useNavigate();
   useEffect(() => {
     auth.logOut();
-    return navigate("/");
+    return navigate("/login");
   }, []);
 
   return <></>;

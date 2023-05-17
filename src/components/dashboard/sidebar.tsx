@@ -4,39 +4,22 @@ import { FaRegMoneyBillAlt } from "react-icons/fa";
 import { BiWallet } from "react-icons/bi";
 import { FiSettings } from "react-icons/fi";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
+import { AiOutlinePoweroff } from "react-icons/ai";
+import { BsFillPersonFill } from "react-icons/bs";
 import ui from "../ui";
 
-const SideBarWrapper = styled.div<CSSProperties>`
-  width: 100%;
-  flex-direction: column;
-`;
+const SideBarWrapper = styled.div<CSSProperties>``;
 
 const Box = styled.div`
   width: 100%;
 `;
 
-// const activeClass = "active";
 export const Sidelink = styled((props) => <NavLink {...props} />)`
-    color: ${(props) => props.color || "black"};
-    font-weight: 900;
-    font-size: 15px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding-left: 15px;
-    line-height: 55px;
-    border-radius: 10px;
-    transition: all ease 0.3s;
-    opacity: 0.8;
-    &:hover {
-      background: yellow,
-      color: red;
-    }
-  `;
+  transition: all ease 0.3s;
+`;
 
 const style = {
-  fontSize: "14px",
+  fontSize: "22px",
   paddingRight: "10px",
 };
 
@@ -48,7 +31,7 @@ const routes = [
   },
   {
     name: "Payment",
-    path: "/user-dashboard/Payment",
+    path: "payment",
     icon: <FaRegMoneyBillAlt style={style} />,
   },
   {
@@ -58,28 +41,29 @@ const routes = [
   },
   {
     name: "Settings",
-    path: "/dashboard/settings",
+    path: "/user-dashboard/settings",
     icon: <FiSettings style={style} />,
+  },
+  {
+    name: "Profile",
+    path: "/user-dashboard/profile",
+    icon: <BsFillPersonFill style={style} />,
+  },
+  {
+    name: "Log out",
+    path: "/sign-out",
+    icon: <AiOutlinePoweroff style={style} />,
   },
 ];
 
 const Sidebar = () => {
   return (
-    <SideBarWrapper>
-      <Box
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          flexFlow: "wrap",
-        }}
-      >
+    <SideBarWrapper className="w-full flex justify-between flex-col h-full ">
+      <Box className="flex flex-col justify-center">
         {routes.map((route, i) => {
           return (
             <Sidelink
-              style={{ textDecoration: "none" }}
+              className="flex opacity-80 no-underline hover:opacity-50 text-black leading-10 rounded font-black w-full justify-start pl-5 items-center text-xs"
               key={i}
               to={route.path}
             >

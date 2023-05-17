@@ -24,15 +24,13 @@ const ErrorBoundary = (props: any) => {
       <p>An error occured</p>
       <Ui.Button
         text="Homepage"
-        backgroundColor={"#3B1FA4"}
         color={"white"}
         fontSize={16}
-        style={{
-          margin: "30px auto",
-          fontWeight: 500,
-          width: "200px",
-          cursor: "pointer",
-        }}
+        borderRadius="10px"
+        backgroundColor={"#3B1FA4"}
+        className="hover h-12  text-sm font-black"
+        width="150px"
+        style={{ margin: "30px auto" }}
       />
     </Wrapper>
   );

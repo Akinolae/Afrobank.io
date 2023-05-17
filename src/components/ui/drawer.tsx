@@ -3,7 +3,7 @@ import { Panel } from "@fluentui/react";
 
 interface DrawerProps {
   isOpen: boolean;
-  children: React.ReactElement;
+  children?: React.ReactElement;
   dismissPanel?: () => void;
 }
 
