@@ -14,6 +14,7 @@ import { initializeIcons } from "@fluentui/react";
 import { AnimatePresence } from "framer-motion";
 import { persistor, store as appStore } from "./@store/store";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Profile from "./components/dashboard/profile";
 
 initializeIcons();
 
@@ -45,13 +46,21 @@ function App() {
       public: true,
     },
     {
-      path: "/user-dashboard//*",
+      path: "user-dashboard/*",
       element: (
         <React.Suspense fallback={"...loading"}>
           <Main />
         </React.Suspense>
       ),
+      index: true,
       public: true,
+      // children: [
+      //   {
+      //     index: true,
+      //     path: "payment",
+      //     element: <Profile />,
+      //   },
+      // ],
     },
   ].map((data) => ({
     element: !data.public ? (
