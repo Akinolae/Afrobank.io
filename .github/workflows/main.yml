@@ -18,6 +18,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
+      - name: Checkout Core services
+        uses: actions/checkout@v2
+        with:
+          path: packages/flex-core-services
+          ref: ${{ steps.skip-core.outputs.services-version }}
+          repository: Akinolae/afrobank-sdk
+          token: ${{ secrets.GIT_DEFAULT_ACCESSS_TOKEN }}
       - name: Run install
         uses: borales/actions-yarn@v4
         with:
