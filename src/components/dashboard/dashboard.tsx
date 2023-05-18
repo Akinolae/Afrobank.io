@@ -74,22 +74,26 @@ const Dashboard = () => {
                 text="₦ 1,000,000.00"
               />
             </Box>
-            <Ui.Button
-              text="send money"
-              height={"35px"}
-              color={"white"}
-              backgroundColor={"#3B1FA4"}
-              className="rounded-full text-xs hover"
-            />
-            <Ui.Button
-              text="Add money"
-              height={"35px"}
-              backgroundColor={"none"}
-              style={{
-                border: "0.5px solid black",
-              }}
-              className="rounded-full text-xs hover mt-2 text-black"
-            />
+            <Box className="flex justify-between mt-4 items-center w-full">
+              <Ui.Button
+                text="send money"
+                width="50%"
+                height={"35px"}
+                color={"white"}
+                backgroundColor={"#3B1FA4"}
+                className="rounded-full text-xs hover pl-1 pr-1 max-w-sm"
+              />
+              <Ui.Button
+                text="Add money"
+                width="50%"
+                height={"35px"}
+                backgroundColor={"none"}
+                style={{
+                  border: "0.5px solid black",
+                }}
+                className="rounded-full text-xs hover text-black ml-2"
+              />
+            </Box>
           </Box>
         </Card>
         <Card className="h-56 w-full bg-white mb-4"></Card>
