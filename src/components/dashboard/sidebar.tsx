@@ -19,7 +19,7 @@ export const Sidelink = styled((props) => <NavLink {...props} />)`
 `;
 
 const style = {
-  fontSize: "22px",
+  fontSize: "25px",
   paddingRight: "10px",
 };
 

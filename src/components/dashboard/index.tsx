@@ -72,7 +72,7 @@ const Main = () => {
           </Box>
         </Box>
       </Ui.Drawer>
-      <Box className="flex justify-between items-center pl-4 w-4/5 m-auto pr-2 pb-4">
+      <Box className="max-w-7xl flex justify-between items-center pl-4 m-auto pr-2 pb-4">
         <Box>
           <Ui.Text className="font-black" text="Afrobank" />
         </Box>
@@ -88,7 +88,7 @@ const Main = () => {
           </Ui.Button>
         </Box>
       </Box>
-      <Box className="w-4/5 m-auto flex h-full justify-between py-2.5">
+      <Box className="max-w-7xl m-auto flex h-full justify-between py-2.5">
         <Box className="w-36">
           <Sidebar />
         </Box>
