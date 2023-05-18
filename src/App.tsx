@@ -64,27 +64,22 @@ function App() {
       public: false,
       children: [
         {
-          index: true,
           path: "",
           element: <Dashboard />,
         },
         {
-          index: false,
           path: "payment",
           element: <Payment />,
         },
         {
-          index: false,
           path: "send",
           element: <SendMoney />,
         },
         {
-          index: false,
           path: "settings",
           element: <Settings />,
         },
         {
-          index: false,
           path: "profile",
           element: <Profile />,
         },
@@ -119,10 +114,10 @@ function App() {
                       {data.children.map((route, i) => {
                         return (
                           <Route
-                            index={route.index}
+                            index={!route.path ? true : false}
                             id={String(i + 1)}
                             key={i}
-                            path={route.index ? "" : route.path}
+                            path={route.path}
                             element={route.element}
                           />
                         );
