@@ -10,6 +10,7 @@ interface Props {
 const ProtectedRoute = (props: Props) => {
   const { element, isSignedIn } = props;
 
+  console.log(props);
   if (!isSignedIn) {
     return <Navigate to={"/"} replace />;
   }

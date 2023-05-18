@@ -13,7 +13,12 @@ import ProtectedRoute from "./protectedoute";
 import { initializeIcons } from "@fluentui/react";
 import { AnimatePresence } from "framer-motion";
 import { persistor, store as appStore } from "./@store/store";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 import Profile from "./components/dashboard/profile";
 
 initializeIcons();
@@ -46,7 +51,7 @@ function App() {
       public: true,
     },
     {
-      path: "user-dashboard/*",
+      path: "/user-dashboard",
       element: (
         <React.Suspense fallback={"...loading"}>
           <Main />
@@ -54,13 +59,13 @@ function App() {
       ),
       index: true,
       public: true,
-      // children: [
-      //   {
-      //     index: true,
-      //     path: "payment",
-      //     element: <Profile />,
-      //   },
-      // ],
+      children: [
+        {
+          index: true,
+          path: "payment",
+          element: <Profile />,
+        },
+      ],
     },
   ].map((data) => ({
     element: !data.public ? (
@@ -70,12 +75,47 @@ function App() {
     ),
     path: data.path,
     errorElement: <ErrorBoundary />,
+    public: data.public,
+    children: !!data.children?.length ? data.children : [],
   }));
 
-  const routes = createBrowserRouter([...route], {
-    basename: "/Afrobank",
-  });
+  const routes = createBrowserRouter(
+    createRoutesFromElements(
+      <Route>
+        {route.map((data, i) => {
+          return (
+            <React.Fragment key={i}>
+              {data.public ? (
+                <Route path={data.path} element={data.element} id={data.path} />
+              ) : (
+                <ProtectedRoute {...data}>
+                  {data.path.includes("user-dashboard") && (
+                    <Route path={data.path}>
+                      {data.children.map((route, i) => {
+                        return (
+                          <Route
+                            id={data.path}
+                            key={i}
+                            path={route.path}
+                            element={route.element}
+                          />
+                        );
+                      })}
+                    </Route>
+                  )}
+                </ProtectedRoute>
+              )}
+            </React.Fragment>
+          );
+        })}
+      </Route>
+    ),
+    {
+      basename: "Afrobank",
+    }
+  );
 
+  console.log(routes);
   return (
     <AnimatePresence>
       <Provider store={appStore}>
