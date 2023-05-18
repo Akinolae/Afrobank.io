@@ -49,7 +49,7 @@ const Dashboard = () => {
 
       {/*  */}
       <Box className="w-2/6 m-auto h-full">
-        <Card className="bg-white mb-4 w-full p-6 h-56">
+        <Card className="bg-white mb-5 w-full p-6 h-56">
           <Box className="flex justify-center items-center flex-col h-full">
             <Box className="w-full flex justify-between">
               <Ui.Text
@@ -75,11 +75,11 @@ const Dashboard = () => {
                 text="₦ 1,000,000.00"
               />
             </Box>
-            <Box className="flex justify-between mt-4 items-center w-full">
+            <Box className="w-full">
               <Link to={"send"} className="w-40">
                 <Ui.Button
                   text="send money"
-                  height={"35px"}
+                  height={"40px"}
                   color={"white"}
                   backgroundColor={"#3B1FA4"}
                   className="rounded-full text-xs hover pl-1 pr-1 max-w-sm"
@@ -87,19 +87,18 @@ const Dashboard = () => {
               </Link>
               <Ui.Button
                 text="Add money"
-                width="50%"
-                height={"35px"}
+                height={"40px"}
                 backgroundColor={"none"}
                 style={{
                   border: "0.5px solid black",
                 }}
-                className="rounded-full text-xs hover text-black ml-2"
+                className="rounded-full text-xs hover text-black mt-4"
               />
             </Box>
           </Box>
         </Card>
-        <Card className="h-56 w-full bg-white mb-4"></Card>
-        <Card className="h-56 w-full bg-white mb-4"></Card>
+        <Card className="h-56 w-full bg-white mb-5"></Card>
+        <Card className="h-56 w-full bg-white"></Card>
       </Box>
     </Box>
   );

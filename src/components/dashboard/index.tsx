@@ -72,20 +72,20 @@ const Main = () => {
           </Box>
         </Box>
       </Ui.Drawer>
-      <Box className="max-w-7xl flex justify-between items-center pl-4 m-auto pr-2 pb-4">
+      <Box className="max-w-7xl flex justify-between items-center pl-4 m-auto pr-4 pb-4">
         <Box>
-          <Ui.Text className="font-black" text="Afrobank" />
+          <Ui.Text className="font-black text-lg" text="Afrobank" />
         </Box>
-        <Box className="w-full flex justify-end">
-          <Ui.Button width="40px" height="40px">
-            <IoIosHelpCircleOutline style={{ fontSize: "20px" }} />
+        <Box className="w-24 flex justify-between">
+          <Ui.Button width="25px" height="25px">
+            <IoIosHelpCircleOutline className="w-full h-full" />
           </Ui.Button>
-          <Ui.Button onClick={toggle} width="40px" height="40px">
-            <IoMdNotifications style={{ fontSize: "20px" }} />
+          <Ui.Button onClick={toggle} width="25px" height="25px">
+            <IoMdNotifications className="w-full h-full" />
           </Ui.Button>
-          <Link to={"profile"} className="w-8">
-            <Ui.Button height="40px">
-              <FaUserCircle style={{ fontSize: "20px" }} />
+          <Link to={"profile"} className="w-8 flex justify-center">
+            <Ui.Button width="25px" height="25px">
+              <FaUserCircle className="w-full h-full" />
             </Ui.Button>
           </Link>
         </Box>

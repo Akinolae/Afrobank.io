@@ -112,10 +112,11 @@ function App() {
                   {data.path.includes("/user-dashboard") && (
                     <Route path="/user-dashboard" element={<Main />}>
                       {data.children.map((route, i) => {
+                        const id = i + 1;
                         return (
                           <Route
                             index={!route.path ? true : false}
-                            id={String(i + 1)}
+                            id={id.toString()}
                             key={i}
                             path={route.path}
                             element={route.element}

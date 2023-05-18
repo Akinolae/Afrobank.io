@@ -75,7 +75,7 @@ const AuthWrapper = (props: Props) => {
             textAlign: "center",
           }}
         />
-        <div className="p-2.5">
+        <div className="pb-4">
           <ui.Alert type={MessageBarType.error} text={props.error} />
         </div>
         <>{props.children}</>
