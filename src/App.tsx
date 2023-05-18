@@ -109,7 +109,7 @@ function App() {
                 // This part is meant to be accessable to only validated users
                 // This is a temporary implimentation
                 <React.Fragment>
-                  {data.path.includes("/user-dashboard") ? (
+                  {data.path.includes("/user-dashboard") && (
                     <Route path="/user-dashboard" element={<Main />}>
                       {data.children.map((route, i) => {
                         return (
@@ -123,12 +123,6 @@ function App() {
                         );
                       })}
                     </Route>
-                  ) : (
-                    <Route
-                      path={data.path}
-                      element={data.element}
-                      id={data.path}
-                    />
                   )}
                 </React.Fragment>
               )}
