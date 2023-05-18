@@ -3,6 +3,7 @@ import cards from "../../@core/cards/cards";
 import auth from "../../@core/auth/auth";
 import styled from "styled-components";
 import Ui from "../ui";
+import { Link } from "react-router-dom";
 
 const Box = styled.div``;
 
@@ -75,14 +76,15 @@ const Dashboard = () => {
               />
             </Box>
             <Box className="flex justify-between mt-4 items-center w-full">
-              <Ui.Button
-                text="send money"
-                width="50%"
-                height={"35px"}
-                color={"white"}
-                backgroundColor={"#3B1FA4"}
-                className="rounded-full text-xs hover pl-1 pr-1 max-w-sm"
-              />
+              <Link to={"send"} className="w-40">
+                <Ui.Button
+                  text="send money"
+                  height={"35px"}
+                  color={"white"}
+                  backgroundColor={"#3B1FA4"}
+                  className="rounded-full text-xs hover pl-1 pr-1 max-w-sm"
+                />
+              </Link>
               <Ui.Button
                 text="Add money"
                 width="50%"

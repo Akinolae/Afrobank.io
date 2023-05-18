@@ -1,4 +1,4 @@
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route, Outlet, Link } from "react-router-dom";
 import styled, { CSSProperties } from "styled-components";
 import Dashboard from "./dashboard";
 import Sidebar from "./sidebar";
@@ -83,9 +83,11 @@ const Main = () => {
           <Ui.Button onClick={toggle} width="40px" height="40px">
             <IoMdNotifications style={{ fontSize: "20px" }} />
           </Ui.Button>
-          <Ui.Button width="40px" height="40px">
-            <FaUserCircle style={{ fontSize: "20px" }} />
-          </Ui.Button>
+          <Link to={"profile"} className="w-8">
+            <Ui.Button height="40px">
+              <FaUserCircle style={{ fontSize: "20px" }} />
+            </Ui.Button>
+          </Link>
         </Box>
       </Box>
       <Box className="max-w-7xl m-auto flex h-full justify-between py-2.5">
@@ -94,14 +96,6 @@ const Main = () => {
         </Box>
         <Box className="w-11/12">
           <Outlet />
-          <Routes>
-            <Route path="/user-dashboard/*" element={<Profile />}>
-              <Route index={false} path="payment" element={<>payment</>} />
-              <Route path="profile" element={<Profile />} />
-              <Route path="send-money" element={<>send money</>} />
-            </Route>
-          </Routes>
-          <Dashboard />
         </Box>
       </Box>
     </MainWrapper>

@@ -36,17 +36,17 @@ const routes = [
   },
   {
     name: "Send Money",
-    path: "/user-dashboard/send-money",
+    path: "send",
     icon: <BiWallet style={style} />,
   },
   {
     name: "Settings",
-    path: "/user-dashboard/settings",
+    path: "settings",
     icon: <FiSettings style={style} />,
   },
   {
     name: "Profile",
-    path: "/user-dashboard/profile",
+    path: "profile",
     icon: <BsFillPersonFill style={style} />,
   },
   {

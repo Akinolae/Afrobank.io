@@ -20,6 +20,10 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Profile from "./components/dashboard/profile";
+import Dashboard from "./components/dashboard/dashboard";
+import SendMoney from "./components/dashboard/sendMoney";
+import Settings from "./components/dashboard/settings";
+import Payment from "./components/dashboard/payment";
 
 initializeIcons();
 
@@ -57,12 +61,31 @@ function App() {
           <Main />
         </React.Suspense>
       ),
-      index: true,
-      public: true,
+      public: false,
       children: [
         {
           index: true,
+          path: "",
+          element: <Dashboard />,
+        },
+        {
+          index: false,
           path: "payment",
+          element: <Payment />,
+        },
+        {
+          index: false,
+          path: "send",
+          element: <SendMoney />,
+        },
+        {
+          index: false,
+          path: "settings",
+          element: <Settings />,
+        },
+        {
+          index: false,
+          path: "profile",
           element: <Profile />,
         },
       ],
@@ -82,28 +105,37 @@ function App() {
   const routes = createBrowserRouter(
     createRoutesFromElements(
       <Route>
-        {route.map((data, i) => {
+        {route.map((data, ind) => {
           return (
-            <React.Fragment key={i}>
+            <React.Fragment key={ind}>
               {data.public ? (
                 <Route path={data.path} element={data.element} id={data.path} />
               ) : (
-                <ProtectedRoute {...data}>
-                  {data.path.includes("user-dashboard") && (
-                    <Route path={data.path}>
+                // This part is meant to be accessable to only validated users
+                // This is a temporary implimentation
+                <React.Fragment>
+                  {data.path.includes("/user-dashboard") ? (
+                    <Route path="/user-dashboard" element={<Main />}>
                       {data.children.map((route, i) => {
                         return (
                           <Route
-                            id={data.path}
+                            index={route.index}
+                            id={String(i + 1)}
                             key={i}
-                            path={route.path}
+                            path={route.index ? "" : route.path}
                             element={route.element}
                           />
                         );
                       })}
                     </Route>
+                  ) : (
+                    <Route
+                      path={data.path}
+                      element={data.element}
+                      id={data.path}
+                    />
                   )}
-                </ProtectedRoute>
+                </React.Fragment>
               )}
             </React.Fragment>
           );
@@ -111,11 +143,10 @@ function App() {
       </Route>
     ),
     {
-      basename: "Afrobank",
+      basename: "/Afrobank",
     }
   );
 
-  console.log(routes);
   return (
     <AnimatePresence>
       <Provider store={appStore}>
