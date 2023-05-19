@@ -24,11 +24,9 @@ const FormWrapper = (props: FormikProps) => {
     >
       {(val) => {
         return (
-          <React.Fragment>
-            <Form>
-              <RenderComponent {...val} />
-            </Form>
-          </React.Fragment>
+          <Form className="w-full">
+            <RenderComponent {...val} />
+          </Form>
         );
       }}
     </Formik>
@@ -87,8 +85,8 @@ function LoginForm(props: any) {
 function RegisterForm(props: any) {
   const validationSchema = yup.object().shape({
     email: yup.string().email("Enter a valid email").required(),
-    firstName: yup.string().required(),
-    lastName: yup.string().required(),
+    firstName: yup.string().required("First name is required"),
+    lastName: yup.string().required("Last name is required"),
     phoneNumber: yup.string().required(),
     password: yup.string().required(),
   });
@@ -180,6 +178,7 @@ function RegisterForm(props: any) {
                 color={"white"}
                 backgroundColor={"#3B1FA4"}
                 borderRadius="10px"
+                disabled={isSubmitting}
                 style={{
                   marginTop: "22px",
                   marginBottom: "22px",

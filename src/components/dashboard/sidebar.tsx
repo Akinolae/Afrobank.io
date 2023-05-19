@@ -16,6 +16,7 @@ const Box = styled.div`
 
 export const Sidelink = styled((props) => <NavLink {...props} />)`
   transition: all ease 0.3s;
+  line-height: 50px;
 `;
 
 const style = {
@@ -63,7 +64,7 @@ const Sidebar = () => {
         {routes.map((route, i) => {
           return (
             <Sidelink
-              className="flex opacity-80 no-underline hover:opacity-50 text-black leading-10 rounded font-black w-full justify-start pl-5 items-center text-xs"
+              className="flex opacity-80 pl-4 no-underline hover:opacity-50 hover:bg-gray-400 text-black rounded font-black w-full justify-start items-center text-sm"
               key={i}
               to={route.path}
             >
