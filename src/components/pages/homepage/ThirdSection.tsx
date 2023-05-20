@@ -24,8 +24,8 @@ const Wrapper = styled(Box)`
 `;
 
 const Card = styled(Box)`
-  height: 340px;
-  width: 340px;
+  height: 270px;
+  width: 100%;
   background-color: #fefbf8;
   border-radius: 20px;
   transition: all ease 0.3s;
@@ -82,41 +82,43 @@ const ThirdSection = () => {
 
   return (
     <Wrapper>
-      <Box
-      className="flex flex-col"
-        style={{
-          paddingTop: "40px",
-          paddingBottom: "50px",
-        }}
-      >
-        <Ui.Text
-          text="Afrobank, smarter business"
-          className="font-black text-4xl text-center py-5 text-white"
-        />
-        <Ui.Text
-          className="text-center text-sm w-3/4"
-          text="There’s only one smart choice: Afrobank. Grow your company with ease, simplify processes, implement best practices, and gather real-time insights to help you focus on what matters most. From MVP to IPO, Afrobank has your back."
+      <Box className="max-w-6xl m-auto">
+        <Box
+          className="flex flex-col justify-center items-center w-full h-full"
           style={{
-            color: "whitesmoke",
-            margin: "auto"
+            paddingTop: "40px",
+            paddingBottom: "50px",
           }}
-        />
+        >
+          <Ui.Text
+            text="Afrobank, smarter business"
+            className="font-black text-center text-4xl py-5 text-white"
+          />
+          <Ui.Text
+            className="text-center text-sm w-3/4"
+            text="There’s only one smart choice: Afrobank. Grow your company with ease, simplify processes, implement best practices, and gather real-time insights to help you focus on what matters most. From MVP to IPO, Afrobank has your back."
+            style={{
+              color: "whitesmoke",
+              margin: "auto",
+            }}
+          />
+        </Box>
+        <CardWrapper
+          className="grid lg:grid-cols-3 md:grid-cols-2 md:gap-x-7 gap-y-6"
+          ref={ref}
+        >
+          {cardInfo.map((data: any, i: number) => {
+            return (
+              <Card animate={animation} className="sm:w-80" whileHover={{ scale: 1.005 }} key={i}>
+                <Box className="h-full w-full" style={{ padding: "5%" }}>
+                  <Ui.Text text={data.info} />
+                </Box>
+              </Card>
+            );
+          })}
+        </CardWrapper>
+        <Box style={{ paddingTop: "80px" }}></Box>
       </Box>
-      <CardWrapper
-        className="grid lg:grid-cols-3 md:grid-cols-2 md:gap-x-7 gap-y-6"
-        ref={ref}
-      >
-        {cardInfo.map((data: any, i: number) => {
-          return (
-            <Card animate={animation} whileHover={{ scale: 1.005 }} key={i}>
-              <Box style={{ padding: "5%" }}>
-                <Ui.Text text={data.info} />
-              </Box>
-            </Card>
-          );
-        })}
-      </CardWrapper>
-      <Box style={{ paddingTop: "80px" }}></Box>
     </Wrapper>
   );
 };

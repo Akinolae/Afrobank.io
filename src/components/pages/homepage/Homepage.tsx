@@ -23,6 +23,7 @@ const Footer = () => (
         display: "flex",
         padding: 0,
       }}
+      className="max-w-6xl m-auto"
     >
       <MdOutlineCopyright />
       <Ui.Text

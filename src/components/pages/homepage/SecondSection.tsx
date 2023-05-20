@@ -34,50 +34,47 @@ const SecondSection = () => {
       }}
       className="bg-dots flex-center"
     >
-      <Body
-        className="flex-between"
-        style={{
-          height: "60vh",
-          width: "90%",
-          borderRadius: "28px",
-        }}
-      >
-        <ImageWrapper
+      <Box className="max-w-6xl m-auto">
+        <Body
+          className="flex-between m-auto"
           style={{
-            height: "100%",
-            background: "#E8E9E7",
-            borderTopLeftRadius: "28px",
-            borderBottomLeftRadius: "28px",
-            flexDirection: "column",
-          }}
-          className="flex justify-center align-middle text-center"
-        >
-          <Ui.Text
-            className="font-black text-2xl"
-            text="Find which plan works best for you"
-          />
-          <Ui.Text
-            className="font-black text-sm"
-            text="Not sure which plan to go with?
-              Our team can help!"
-          />
-        </ImageWrapper>
-        <ImageWrapper
-          style={{
-            height: "100%",
+            height: "70%",
+            width: "90%",
+            borderRadius: "28px",
           }}
         >
-          <img
-            src={image}
-            height={"auto"}
-            width={"100%"}
+          <ImageWrapper
             style={{
-              borderTopRightRadius: "28px",
-              borderBottomRightRadius: "28px",
+              background: "#E8E9E7",
+              borderTopLeftRadius: "28px",
+              borderBottomLeftRadius: "28px",
             }}
-          />
-        </ImageWrapper>
-      </Body>
+            className="flex justify-center items-center w-full h-full text-center flex-col"
+          >
+            <Ui.Text
+              className="font-black text-2xl"
+              text="Find which plan works best for you"
+            />
+            <Ui.Text
+              className="font-black text-sm"
+              text="Not sure which plan to go with?
+              Our team can help!"
+            />
+          </ImageWrapper>
+          <ImageWrapper className="w-full h-full flex">
+            <img
+              src={image}
+              height={"100%"}
+              width={"100%"}
+              style={{
+                borderTopRightRadius: "28px",
+                borderBottomRightRadius: "28px",
+                objectFit: "contain"
+              }}
+            />
+          </ImageWrapper>
+        </Body>
+      </Box>
     </Box>
   );
 };
