@@ -35,9 +35,9 @@ const Dashboard = () => {
     },
   ];
   return (
-    <Box className="flex justify-between w-full" style={{ height: "100vh" }}>
-      <Box className="w-3/5 m-auto h-full">
-        <Card className="bg-white w-full h-72 mb-4 p-6">
+    <Box className="flex" style={{ height: "100vh" }}>
+      <Box className="w-9/12 mr-6 m-auto h-full">
+        <Card className="bg-white w-full h-80 mb-4 p-6">
           <Ui.Text
             text="Cash position"
             className="font-black"

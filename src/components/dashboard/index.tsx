@@ -44,7 +44,8 @@ const Main = () => {
     },
   ];
   return (
-    <MainWrapper className="w-full overflow-hidden relative pt-4 pb-10">
+    <MainWrapper className="w-full relative pt-4 pb-10 h-full overflow-auto scroll-mx-12">
+      {/* Drawer section starts */}
       <Ui.Drawer isOpen={isOpen} dismissPanel={toggle}>
         <Box>
           <Ui.Text text="Notifications" className="font-black text-lg" />
@@ -72,30 +73,38 @@ const Main = () => {
           </Box>
         </Box>
       </Ui.Drawer>
-      <Box className="max-w-7xl flex justify-between items-center pl-4 m-auto pr-4 pb-4">
-        <Box>
-          <Ui.Text className="font-black text-lg" text="Afrobank" />
-        </Box>
-        <Box className="w-24 flex justify-between">
-          <Ui.Button width="25px" height="25px">
-            <IoIosHelpCircleOutline className="w-full h-full" />
-          </Ui.Button>
-          <Ui.Button onClick={toggle} width="25px" height="25px">
-            <IoMdNotifications className="w-full h-full" />
-          </Ui.Button>
-          <Link to={"profile"} className="w-8 flex justify-center">
+      {/* Drawer section ends */}
+
+      {/* Top nav starts */}
+      <Box className="max-w-7xl m-auto">
+        <Box className="flex justify-between items-center pl-4 pr-4 pb-4">
+          <Box>
+            <Ui.Text className="font-black text-lg" text="Afrobank" />
+          </Box>
+          <Box className="w-28 flex justify-between">
             <Ui.Button width="25px" height="25px">
-              <FaUserCircle className="w-full h-full" />
+              <IoIosHelpCircleOutline className="w-full h-full" />
             </Ui.Button>
-          </Link>
+            <Ui.Button onClick={toggle} width="25px" height="25px">
+              <IoMdNotifications className="w-full h-full" />
+            </Ui.Button>
+            <Link to={"profile"} className="w-8 flex justify-center">
+              <Ui.Button width="25px" height="25px">
+                <FaUserCircle className="w-full h-full" />
+              </Ui.Button>
+            </Link>
+          </Box>
         </Box>
-      </Box>
-      <Box className="max-w-7xl m-auto flex h-full justify-between py-2.5">
-        <Box className="w-36">
-          <Sidebar />
-        </Box>
-        <Box className="w-11/12">
-          <Outlet />
+        {/* Top nav ends */}
+
+        {/* Sidebar and navigation Outlet for /user-dashboard */}
+        <Box className="m-auto flex h-full justify-between py-2.5">
+          <Box className="w-56 mr-5">
+            <Sidebar />
+          </Box>
+          <Box className="w-11/12">
+            <Outlet />
+          </Box>
         </Box>
       </Box>
     </MainWrapper>
