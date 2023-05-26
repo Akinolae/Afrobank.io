@@ -4,7 +4,7 @@ import { motion, usePresence, AnimatePresence } from "framer-motion";
 import Ui from "../ui";
 import { AiOutlineClose } from "react-icons/ai";
 import Drawer from "../ui/drawer";
-import { Modal as FluentiUiModal } from "@fluentui/react";
+import { Modal as FluentiUiModal, } from "@fluentui/react";
 
 const Wrapper = styled.div`
   height: 100%;
@@ -34,6 +34,7 @@ export interface ModalProps {
   showCloseButton?: boolean;
   size?: "small" | "medium" | "large";
   type: "modal" | "drawer";
+  styles?: object 
 }
 
 const Modal = (props: ModalProps) => {
@@ -45,6 +46,7 @@ const Modal = (props: ModalProps) => {
     showCloseButton,
     size,
     type,
+    styles,
     ...rest
   } = props;
   const [isPresent, safeToRemove] = usePresence();
@@ -60,7 +62,11 @@ const Modal = (props: ModalProps) => {
           <>{children}</>
         </Drawer>
       ) : (
-        <FluentiUiModal isOpen={isOpen} onDismiss={toggle}>
+        <FluentiUiModal
+          styles={styles}
+          isOpen={isOpen}
+          onDismiss={toggle}
+        >
           {/* {showCloseButton ? (
               <div
                 style={{
