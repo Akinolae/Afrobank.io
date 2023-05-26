@@ -5,7 +5,7 @@ import Badge from "./badge";
 import PinInput from "./pinInput";
 import Alert from "./alert";
 import Drawer from "./drawer";
-import Modal from "./modal";
+import Modal from "../modals/modal";
 
 export default {
   Alert,

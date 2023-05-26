@@ -1,9 +1,10 @@
 import React, { JSXElementConstructor, useEffect } from "react";
 import styled, { CSSProperties } from "styled-components";
 import { motion, usePresence, AnimatePresence } from "framer-motion";
-import Ui from ".";
+import Ui from "../ui";
 import { AiOutlineClose } from "react-icons/ai";
-import Drawer from "./drawer";
+import Drawer from "../ui/drawer";
+import { Modal as FluentiUiModal } from "@fluentui/react";
 
 const Wrapper = styled.div`
   height: 100%;
@@ -25,7 +26,7 @@ const ModalComponent = styled(motion.div)<CSSProperties>`
   overflow-y: scroll;
 `;
 
-interface ModalProps {
+export interface ModalProps {
   children?: React.ReactElement<any, string | JSXElementConstructor<any>>;
   isOpen: boolean;
   toggle(): void;
@@ -53,37 +54,14 @@ const Modal = (props: ModalProps) => {
   }, [isPresent]);
 
   return (
-    <Wrapper>
-      <AnimatePresence>
-        {type === "drawer" ? (
-          <Drawer isOpen={isOpen} dismissPanel={toggle} {...rest}>
-            <>{children}</>
-          </Drawer>
-        ) : (
-          <ModalComponent
-            className="scroll-bar"
-            width={width}
-            initial={{ y: "6rem", scale: 0.95, opacity: 0 }}
-            animate={
-              isOpen
-                ? { y: 0, scale: 1, opacity: 1 }
-                : { opacity: 0, y: "6rem", scale: 0.95 }
-            }
-            exit={{ opacity: 0 }}
-            style={{
-              boxShadow: "3px 3px 6px rgba(0,0,0,0.035)",
-              width:
-                size === "large"
-                  ? "90%"
-                  : size === "medium"
-                  ? "70%"
-                  : size === "small"
-                  ? "30%"
-                  : "",
-            }}
-            {...rest}
-          >
-            {showCloseButton ? (
+    <AnimatePresence>
+      {type === "drawer" ? (
+        <Drawer isOpen={isOpen} dismissPanel={toggle} {...rest}>
+          <>{children}</>
+        </Drawer>
+      ) : (
+        <FluentiUiModal isOpen={isOpen} onDismiss={toggle}>
+          {/* {showCloseButton ? (
               <div
                 style={{
                   width: "50px",
@@ -98,12 +76,11 @@ const Modal = (props: ModalProps) => {
                   <AiOutlineClose size={"24px"} />
                 </Ui.Button>
               </div>
-            ) : null}
-            {children}
-          </ModalComponent>
-        )}
-      </AnimatePresence>
-    </Wrapper>
+            ) : null} */}
+          {children}
+        </FluentiUiModal>
+      )}
+    </AnimatePresence>
   );
 };
 
