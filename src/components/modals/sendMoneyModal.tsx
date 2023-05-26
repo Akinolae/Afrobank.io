@@ -15,7 +15,7 @@ const SendMoneyModal = (props: ModalProps) => {
           width: "100%",
           maxWidth: "600px",
           borderRadius: "10px",
-          padding: "1%",
+          padding: "10px",
           height: "500px"
         },
       }}
