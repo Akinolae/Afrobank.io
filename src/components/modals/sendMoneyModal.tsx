@@ -1,35 +1,17 @@
 import Modal from "./modal";
 import { SendMoneyForm, CardTrxForm } from "../forms/transactionForms";
-import { motion } from "framer-motion";
 import CustomDropDown from "../ui/dropdown";
 import React, { useState } from "react";
+import Ui from "../ui";
 
 interface ModalProps {
   isOpen: boolean;
   toggle(): void;
 }
 
-const AnimationWrapper = (props: any) => (
-  <motion.div
-    initial={{ y: 0, opacity: 0 }}
-    animate={{
-      y: 10,
-      opacity: 1,
-    }}
-    transition={{
-      type: "spring",
-      duration: 3,
-    }}
-    className="p-12 h-full w-full"
-    {...props}
-  >
-    {props.children}
-  </motion.div>
-);
-
 const SendMoneyModal = (props: ModalProps) => {
   const { isOpen, toggle } = props;
-  const [trxType, setTrxType] = useState("");
+  const [trxType, setTrxType] = useState("main");
 
   const handleChange = (e: any, val: any): void => {
     setTrxType(val?.key);
@@ -57,11 +39,11 @@ const SendMoneyModal = (props: ModalProps) => {
             options={[
               {
                 key: "card",
-                text: "card",
+                text: "Card",
               },
               {
                 key: "main",
-                text: "main",
+                text: "Main",
               },
             ]}
             onChange={(event, option) => handleChange(event, option)}
@@ -69,17 +51,30 @@ const SendMoneyModal = (props: ModalProps) => {
               label: {
                 fontSize: "10px",
               },
+              dropdownOptionText: {
+                fontSize: "10px",
+              },
+              title: {
+                fontSize: "10px",
+              },
+              caretDown: {
+                fontSize: "9px",
+              },
             }}
           />
         </div>
         {trxType === "card" ? (
-          <AnimationWrapper>
-            <CardTrxForm />
-          </AnimationWrapper>
+          <Ui.AnimationWrapper
+            height={10}
+            className="pl-12 pr-12 h-full w-full"
+            render={CardTrxForm}
+          />
         ) : (
-          <AnimationWrapper>
-            <SendMoneyForm />
-          </AnimationWrapper>
+          <Ui.AnimationWrapper
+            height={"10"}
+            className="pl-12 pr-12 h-full w-full"
+            render={SendMoneyForm}
+          />
         )}
       </React.Fragment>
     </Modal>

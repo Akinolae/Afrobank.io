@@ -7,6 +7,7 @@ import Alert from "./alert";
 import Drawer from "./drawer";
 import Modal from "../modals/modal";
 import CustomDropDown from "./dropdown";
+import AnimationWrapper from "./animationWrapper";
 
 export default {
   Alert,
@@ -18,5 +19,6 @@ export default {
   PinInput,
   CustomInput,
   CustomDropDown,
+  AnimationWrapper,
   CustomPasswordInput,
 };

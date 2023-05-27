@@ -1,16 +1,9 @@
-import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import Ui from "../../ui";
 
 const Box = styled(motion.div)`
   width: 100%;
-`;
-
-const CardWrapper = styled(Box)`
-  width: 75%;
-  margin: 0px auto;
-  justify-content: center;
 `;
 
 const Wrapper = styled(Box)`
@@ -57,29 +50,6 @@ const cardInfo = [
 ];
 
 const ThirdSection = () => {
-  const ref = useRef(null);
-  const inView = useInView(ref);
-  const animation = useAnimation();
-
-  useEffect(() => {
-    if (inView) {
-      animation.start({
-        y: 0,
-        opacity: 1,
-        transition: {
-          type: "spring",
-          duration: 3,
-        },
-      });
-    }
-    if (!inView) {
-      animation.start({
-        y: "100vh",
-        opacity: 0,
-      });
-    }
-  }, [inView]);
-
   return (
     <Wrapper>
       <Box className="max-w-6xl m-auto">
@@ -103,20 +73,32 @@ const ThirdSection = () => {
             }}
           />
         </Box>
-        <CardWrapper
+        <Ui.AnimationWrapper
           className="grid lg:grid-cols-3 md:grid-cols-2 md:gap-x-7 gap-y-6"
-          ref={ref}
-        >
-          {cardInfo.map((data: any, i: number) => {
+          style={{
+            width: "75%",
+            margin: "0px auto",
+          }}
+          renderProps={{
+            className: "sm:w-80",
+            whileHover: { scale: 1.005 },
+          }}
+          render={() => {
             return (
-              <Card animate={animation} className="sm:w-80" whileHover={{ scale: 1.005 }} key={i}>
-                <Box className="h-full w-full" style={{ padding: "5%" }}>
-                  <Ui.Text text={data.info} />
-                </Box>
-              </Card>
+              <>
+                {cardInfo.map((data: any, i: number) => {
+                  return (
+                    <Card key={i}>
+                      <Box className="h-full w-full" style={{ padding: "5%" }}>
+                        <Ui.Text text={data.info} />
+                      </Box>
+                    </Card>
+                  );
+                })}
+              </>
             );
-          })}
-        </CardWrapper>
+          }}
+        />
         <Box style={{ paddingTop: "80px" }}></Box>
       </Box>
     </Wrapper>

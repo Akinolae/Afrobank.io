@@ -10,7 +10,7 @@ const SendMoneyForm = () => {
       validationSchema={{}}
       render={() => {
         return (
-          <>
+          <div className="mt-4">
             <ui.CustomInput />
             <ui.CustomInput />
             <ui.CustomInput />
@@ -29,7 +29,7 @@ const SendMoneyForm = () => {
               }}
               type="submit"
             />
-          </>
+          </div>
         );
       }}
     />
@@ -37,6 +37,16 @@ const SendMoneyForm = () => {
 };
 
 const CardTrxForm = () => {
+  const cards = [
+    {
+      cardNumber: "1233",
+      name: "Akinola Makinde",
+    },
+    {
+      cardNumber: "1234",
+      name: "Akinola Makinde",
+    },
+  ];
   return (
     <>
       <h1>Card Trx form</h1>
