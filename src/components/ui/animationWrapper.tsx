@@ -1,28 +1,56 @@
 import { motion, useAnimation, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
-const AnimationWrapper = (props: any) => {
+interface AnimationWrapperProps {
+  style?: object;
+  height?: number | string;
+  timer?: number;
+  animationStart?: object;
+  animationEnd?: object;
+  className: string;
+  renderProps?: object;
+  render: React.ReactElement | any;
+}
+
+const defaultTimer = 3;
+
+const AnimationWrapper = (props: AnimationWrapperProps) => {
+  const {
+    timer,
+    style,
+    render,
+    height,
+    className,
+    renderProps,
+    animationEnd,
+    animationStart,
+  } = props;
+
   const ref = useRef(null);
-  const { render, height } = props;
   const inView = useInView(ref);
   const animation = useAnimation();
 
+  const config = {
+    animationStart: animationStart || {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        duration: timer || defaultTimer,
+      },
+    },
+    animationEnd: animationEnd || {
+      y: height || "100vh",
+      opacity: 0,
+    },
+  };
+
   useEffect(() => {
     if (inView) {
-      animation.start({
-        y: 0,
-        opacity: 1,
-        transition: {
-          type: "spring",
-          duration: 3,
-        },
-      });
+      animation.start(config.animationStart);
     }
     if (!inView) {
-      animation.start({
-        y: !height ? "100vh" : height,
-        opacity: 0,
-      });
+      animation.start(config.animationEnd);
     }
   }, [inView]);
 
@@ -30,12 +58,8 @@ const AnimationWrapper = (props: any) => {
 
   return (
     <motion.div ref={ref}>
-      <motion.div
-        className={props?.className}
-        style={props?.style}
-        animate={animation}
-      >
-        <RenderComponent {...props?.renderProps} />
+      <motion.div className={className} style={style} animate={animation}>
+        <RenderComponent {...renderProps} />
       </motion.div>
     </motion.div>
   );

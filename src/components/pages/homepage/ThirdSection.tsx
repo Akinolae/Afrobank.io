@@ -83,6 +83,7 @@ const ThirdSection = () => {
             className: "sm:w-80",
             whileHover: { scale: 1.005 },
           }}
+          timer={2.5}
           render={() => {
             return (
               <>
