@@ -74,7 +74,7 @@ const Modal = (props: ModalProps) => {
               <IoMdClose />
             </Ui.Button>
           </div>
-          {children}
+          <div className="h-full">{children}</div>
         </FluentiUiModal>
       )}
     </AnimatePresence>

@@ -12,7 +12,7 @@ interface FormikProps {
   render: (props: any) => React.ReactElement;
 }
 
-const FormWrapper = (props: FormikProps) => {
+export const FormWrapper = (props: FormikProps) => {
   const { initialValues, onSubmit, validationSchema, render } = props;
 
   const RenderComponent = render;
