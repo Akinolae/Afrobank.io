@@ -69,7 +69,7 @@ function LoginForm(props: any) {
               isLoading={isSubmitting}
               text="Login"
               color={"white"}
-              className="hover h-12  text-sm font-black"
+              className="hover h-12 text-sm font-black justify-center items-center"
               borderRadius="10px"
               backgroundColor={"#3B1FA4"}
               style={{ margin: "30px auto" }}
@@ -174,7 +174,7 @@ function RegisterForm(props: any) {
               <Ui.Button
                 isLoading={isSubmitting}
                 text="Register"
-                className="hover h-12  text-sm font-black"
+                className="hover h-12 text-sm font-black justify-center items-center"
                 color={"white"}
                 backgroundColor={"#3B1FA4"}
                 borderRadius="10px"

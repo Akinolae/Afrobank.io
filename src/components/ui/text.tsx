@@ -14,17 +14,19 @@ const TextComponent = styled.p<CSSProperties | any>`
 `;
 
 interface Props {
-  text: string;
+  text?: string;
   style?: React.CSSProperties;
   fontWeight?: string | number;
   fontSize?: string;
   className?: string;
+  children?: React.ReactElement;
 }
 
 const Text = (props: Props) => {
   const { text, className, ...rest } = props;
   return (
     <TextComponent className={className} {...rest}>
+      {props?.children}
       {text}
     </TextComponent>
   );

@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import Ui from "../../ui";
+import { AiOutlineArrowRight } from "react-icons/ai";
+import { IoIosFlash } from "react-icons/io";
+import { BiTime, BiTransfer } from "react-icons/bi";
 
 const Box = styled(motion.div)`
   width: 100%;
@@ -17,35 +20,35 @@ const Wrapper = styled(Box)`
 `;
 
 const Card = styled(Box)`
-  height: 270px;
+  height: 350px;
   width: 100%;
-  background-color: #fefbf8;
   border-radius: 20px;
+  background-color: #fefbf8;
   transition: all ease 0.3s;
-  cursor: pointer;
-  &:hover {
-    opacity: 0.9;
-  }
 `;
+
+const iconSize = {
+  fontSize: "34px",
+};
 
 const cardInfo = [
   {
-    info: "easy deals",
+    info: "Get onboarded in minutes.",
+    subText:
+      "Get onboarded in minutes and gain access to mouth watering gifts, we're waiting for you.",
+    icon: <BiTime style={iconSize} />,
   },
   {
-    info: "easy deals",
+    info: "Enjoy free transfers",
+    subText:
+      "Transactions are free at Afrobank, no matter the number of transactions just know we've got you covered.",
+    icon: <BiTransfer style={iconSize} />,
   },
   {
-    info: "easy deals",
-  },
-  {
-    info: "easy deals",
-  },
-  {
-    info: "easy deals",
-  },
-  {
-    info: "easy deals",
+    info: "Fast, Safe & Secure",
+    subText:
+      "Trust Afrobank to deliver lightening fast, safe and secure transactions, it's what we live by, we stand by our words.",
+    icon: <IoIosFlash style={iconSize} />,
   },
 ];
 
@@ -60,10 +63,12 @@ const ThirdSection = () => {
             paddingBottom: "50px",
           }}
         >
-          <Ui.Text
-            text="Afrobank, smarter business"
-            className="font-black text-center text-4xl py-5 text-white"
-          />
+          <Ui.Text className="font-black text-center text-4xl py-5 text-white">
+            <>
+              <span className="text-gray-400 text-5xl">Afrobank</span>, smarter
+              business
+            </>
+          </Ui.Text>
           <Ui.Text
             className="text-center text-sm w-3/4"
             text="There’s only one smart choice: Afrobank. Grow your company with ease, simplify processes, implement best practices, and gather real-time insights to help you focus on what matters most. From MVP to IPO, Afrobank has your back."
@@ -76,22 +81,49 @@ const ThirdSection = () => {
         <Ui.AnimationWrapper
           className="grid lg:grid-cols-3 md:grid-cols-2 md:gap-x-7 gap-y-6"
           style={{
-            width: "75%",
+            width: "80%",
             margin: "0px auto",
           }}
-          renderProps={{
-            className: "sm:w-80",
-            whileHover: { scale: 1.005 },
-          }}
-          timer={2.5}
+          timer={3}
           render={() => {
             return (
               <>
                 {cardInfo.map((data: any, i: number) => {
                   return (
-                    <Card key={i}>
-                      <Box className="h-full w-full" style={{ padding: "5%" }}>
-                        <Ui.Text text={data.info} />
+                    <Card
+                      whileHover={{
+                        scale: 1.05,
+                      }}
+                      className="flex justify-between items-center"
+                      key={i}
+                    >
+                      <Box style={{ padding: "9%" }}>
+                        {data.icon}
+                        <Ui.Text
+                          fontSize="17px"
+                          className="font-black mb-3 mt-4"
+                          text={data.info}
+                        />
+                        <Ui.Text fontSize={"12px"} text={data.subText} />
+                        <motion.div className="mt-11">
+                          <Ui.Button
+                            fontSize={10}
+                            style={{
+                              background: "none",
+                              textDecoration: "underline",
+                              textUnderlineOffset: "10px",
+                            }}
+                            className="p-0 m-0"
+                          >
+                            <>
+                              <Ui.Text text="Read more" />
+                              <AiOutlineArrowRight
+                                style={{ fontSize: "15px" }}
+                                className="pl-1"
+                              />
+                            </>
+                          </Ui.Button>
+                        </motion.div>
                       </Box>
                     </Card>
                   );

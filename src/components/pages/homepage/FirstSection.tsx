@@ -48,7 +48,7 @@ const FirstSection = () => {
               <Ui.Button
                 text="Login"
                 color={"white"}
-                className="hover h-10 text-sm font-black"
+                className="hover h-10 text-sm font-black justify-center items-center"
                 width="7rem"
                 backgroundColor={"#3B1FA4"}
                 borderRadius="50px"
@@ -108,6 +108,7 @@ const FirstSection = () => {
                 backgroundColor={"#3B1FA4"}
                 borderRadius="10px"
                 style={{ fontWeight: 500, marginTop: "10px" }}
+                className="justify-center items-center"
               />
             </Link>
           </motion.div>

@@ -56,8 +56,6 @@ const AnimationWrapper = (props: AnimationWrapperProps) => {
 
   const RenderComponent = render;
 
-  console.log({ inView, ref: ref.current });
-
   return (
     <motion.div ref={ref}>
       <motion.div className={className} style={style} animate={animation}>
