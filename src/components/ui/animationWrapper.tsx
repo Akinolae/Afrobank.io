@@ -57,7 +57,7 @@ const AnimationWrapper = (props: AnimationWrapperProps) => {
   const RenderComponent = render;
 
   return (
-    <motion.div ref={ref}>
+    <motion.div ref={ref} layoutScroll>
       <motion.div className={className} style={style} animate={animation}>
         <RenderComponent {...renderProps} />
       </motion.div>

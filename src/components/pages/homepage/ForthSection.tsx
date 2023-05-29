@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { motion, useScroll, useTransform } from "framer-motion";
 import woman from "../../../assets/happy.jpeg";
+import { useRef } from "react";
 
 const Box = styled(motion.div)`
   width: 100%;
@@ -21,8 +22,9 @@ const Wrapper = styled(Box)`
 `;
 
 const ForthSection = () => {
-  const { scrollYProgress } = useScroll();
-  const x = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref });
+  const y = useTransform(scrollYProgress, [0, 1], [-300, 300]);
   return (
     <Box
       style={{
@@ -31,12 +33,12 @@ const ForthSection = () => {
       className="bg-dots flex-center"
     >
       <motion.div className="flex justify-between items-center">
-        <Wrapper />
-        <Box style={{ x: x }}>
+        <Wrapper ref={ref} />
+        <Box style={{ y }}>
           <h1
-          className="text-center"
+            className="text-center"
             style={{
-              fontSize: "10em",
+              fontSize: "16px",
               zIndex: 1,
               whiteSpace: "nowrap",
               transition: "all 2s ease-in-out",

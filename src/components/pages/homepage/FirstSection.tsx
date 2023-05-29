@@ -17,11 +17,15 @@ const Nav = styled(Box)`
     bottom: 0;
     z-index: 1;
     width: 100%;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     background: #e8e9e7;
   }
 `;
-const Body = styled(Box)`
-  height: 80vh;
+const Body = styled(motion.section)`
+  height: 70vh;
+  transition: all ease 0.3s;
 `;
 
 const FirstSection = () => {
@@ -29,7 +33,6 @@ const FirstSection = () => {
     <Box
       className="py-5 px-6"
       style={{
-        overflow: "hidden",
         backgroundColor: "#E8E9E7",
       }}
     >
@@ -43,20 +46,32 @@ const FirstSection = () => {
           <div>
             <Ui.Text text="Logo" />
           </div>
-          <div>
+          <div className="flex">
+            <Link to="/signup">
+              <Ui.Button
+                text="Create account"
+                color={"white"}
+                fontSize={10}
+                className="hover h-9 font-black justify-center items-center"
+                width="7rem"
+                backgroundColor={"#3B1FA4"}
+                borderRadius="50px"
+              />
+            </Link>
             <Link to="/login">
               <Ui.Button
+                fontSize={10}
                 text="Login"
                 color={"white"}
-                className="hover h-10 text-sm font-black justify-center items-center"
-                width="7rem"
+                className="hover ml-3 h-9 font-black justify-center items-center"
+                width="4rem"
                 backgroundColor={"#3B1FA4"}
                 borderRadius="50px"
               />
             </Link>
           </div>
         </Nav>
-        <Body className="flex-center flex-column">
+        <Body className="flex-center flex-column ">
           <Box
             initial={{
               x: "-100vw",
@@ -73,7 +88,7 @@ const FirstSection = () => {
             }}
           >
             <Ui.Text
-              className="lg:text-4xl md:text-3xl sm:text-2xl w-3/5 text-center font-black"
+              className="lg:text-4xl md:text-3xl sm:text-2xl w-3/5 font-black"
               style={{
                 paddingBottom: "12px",
                 fontWeight: "900",
@@ -95,7 +110,7 @@ const FirstSection = () => {
             <Ui.Text text="Fast free and efficient" />
           </Box>
           <motion.div
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
             <Link to="/signup">
@@ -103,7 +118,7 @@ const FirstSection = () => {
                 text="Get started"
                 height={"40px"}
                 width="150px"
-                fontSize={16}
+                fontSize={12}
                 color={"white"}
                 backgroundColor={"#3B1FA4"}
                 borderRadius="10px"

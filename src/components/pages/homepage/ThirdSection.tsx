@@ -17,6 +17,7 @@ const Wrapper = styled(Box)`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
 `;
 
 const Card = styled(Box)`
@@ -24,7 +25,7 @@ const Card = styled(Box)`
   width: 100%;
   border-radius: 20px;
   background-color: #fefbf8;
-  transition: all ease 0.3s;
+  transition: all ease 0.1s;
 `;
 
 const iconSize = {
@@ -55,6 +56,7 @@ const cardInfo = [
 const ThirdSection = () => {
   return (
     <Wrapper>
+      
       <Box className="max-w-6xl m-auto">
         <Box
           className="flex flex-col justify-center items-center w-full h-full"
@@ -92,7 +94,7 @@ const ThirdSection = () => {
                   return (
                     <Card
                       whileHover={{
-                        scale: 1.05,
+                        scale: 1.009,
                       }}
                       className="flex justify-between items-center"
                       key={i}

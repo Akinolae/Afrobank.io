@@ -31,6 +31,12 @@ const SecondSection = () => {
     <Box
       style={{
         height: "75vh",
+        zIndex: 1,
+        position: 'relative',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0
       }}
       className="bg-dots flex-center"
     >
