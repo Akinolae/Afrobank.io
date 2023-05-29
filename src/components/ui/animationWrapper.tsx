@@ -7,7 +7,7 @@ interface AnimationWrapperProps {
   timer?: number;
   animationStart?: object;
   animationEnd?: object;
-  className: string;
+  className?: string;
   renderProps?: object;
   render: React.ReactElement | any;
 }
@@ -55,6 +55,8 @@ const AnimationWrapper = (props: AnimationWrapperProps) => {
   }, [inView]);
 
   const RenderComponent = render;
+
+  console.log({ inView, ref: ref.current });
 
   return (
     <motion.div ref={ref}>

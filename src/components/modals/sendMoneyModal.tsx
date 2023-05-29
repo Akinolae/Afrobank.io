@@ -63,19 +63,7 @@ const SendMoneyModal = (props: ModalProps) => {
             }}
           />
         </div>
-        {trxType === "card" ? (
-          <Ui.AnimationWrapper
-            height={10}
-            className="pl-12 pr-12 h-full w-full"
-            render={CardTrxForm}
-          />
-        ) : (
-          <Ui.AnimationWrapper
-            height={"10"}
-            className="pl-12 pr-12 h-full w-full"
-            render={SendMoneyForm}
-          />
-        )}
+        {trxType === "card" ? <CardTrxForm /> : <SendMoneyForm />}
       </React.Fragment>
     </Modal>
   );
