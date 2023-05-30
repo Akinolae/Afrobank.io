@@ -89,7 +89,7 @@ const Dashboard = () => {
                   height={"40px"}
                   color={"white"}
                   backgroundColor={"#3B1FA4"}
-                  className="rounded-full text-xs hover pl-1 pr-1 max-w-sm"
+                  className="rounded-full text-xs hover pl-1 pr-1 max-w-sm justify-center items-center"
                   onClick={showModal}
                 />
                 {/* </Link> */}
@@ -100,7 +100,7 @@ const Dashboard = () => {
                   style={{
                     border: "0.5px solid black",
                   }}
-                  className="rounded-full text-xs hover text-black mt-4"
+                  className="rounded-full text-xs hover text-black mt-4 justify-center items-center"
                 />
               </Box>
             </Box>

@@ -1,7 +1,7 @@
 import { FormWrapper } from "./forms";
 import * as yup from "yup";
 import ui from "../ui";
-import AnimationWrapper from "../ui/animationWrapper";
+import AnimationWrapper from "../ui/animations/animationWrapper";
 
 const SendMoneyForm = () => {
   return (
@@ -25,7 +25,7 @@ const SendMoneyForm = () => {
                     <ui.Button
                       // isLoading={isSubmitting}
                       text="Proceed"
-                      className="hover h-12  text-sm font-black"
+                      className="hover h-12  text-sm font-black justify-center items-center"
                       color={"white"}
                       backgroundColor={"#3B1FA4"}
                       borderRadius="10px"

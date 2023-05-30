@@ -42,8 +42,8 @@ const Homepage = () => {
   return (
     <Box>
       <FirstSection />
-      <SecondSection />
       <ThirdSection />
+      <SecondSection />
       <ForthSection />
       <Footer />
     </Box>

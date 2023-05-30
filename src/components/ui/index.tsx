@@ -7,8 +7,8 @@ import Alert from "./alert";
 import Drawer from "./drawer";
 import Modal from "../modals/modal";
 import CustomDropDown from "./dropdown";
-import AnimationWrapper from "./animationWrapper";
-
+import AnimationWrapper from "./animations/animationWrapper";
+import SlideAnimationWrapper from "./animations/slideInWrapper";
 export default {
   Alert,
   Text,
@@ -21,4 +21,5 @@ export default {
   CustomDropDown,
   AnimationWrapper,
   CustomPasswordInput,
+  SlideAnimationWrapper,
 };

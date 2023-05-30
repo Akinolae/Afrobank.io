@@ -24,7 +24,7 @@ const Nav = styled(Box)`
   }
 `;
 const Body = styled(motion.section)`
-  height: 70vh;
+  height: 100vh;
   transition: all ease 0.3s;
 `;
 

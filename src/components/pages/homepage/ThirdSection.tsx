@@ -56,32 +56,8 @@ const cardInfo = [
 const ThirdSection = () => {
   return (
     <Wrapper>
-      
       <Box className="max-w-6xl m-auto">
-        <Box
-          className="flex flex-col justify-center items-center w-full h-full"
-          style={{
-            paddingTop: "40px",
-            paddingBottom: "50px",
-          }}
-        >
-          <Ui.Text className="font-black text-center text-4xl py-5 text-white">
-            <>
-              <span className="text-gray-400 text-5xl">Afrobank</span>, smarter
-              business
-            </>
-          </Ui.Text>
-          <Ui.Text
-            className="text-center text-sm w-3/4"
-            text="There’s only one smart choice: Afrobank. Grow your company with ease, simplify processes, implement best practices, and gather real-time insights to help you focus on what matters most. From MVP to IPO, Afrobank has your back."
-            style={{
-              color: "whitesmoke",
-              margin: "auto",
-            }}
-          />
-        </Box>
         <Ui.AnimationWrapper
-          className="grid lg:grid-cols-3 md:grid-cols-2 md:gap-x-7 gap-y-6"
           style={{
             width: "80%",
             margin: "0px auto",
@@ -90,46 +66,70 @@ const ThirdSection = () => {
           render={() => {
             return (
               <>
-                {cardInfo.map((data: any, i: number) => {
-                  return (
-                    <Card
-                      whileHover={{
-                        scale: 1.009,
-                      }}
-                      className="flex justify-between items-center"
-                      key={i}
-                    >
-                      <Box style={{ padding: "9%" }}>
-                        {data.icon}
-                        <Ui.Text
-                          fontSize="17px"
-                          className="font-black mb-3 mt-4"
-                          text={data.info}
-                        />
-                        <Ui.Text fontSize={"12px"} text={data.subText} />
-                        <motion.div className="mt-11">
-                          <Ui.Button
-                            fontSize={10}
-                            style={{
-                              background: "none",
-                              textDecoration: "underline",
-                              textUnderlineOffset: "10px",
-                            }}
-                            className="p-0 m-0"
-                          >
-                            <>
-                              <Ui.Text text="Read more" />
-                              <AiOutlineArrowRight
-                                style={{ fontSize: "15px" }}
-                                className="pl-1"
-                              />
-                            </>
-                          </Ui.Button>
-                        </motion.div>
-                      </Box>
-                    </Card>
-                  );
-                })}
+                <Box
+                  className="flex flex-col justify-center items-center w-full h-full"
+                  style={{
+                    paddingTop: "40px",
+                    paddingBottom: "50px",
+                  }}
+                >
+                  <Ui.Text className="font-black text-center text-4xl py-5 text-white">
+                    <>
+                      <span className="text-gray-400 text-5xl">Afrobank</span>,
+                      smarter business
+                    </>
+                  </Ui.Text>
+                  <Ui.Text
+                    className="text-center text-sm w-3/4"
+                    text="There’s only one smart choice: Afrobank. Grow your company with ease, simplify processes, implement best practices, and gather real-time insights to help you focus on what matters most. From MVP to IPO, Afrobank has your back."
+                    style={{
+                      color: "whitesmoke",
+                      margin: "auto",
+                    }}
+                  />
+                </Box>
+                <Box className="grid lg:grid-cols-3 md:grid-cols-2 md:gap-x-7 gap-y-6">
+                  {cardInfo.map((data: any, i: number) => {
+                    return (
+                      <Card
+                        whileHover={{
+                          scale: 1.009,
+                        }}
+                        className="flex justify-between items-center"
+                        key={i}
+                      >
+                        <Box style={{ padding: "9%" }}>
+                          {data.icon}
+                          <Ui.Text
+                            fontSize="17px"
+                            className="font-black mb-3 mt-4"
+                            text={data.info}
+                          />
+                          <Ui.Text fontSize={"12px"} text={data.subText} />
+                          <motion.div className="mt-11">
+                            <Ui.Button
+                              fontSize={10}
+                              style={{
+                                background: "none",
+                                textDecoration: "underline",
+                                textUnderlineOffset: "10px",
+                              }}
+                              className="p-0 m-0"
+                            >
+                              <>
+                                <Ui.Text text="Read more" />
+                                <AiOutlineArrowRight
+                                  style={{ fontSize: "15px" }}
+                                  className="pl-1"
+                                />
+                              </>
+                            </Ui.Button>
+                          </motion.div>
+                        </Box>
+                      </Card>
+                    );
+                  })}
+                </Box>
               </>
             );
           }}
