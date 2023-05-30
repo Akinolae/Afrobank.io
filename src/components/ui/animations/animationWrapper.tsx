@@ -1,16 +1,6 @@
 import { motion, useAnimation, useInView } from "framer-motion";
 import React, { useEffect, useRef } from "react";
-
-interface AnimationWrapperProps {
-  style?: object;
-  height?: number | string;
-  timer?: number;
-  animationStart?: object;
-  animationEnd?: object;
-  className?: string;
-  renderProps?: object;
-  render: React.ReactElement | any;
-}
+import { AnimationWrapperProps } from "./slideInWrapper";
 
 const defaultTimer = 3;
 

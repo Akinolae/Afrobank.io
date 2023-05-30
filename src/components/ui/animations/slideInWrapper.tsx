@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 
-interface AnimationWrapperProps {
+export interface AnimationWrapperProps {
   style?: object;
   height?: number | string;
   timer?: number;

@@ -88,17 +88,23 @@ select {
 }
 
 .text-gradient {
-  background: -webkit-linear-gradient(to left top,  #333, #eee,);
+  background: -webkit-linear-gradient(to left top, #333, #eee);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+.div {
+  height: 400px;
+  overflow: hidden;
+  animation: 30s linear 0s infinite normal none running infiniteBorder;
+}
+
 @keyframes infiniteBorder {
-  from {
-    // border: 2px solid red;
+  0% {
+    transform: translateY(0px);
   }
-  to {
-    --border-angle: 1turn
+  100% {
+    transform: translateY(-400px);
   }
 }
