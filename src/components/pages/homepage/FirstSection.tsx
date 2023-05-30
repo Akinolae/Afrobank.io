@@ -31,10 +31,10 @@ const Body = styled(motion.section)`
 const FirstSection = () => {
   return (
     <Box
-      className="py-5 px-6"
-      style={{
-        backgroundColor: "#E8E9E7",
-      }}
+      className="py-5 px-6 bg-black"
+      // style={{
+      //   backgroundColor: "#E8E9E7",
+      // }}
     >
       <Box className="max-w-6xl m-auto">
         <Nav
@@ -44,7 +44,7 @@ const FirstSection = () => {
           }}
         >
           <div>
-            <Ui.Text text="Logo" />
+            <Ui.Text className="text-white" text="Logo" />
           </div>
           <div className="flex">
             <Link to="/signup">
@@ -88,7 +88,7 @@ const FirstSection = () => {
             }}
           >
             <Ui.Text
-              className="lg:text-4xl md:text-3xl sm:text-2xl w-3/5 font-black"
+              className="lg:text-4xl md:text-3xl sm:text-2xl w-3/5 font-black text-white"
               style={{
                 paddingBottom: "12px",
                 fontWeight: "900",
@@ -98,7 +98,7 @@ const FirstSection = () => {
               text="The modern way to send"
             />
             <Ui.Text
-              className="lg:text-4xl md:text-3xl sm:text-2xl w-3/5 text-center font-black"
+              className="lg:text-4xl md:text-3xl sm:text-2xl w-3/5 text-center font-black text-white"
               style={{
                 paddingBottom: "12px",
                 fontWeight: "900",
@@ -107,7 +107,7 @@ const FirstSection = () => {
               }}
               text="and recieve money"
             />
-            <Ui.Text text="Fast free and efficient" />
+            <Ui.Text className="text-white" text="Fast free and efficient" />
           </Box>
           <motion.div
             whileHover={{ scale: 1.05 }}
