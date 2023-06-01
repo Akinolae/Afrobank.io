@@ -91,7 +91,7 @@ const FirstSection = () => {
                 opacity: 1,
                 transition: {
                   type: "spring",
-                  duration: 3,
+                  duration: 2.5,
                 },
               }}
               animationEnd={{ x: "-100vw", opacity: 0 }}

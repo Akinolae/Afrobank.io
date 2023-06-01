@@ -11,7 +11,7 @@ const ButtonComponent = styled.button<CSSProperties>`
   background-color: ${(props) => props.backgroundColor};
   border-radius: ${(props) => props.borderRadius || ""};
   font-size: ${(props) => `${props.fontSize}px` || "14px"};
-  transition: all ease 0.3s;
+  transition: all ease-in-out 0.3s;
   font-weight: 700;
 `;
 

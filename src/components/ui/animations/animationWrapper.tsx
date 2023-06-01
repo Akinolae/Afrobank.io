@@ -1,5 +1,5 @@
 import { motion, useAnimation, useInView } from "framer-motion";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { AnimationWrapperProps } from "./slideInWrapper";
 
 const defaultTimer = 3;
@@ -17,17 +17,13 @@ const AnimationWrapper = (props: AnimationWrapperProps) => {
   } = props;
 
   const ref = useRef(null);
-  const inView = useInView(ref);
+  const inView = useInView(ref, { once: true });
   const animation = useAnimation();
 
   const config = {
     animationStart: animationStart || {
       y: 0,
       opacity: 1,
-      transition: {
-        type: "spring",
-        duration: timer || defaultTimer,
-      },
     },
     animationEnd: animationEnd || {
       y: height || "100vh",
@@ -37,10 +33,7 @@ const AnimationWrapper = (props: AnimationWrapperProps) => {
 
   useEffect(() => {
     if (inView) {
-      animation.start(config.animationStart);
-    }
-    if (!inView) {
-      animation.start(config.animationEnd);
+      animation.start("start");
     }
   }, [inView]);
 
@@ -48,7 +41,21 @@ const AnimationWrapper = (props: AnimationWrapperProps) => {
 
   return (
     <motion.div ref={ref} layoutScroll>
-      <motion.div className={className} style={style} animate={animation}>
+      <motion.div
+        className={className}
+        style={style}
+        variants={{
+          start: config.animationStart,
+          end: config.animationEnd,
+        }}
+        transition={{
+          duration: timer || defaultTimer,
+          delay: 0.2,
+          type: "spring",
+        }}
+        animate={animation}
+        initial="end"
+      >
         <RenderComponent {...renderProps} />
       </motion.div>
     </motion.div>

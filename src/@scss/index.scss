@@ -64,7 +64,7 @@ select {
   box-shadow: 1px solid grey;
   opacity: 0.8;
   transition: all ease 0.3s;
-  animation: infiniteBorder 5s linear backwards;
+  // animation: infiniteBorder 5s linear backwards;
 }
 .text {
   background-image: linear-gradient(
@@ -82,9 +82,12 @@ select {
 }
 
 .bg-dots {
-  background-color: #e8e9e7;
-  background-image: radial-gradient(#000000 0.5px, #e8e9e7 0.5px);
-  background-size: 10px 10px;
+  background-image: radial-gradient(#f7f7f7 0.5px, transparent 0.5px);
+  background-size: 17px 17px;
+  background-color: #030303;
+  // background-color: #e8e9e7;
+  // background-image: radial-gradient(#000000 0.5px, #e8e9e7 0.5px);
+  // background-size: 10px 10px;
 }
 
 .text-gradient {

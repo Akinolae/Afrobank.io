@@ -40,7 +40,7 @@ const Footer = () => (
 
 const Homepage = () => {
   return (
-    <Box>
+    <Box className="bg-dots">
       <FirstSection />
       <ThirdSection />
       <SecondSection />
