@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Ui from "../../ui";
 import { motion } from "framer-motion";
-import { IoIosInformationCircleOutline } from "react-icons/io";
 import { Link } from "react-router-dom";
 import woman from "../../../assets/happy.jpeg";
 
@@ -89,7 +88,7 @@ const FirstSection = () => {
                   />
 
                   <Ui.Text
-                    className="text-xs leading-6 md:leading-tight md:pr-8 lg:pl-0 md:pl-8 text-center md:text-sm lg:text-lg md:text-center lg:text-start lg:pr-28"
+                    className="text-xs leading-6 md:leading-tight md:pr-8 lg:pl-0 md:pl-8 text-center md:text-sm lg:text-lg md:text-center lg:text-start lg:pr-32"
                     fontSize="19px"
                     style={{ color: "#cbcbcb" }}
                   >
@@ -116,6 +115,7 @@ const FirstSection = () => {
                       />
                     </Link>
                   </motion.div>
+                 
                 </>
               )}
             />
