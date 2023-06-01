@@ -55,6 +55,16 @@ select {
   scroll-behavior: smooth;
 }
 
+.w-55 {
+  width: 55% !important;
+  background-color: green !important;
+  display: none;
+}
+
+// .w-45 {
+//   width: 45% !important;
+//   background-color: green !important;
+// }
 .scroll-bar::-webkit-scrollbar {
   display: none;
 }

@@ -58,10 +58,6 @@ const ThirdSection = () => {
     <Wrapper>
       <Box className="max-w-6xl m-auto">
         <Ui.AnimationWrapper
-          style={{
-            width: "80%",
-            margin: "0px auto",
-          }}
           timer={3}
           render={() => {
             return (
@@ -88,7 +84,10 @@ const ThirdSection = () => {
                     }}
                   />
                 </Box>
-                <Box className="grid lg:grid-cols-3 md:grid-cols-2 md:gap-x-7 gap-y-6">
+                <Box
+                  style={{ width: "80%", margin: "0px auto" }}
+                  className="grid lg:grid-cols-3 md:grid-cols-2 md:gap-x-7 gap-y-6"
+                >
                   {cardInfo.map((data: any, i: number) => {
                     return (
                       <Card

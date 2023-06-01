@@ -60,7 +60,7 @@ const SecondSection = () => {
                 borderRadius: "28px",
               }}
             >
-              <ImageWrapper className="flex justify-center items-center w-full h-full text-center flex-col">
+              <ImageWrapper className="mb-4 md:mb-4 lg:mb-0 flex justify-center items-center w-full h-full text-center flex-col">
                 <Ui.Text
                   className="font-black text-white text-2xl"
                   text="Find which plan works best for you"
