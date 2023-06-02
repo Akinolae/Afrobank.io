@@ -21,14 +21,14 @@ const Wrapper = styled(motion.div)<CSSProperties | any>`
   padding: 3%;
 `;
 const FormWrapper = styled(motion.div)`
-  width: 30rem;
+  // width: 30rem;
   margin: auto;
   transition: all ease 0.3s;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  padding: 1.8%;
-  background: white;
+  // padding: 1.8%;
+  // background: white;
   border-radius: 10px;
   box-shadow: -18px 7px 82px 0px rgba(0, 0, 0, 0.23);
   -webkit-box-shadow: -18px 7px 82px 0px rgba(0, 0, 0, 0.23);
@@ -47,7 +47,7 @@ interface Props {
 const AuthWrapper = (props: Props) => {
   return (
     <Wrapper className="bg-dots">
-      <FormWrapper className="sm:w-3 md:w-1">
+      <FormWrapper className="w-11/12 p-7 bg-white md:w-2/3 lg:w-2/3 xl:w-1/3 md:p-10 lg:p-10">
         <ui.Badge
           background="#b5f7cd"
           borderRadius="50%"
