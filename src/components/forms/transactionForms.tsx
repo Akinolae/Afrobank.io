@@ -8,6 +8,7 @@ const SendMoneyForm = () => {
     <AnimationWrapper
       height={"auto"}
       className="pl-12 pr-12 h-full w-full"
+      timer={0.5}
       render={() => {
         return (
           <FormWrapper
@@ -16,11 +17,34 @@ const SendMoneyForm = () => {
             validationSchema={{}}
             render={() => {
               return (
-                <div className="mt-4">
-                  <ui.CustomInput />
-                  <ui.CustomInput />
-                  <ui.CustomInput />
-                  <ui.CustomInput />
+                <>
+                  <div className="mt-4 p-6">
+                    {/* <ui.CustomInput /> */}
+                    <ui.CustomDropDown
+                      styles={{
+                       dropdown: {
+                        height: "400px",
+                        borderRadius: '50%',
+                        display: 'flex'
+                        
+                       }
+                      }}
+                      placeholder="Select bank"
+                      className="mb-4"
+                      options={[
+                        {
+                          key: "card",
+                          text: "Card",
+                        },
+                        {
+                          key: "main",
+                          text: "Main",
+                        },
+                      ]}
+                    />
+                    <ui.CustomInput />
+                    <ui.CustomInput />
+                  </div>
                   <div className="w-36 flex justify-end ml-auto">
                     <ui.Button
                       // isLoading={isSubmitting}
@@ -37,7 +61,7 @@ const SendMoneyForm = () => {
                       type="submit"
                     />
                   </div>
-                </div>
+                </>
               );
             }}
           />

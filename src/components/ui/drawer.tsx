@@ -15,6 +15,9 @@ const Drawer = (props: DrawerProps) => {
       isOpen={isOpen}
       onDismiss={dismissPanel}
       closeButtonAriaLabel="Close"
+      style={{
+        background: 'yello'
+      }}
     >
       {children}
     </Panel>

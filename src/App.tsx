@@ -138,13 +138,14 @@ function App() {
   );
 
   return (
-    <AnimatePresence>
-      <Provider store={appStore}>
-        <PersistGate loading={null} persistor={persistor}>
-          <RouterProvider router={routes} />
-        </PersistGate>
-      </Provider>
-    </AnimatePresence>
+    
+      <AnimatePresence>
+        <Provider store={appStore}>
+          <PersistGate loading={null} persistor={persistor}>
+            <RouterProvider router={routes} />
+          </PersistGate>
+        </Provider>
+      </AnimatePresence>
   );
 }
 

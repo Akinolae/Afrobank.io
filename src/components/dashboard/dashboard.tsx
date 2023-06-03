@@ -41,9 +41,9 @@ const Dashboard = () => {
   ];
   return (
     <>
-      <Box className="flex" style={{ height: "100vh" }}>
+      <Box className="flex flex-col lg:flex-row" style={{ height: "100vh" }}>
         <SendMoneyModal isOpen={isOpen} toggle={hideModal} />
-        <Box className="w-9/12 mr-6 m-auto h-full">
+        <Box className="w-full lg:w-9/12 mr-6 m-auto h-full">
           <Card className="bg-white w-full h-80 mb-4 p-6">
             <Ui.Text
               text="Cash position"
@@ -55,8 +55,8 @@ const Dashboard = () => {
         </Box>
 
         {/*  */}
-        <Box className="w-2/6 m-auto h-full">
-          <Card className="bg-white mb-5 w-full p-6 h-56">
+        <Box className="w-full lg:w-2/6 m-auto h-full">
+          <Card className="mt-4 md:mt-0 bg-white mb-5 w-full p-6 h-56">
             <Box className="flex justify-center items-center flex-col h-full">
               <Box className="w-full flex justify-between">
                 <Ui.Text

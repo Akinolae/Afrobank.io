@@ -36,6 +36,8 @@ export interface ModalProps {
   size?: "small" | "medium" | "large";
   type: "modal" | "drawer";
   styles?: object;
+  className?: string;
+  color?: string
 }
 
 const Modal = (props: ModalProps) => {
@@ -59,11 +61,16 @@ const Modal = (props: ModalProps) => {
   return (
     <AnimatePresence>
       {type === "drawer" ? (
-        <Drawer isOpen={isOpen} dismissPanel={toggle} {...rest}>
+        <Drawer isOpen={isOpen} dismissPanel={toggle}  {...rest}>
           <>{children}</>
         </Drawer>
       ) : (
-        <FluentiUiModal styles={styles} isOpen={isOpen} onDismiss={toggle}>
+        <FluentiUiModal
+          styles={styles}
+          isOpen={isOpen}
+          onDismiss={toggle}
+          {...rest}
+        >
           <div className="flex justify-end w-full">
             <Ui.Button
               width="20px"

@@ -20,6 +20,7 @@ const SendMoneyModal = (props: ModalProps) => {
   return (
     <Modal
       type="modal"
+      className="bg-rose-500"
       styles={{
         main: {
           width: "100%",

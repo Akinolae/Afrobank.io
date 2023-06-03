@@ -57,22 +57,31 @@ const routes = [
   },
 ];
 
-const Sidebar = () => {
+export const Links = (props: any) => (
+  <>
+    <Box className="flex flex-col justify-center">
+      {routes.map((route, i) => {
+        return (
+          <Sidelink
+            className="flex text-black opacity-80 pl-4 no-underline hover:opacity-50 hover:bg-gray-400 rounded font-black w-full justify-start items-center text-sm lg:text-white"
+            key={i}
+            to={route.path}
+            onClick={props?.toggle}
+          >
+            {route.icon}
+            <ui.Text text={route.name} />
+          </Sidelink>
+        );
+      })}
+    </Box>
+  </>
+);
+
+const Sidebar = (props: any) => {
   return (
-    <SideBarWrapper className="w-full flex justify-between flex-col h-full ">
+    <SideBarWrapper className=" w-full flex justify-between flex-col h-full ">
       <Box className="flex flex-col justify-center">
-        {routes.map((route, i) => {
-          return (
-            <Sidelink
-              className="flex opacity-80 pl-4 no-underline hover:opacity-50 hover:bg-gray-400 text-black rounded font-black w-full justify-start items-center text-sm"
-              key={i}
-              to={route.path}
-            >
-              {route.icon}
-              <ui.Text text={route.name} />
-            </Sidelink>
-          );
-        })}
+        <Links {...props} />
       </Box>
     </SideBarWrapper>
   );

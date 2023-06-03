@@ -3,6 +3,8 @@ import { Formik, Form } from "formik";
 import Ui from "../ui";
 import * as yup from "yup";
 import { errors } from "../../@utils/error";
+import { useAuth0 } from "@auth0/auth0-react";
+import { BsGoogle } from "react-icons/bs";
 
 interface FormikProps {
   children?: React.ReactElement;
@@ -34,6 +36,7 @@ export const FormWrapper = (props: FormikProps) => {
 };
 
 function LoginForm(props: any) {
+  const { loginWithRedirect } = useAuth0();
   const initialValues = { email: "", password: "" };
   const validationSchema = yup.object().shape({
     email: yup.string().email("Enter a valid email").required(errors.email),
@@ -69,12 +72,24 @@ function LoginForm(props: any) {
               isLoading={isSubmitting}
               text="Login"
               color={"white"}
-              className="hover h-12 text-sm font-black justify-center items-center"
+              className="hover h-12 text-sm font-black m-auto mt-5 mb-3 justify-center items-center"
               borderRadius="10px"
               backgroundColor={"#3B1FA4"}
-              style={{ margin: "30px auto" }}
               type="submit"
             />
+            {/* <Ui.Button
+              // isLoading={isSubmitting}
+              color={"white"}
+              className="hover bg-black text-sm mb-2 font-black m-auto justify-center items-center"
+              borderRadius="50%"
+              backgroundColor={"red"}
+              width="30px"
+              height={'30px'}
+              type="button"
+              onClick={() => loginWithRedirect()}
+            >
+              <BsGoogle />
+            </Ui.Button> */}
           </React.Fragment>
         );
       }}

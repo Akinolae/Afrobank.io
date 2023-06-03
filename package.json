@@ -12,6 +12,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.1.0",
     "@fluentui/react": "^8.106.2",
     "@reduxjs/toolkit": "^1.9.3",
     "@types/react-icons": "^3.0.0",
