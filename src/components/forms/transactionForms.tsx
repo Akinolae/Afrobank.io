@@ -19,16 +19,7 @@ const SendMoneyForm = () => {
               return (
                 <>
                   <div className="mt-4 p-6">
-                    {/* <ui.CustomInput /> */}
                     <ui.CustomDropDown
-                      styles={{
-                       dropdown: {
-                        height: "400px",
-                        borderRadius: '50%',
-                        display: 'flex'
-                        
-                       }
-                      }}
                       placeholder="Select bank"
                       className="mb-4"
                       options={[
