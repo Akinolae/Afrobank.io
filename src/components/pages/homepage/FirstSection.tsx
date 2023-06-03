@@ -64,7 +64,7 @@ const FirstSection = () => {
           </div>
         </Nav>
         <Body className="flex flex-col h-screen md:flex-col lg:flex-row">
-          <Box className="pt-14 h-full flex flex-col justify-center items-center">
+          <Box className="pt-16 h-full flex flex-col justify-center items-center">
             <Ui.SlideAnimationWrapper
               animationStart={{
                 x: 0,
@@ -78,7 +78,7 @@ const FirstSection = () => {
               render={() => (
                 <>
                   <Ui.Text
-                    className="lg:leading-tight text-center md:text-center lg:text-start lg:text-5xl md:text-3xl sm:text-2xl font-black text-white"
+                    className="pr-8 pl-8 lg:pr-0 lg:pl-0 lg:leading-tight text-center md:text-center lg:text-start lg:text-5xl md:text-3xl sm:text-2xl font-black text-white"
                     style={{
                       paddingBottom: "12px",
                       fontWeight: "900",

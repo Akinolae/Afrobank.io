@@ -62,11 +62,11 @@ const SecondSection = () => {
             >
               <ImageWrapper className="mb-4 md:mb-4 lg:mb-0 flex justify-center items-center w-full h-full text-center flex-col">
                 <Ui.Text
-                  className="font-black text-white text-2xl"
+                  className="font-black text-white text-xl lg:text-2xl"
                   text="Find which plan works best for you"
                 />
                 <Ui.Text
-                  className="font-black text-white text-sm"
+                  className="font-black text-white text-xs lg:text-sm"
                   text="Not sure which plan to go with?
             Our team can help!"
                 />

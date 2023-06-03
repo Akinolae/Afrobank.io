@@ -69,9 +69,9 @@ const ThirdSection = () => {
                     paddingBottom: "50px",
                   }}
                 >
-                  <Ui.Text className="font-black text-center text-4xl py-5 text-white">
+                  <Ui.Text className="font-black text-center text-xl lg:text-4xl py-5 text-white">
                     <>
-                      <span className="text-gray-400 text-5xl">Afrobank</span>,
+                      <span className="text-gray-400 text-2xl lg:text-5xl">Afrobank</span>,
                       smarter business
                     </>
                   </Ui.Text>
