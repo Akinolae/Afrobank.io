@@ -44,7 +44,7 @@ const FirstSection = () => {
                 text="Create account"
                 color={"white"}
                 fontSize={10}
-                className="hover h-9 font-black justify-center items-center"
+                className="hover hidden md:block lg:block h-9 font-black justify-center items-center"
                 width="7rem"
                 backgroundColor={"#3B1FA4"}
                 borderRadius="50px"
