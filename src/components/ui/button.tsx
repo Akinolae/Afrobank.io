@@ -29,7 +29,6 @@ const Loader = () => (
 );
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children?: React.ReactElement;
   text?: string;
   color?: string;
   borderRadius?: string;
@@ -41,16 +40,16 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
 }
 
-const Button = (props: Props) => {
-  const {
-    isLoading,
-    children,
-    className,
-    width,
-    height,
-    borderRadius,
-    ...rest
-  } = props;
+const Button: React.FC<React.PropsWithChildren<Props>> = ({
+  text,
+  width,
+  height,
+  children,
+  isLoading,
+  className,
+  borderRadius,
+  ...rest
+}) => {
   return (
     <ButtonComponent
       className={`flex ${className}`}
@@ -60,7 +59,7 @@ const Button = (props: Props) => {
       disabled={isLoading}
       {...rest}
     >
-      {isLoading ? <Loader /> : props.text}
+      {isLoading ? <Loader /> : text}
       {children}
     </ButtonComponent>
   );

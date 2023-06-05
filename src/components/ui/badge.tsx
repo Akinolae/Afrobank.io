@@ -12,14 +12,17 @@ const Wrapper = styled.div<CSSProperties>`
 `;
 
 interface Props {
-  children: React.ReactElement;
   style: CSSProperties;
   background: string;
   borderRadius: string;
 }
 
-const Badge = (props: Props) => {
-  const { background, children, borderRadius, ...rest } = props;
+const Badge: React.FC<React.PropsWithChildren<Props>> = ({
+  background,
+  children,
+  borderRadius,
+  ...rest
+}) => {
   return (
     <Wrapper background={background} borderRadius={borderRadius} {...rest}>
       {children}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { MessageBar, MessageBarType } from "@fluentui/react";
 
@@ -13,8 +13,7 @@ interface AlertProps {
   hasBtn?: boolean;
 }
 
-const Alert = (props: AlertProps) => {
-  const { text = "", type } = props;
+const Alert: React.FC<AlertProps> = ({ text = "", type }) => {
   const [visible, setVisible] = useState(!!text ? true : false);
 
   useEffect(() => {

@@ -21,13 +21,15 @@ interface Props {
   className?: string;
 }
 
-const Text = (props: React.PropsWithChildren<Props>) => {
-  const { text, className, ...rest } = props;
-
-  console.log({ props });
+const Text: React.FC<React.PropsWithChildren<Props>> = ({
+  text,
+  className,
+  children,
+  ...rest
+}) => {
   return (
     <TextComponent className={className} {...rest}>
-      {props?.children}
+      {children}
       {text}
     </TextComponent>
   );

@@ -47,9 +47,14 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   option?: [{ label: string; value: string }, { label: string; value: string }];
 }
 
-const CustomInput = (props: Props) => {
-  const { onChange, label, labelColor, error, option, ...rest } = props;
-
+const CustomInput: React.FC<Props> = ({
+  onChange,
+  label,
+  labelColor,
+  error,
+  option,
+  ...rest
+}) => {
   return (
     <>
       {!!label ? (
@@ -78,8 +83,12 @@ const CustomInput = (props: Props) => {
   );
 };
 
-const CustomPasswordInput = (props: Props) => {
-  const { hasIcon, label, error, ...rest } = props;
+const CustomPasswordInput: React.FC<Props> = ({
+  hasIcon,
+  label,
+  error,
+  ...rest
+}) => {
   const [isVisible, setIsVisible] = useState<React.ComponentState>(false);
   return (
     <>

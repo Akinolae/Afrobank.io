@@ -6,8 +6,11 @@ interface DrawerProps {
   dismissPanel?: () => void;
 }
 
-const Drawer = (props: React.PropsWithChildren<DrawerProps>) => {
-  const { isOpen, children, dismissPanel } = props;
+const Drawer: React.FC<React.PropsWithChildren<DrawerProps>> = ({
+  isOpen,
+  children,
+  dismissPanel,
+}) => {
   return (
     <Panel
       isBlocking={false}

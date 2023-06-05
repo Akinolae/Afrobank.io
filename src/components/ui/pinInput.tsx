@@ -20,9 +20,7 @@ const PinWrapper = styled.div`
   justify-content: space-between;
 `;
 
-const PinInput = (props: PinProps) => {
-  const { length, onChange, type, ...rest } = props;
-
+const PinInput: React.FC<PinProps> = ({ length, onChange, type, ...rest }) => {
   return (
     <PinWrapper>
       {Array(length)

@@ -1,7 +1,13 @@
 import { Dropdown, IDropdownProps } from "@fluentui/react/lib/Dropdown";
 
-const CustomDropDown = (props: IDropdownProps) => {
-  const { label, placeholder, styles, options, onChange, ...rest } = props;
+const CustomDropDown: React.FC<IDropdownProps> = ({
+  label,
+  placeholder,
+  styles,
+  options,
+  onChange,
+  ...rest
+}) => {
   return (
     <Dropdown
       options={options}
