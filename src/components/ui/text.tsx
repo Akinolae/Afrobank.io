@@ -19,11 +19,12 @@ interface Props {
   fontWeight?: string | number;
   fontSize?: string;
   className?: string;
-  children?: React.ReactElement;
 }
 
-const Text = (props: Props) => {
+const Text = (props: React.PropsWithChildren<Props>) => {
   const { text, className, ...rest } = props;
+
+  console.log({ props });
   return (
     <TextComponent className={className} {...rest}>
       {props?.children}

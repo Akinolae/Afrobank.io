@@ -28,7 +28,6 @@ const ModalComponent = styled(motion.div)<CSSProperties>`
 `;
 
 export interface ModalProps {
-  children?: React.ReactElement<any, string | JSXElementConstructor<any>>;
   isOpen: boolean;
   toggle(): void;
   width?: number | string;
@@ -37,10 +36,10 @@ export interface ModalProps {
   type: "modal" | "drawer";
   styles?: object;
   className?: string;
-  color?: string
+  color?: string;
 }
 
-const Modal = (props: ModalProps) => {
+const Modal = (props: React.PropsWithChildren<ModalProps>) => {
   const {
     children,
     isOpen,
@@ -61,7 +60,7 @@ const Modal = (props: ModalProps) => {
   return (
     <AnimatePresence>
       {type === "drawer" ? (
-        <Drawer isOpen={isOpen} dismissPanel={toggle}  {...rest}>
+        <Drawer isOpen={isOpen} dismissPanel={toggle} {...rest}>
           <>{children}</>
         </Drawer>
       ) : (

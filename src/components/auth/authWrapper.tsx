@@ -38,13 +38,12 @@ const FormWrapper = styled(motion.div)`
 interface Props {
   headerText: string;
   subText: string;
-  children?: React.ReactElement<any, string | JSXElementConstructor<any>>;
   error: string;
   routeText?: string;
   linkto?: string | "";
 }
 
-const AuthWrapper = (props: Props) => {
+const AuthWrapper = (props: React.PropsWithChildren<Props>) => {
   return (
     <Wrapper className="bg-dots">
       <FormWrapper className="w-11/12 p-7 bg-white md:w-2/3 lg:w-2/3 xl:w-1/3 md:p-10 lg:p-10">
