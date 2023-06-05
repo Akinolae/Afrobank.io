@@ -39,18 +39,17 @@ export interface ModalProps {
   color?: string;
 }
 
-const Modal = (props: React.PropsWithChildren<ModalProps>) => {
-  const {
-    children,
-    isOpen,
-    width,
-    toggle,
-    showCloseButton,
-    size,
-    type,
-    styles,
-    ...rest
-  } = props;
+const Modal: React.FC<React.PropsWithChildren<ModalProps>> = ({
+  children,
+  isOpen,
+  width,
+  toggle,
+  showCloseButton,
+  size,
+  type,
+  styles,
+  ...rest
+}) => {
   const [isPresent, safeToRemove] = usePresence();
 
   useEffect(() => {

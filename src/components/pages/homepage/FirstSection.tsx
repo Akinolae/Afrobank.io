@@ -30,7 +30,7 @@ const Image = styled.img`
   }
 `;
 
-const FirstSection = () => {
+const FirstSection: React.FC = () => {
   return (
     <Box className="pl-10 pr-10 bg-black">
       <Box className="max-w-6xl m-auto">
@@ -114,7 +114,6 @@ const FirstSection = () => {
                       />
                     </Link>
                   </motion.div>
-                 
                 </>
               )}
             />

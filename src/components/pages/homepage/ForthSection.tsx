@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { motion, useScroll, useTransform } from "framer-motion";
-import woman from "../../../assets/happy.jpeg";
 import React, { useRef } from "react";
 
 const Box = styled(motion.div)`
@@ -8,20 +7,8 @@ const Box = styled(motion.div)`
   position: relative;
 `;
 
-const Wrapper = styled(Box)`
-  background-image: url(${woman});
-  width: 600px;
-  height: 400px;
-  position: absolute;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  &:before {
-    background-color: red;
-  }
-`;
 
-const ForthSection = () => {
+const ForthSection: React.FC = () => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref });
   const y = useTransform(scrollYProgress, [0, 1], [0, 600]);

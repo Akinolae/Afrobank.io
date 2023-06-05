@@ -6,13 +6,14 @@ import FirstSection from "./FirstSection";
 import SecondSection from "./SecondSection";
 import ThirdSection from "./ThirdSection";
 import ForthSection from "./ForthSection";
+import React from "react";
 
 const Box = styled.div`
   width: 100%;
   overflow: hidden;
 `;
 
-const Footer = () => (
+const Footer: React.FC = () => (
   <Box
     style={{
       backgroundColor: "#E8E9E7",

@@ -9,8 +9,7 @@ interface ModalProps {
   toggle(): void;
 }
 
-const SendMoneyModal = (props: ModalProps) => {
-  const { isOpen, toggle } = props;
+const SendMoneyModal: React.FC<ModalProps> = ({ isOpen, toggle }) => {
   const [trxType, setTrxType] = useState("main");
 
   const handleChange = (e: any, val: any): void => {

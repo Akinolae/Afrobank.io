@@ -1,9 +1,8 @@
 import { FormWrapper } from "./forms";
-import * as yup from "yup";
 import ui from "../ui";
 import AnimationWrapper from "../ui/animations/animationWrapper";
 
-const SendMoneyForm = () => {
+const SendMoneyForm: React.FC = () => {
   return (
     <AnimationWrapper
       height={"auto"}

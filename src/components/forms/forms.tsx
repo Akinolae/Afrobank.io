@@ -4,19 +4,20 @@ import Ui from "../ui";
 import * as yup from "yup";
 import { errors } from "../../@utils/error";
 import { useAuth0 } from "@auth0/auth0-react";
-import { BsGoogle } from "react-icons/bs";
 
 interface FormikProps {
-  children?: React.ReactElement;
   initialValues: object;
   validationSchema: object;
   onSubmit: () => void;
   render: (props: any) => React.ReactElement;
 }
 
-export const FormWrapper = (props: FormikProps) => {
-  const { initialValues, onSubmit, validationSchema, render } = props;
-
+export const FormWrapper: React.FC<React.PropsWithChildren<FormikProps>> = ({
+  initialValues,
+  onSubmit,
+  validationSchema,
+  render,
+}) => {
   const RenderComponent = render;
   return (
     <Formik

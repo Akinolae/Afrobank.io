@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Ui from "../../ui";
 import image from "../../../assets/img.jpeg";
 import { breakpoints } from "../../../breakpoints";
+import React from "react";
 
 const { xScreen, largeScreen } = breakpoints();
 const Box = styled.div`
@@ -26,7 +27,7 @@ const ImageWrapper = styled(Box)`
   }
 `;
 
-const SecondSection = () => {
+const SecondSection: React.FC = () => {
   return (
     <Box
       style={{
