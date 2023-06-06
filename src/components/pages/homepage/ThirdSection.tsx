@@ -4,6 +4,7 @@ import Ui from "../../ui";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { IoIosFlash } from "react-icons/io";
 import { BiTime, BiTransfer } from "react-icons/bi";
+import React from "react";
 
 const Box = styled(motion.div)`
   width: 100%;
@@ -53,7 +54,7 @@ const cardInfo = [
   },
 ];
 
-const ThirdSection = () => {
+const ThirdSection: React.FC = () => {
   return (
     <Wrapper>
       <Box className="max-w-6xl m-auto">
@@ -71,8 +72,10 @@ const ThirdSection = () => {
                 >
                   <Ui.Text className="font-black text-center text-xl lg:text-4xl py-5 text-white">
                     <>
-                      <span className="text-gray-400 text-2xl lg:text-5xl">Afrobank</span>,
-                      smarter business
+                      <span className="text-gray-400 text-2xl lg:text-5xl">
+                        Afrobank
+                      </span>
+                      , smarter business
                     </>
                   </Ui.Text>
                   <Ui.Text

@@ -12,7 +12,7 @@ const auth = new Auth(store, "http://localhost:3005/Api/v1/", {
   updateUser,
 });
 
-const getToken = (): string | undefined => {
+const getToken = (): string => {
   const token = store.getState().user.payLoad.token;
   return token;
 };

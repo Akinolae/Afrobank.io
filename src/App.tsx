@@ -110,7 +110,14 @@ function App() {
                 // This is a temporary implimentation
                 <React.Fragment>
                   {data.path.includes("/user-dashboard") && (
-                    <Route path="/user-dashboard" element={<Main />}>
+                    <Route
+                      path="/user-dashboard"
+                      element={
+                        <ProtectedRoute>
+                          <Main />
+                        </ProtectedRoute>
+                      }
+                    >
                       {data.children.map((route, i) => {
                         const id = i + 1;
                         return (
@@ -138,14 +145,13 @@ function App() {
   );
 
   return (
-    
-      <AnimatePresence>
-        <Provider store={appStore}>
-          <PersistGate loading={null} persistor={persistor}>
-            <RouterProvider router={routes} />
-          </PersistGate>
-        </Provider>
-      </AnimatePresence>
+    <AnimatePresence>
+      <Provider store={appStore}>
+        <PersistGate loading={null} persistor={persistor}>
+          <RouterProvider router={routes} />
+        </PersistGate>
+      </Provider>
+    </AnimatePresence>
   );
 }
 
