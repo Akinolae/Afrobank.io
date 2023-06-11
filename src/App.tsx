@@ -19,10 +19,10 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import Profile from "./components/dashboard/profile";
 import Dashboard from "./components/dashboard/dashboard";
 import SendMoney from "./components/dashboard/sendMoney";
 import Settings from "./components/dashboard/settings";
+import Profile from "./components/dashboard/profile";
 import Payment from "./components/dashboard/payment";
 
 initializeIcons();
@@ -86,11 +86,7 @@ function App() {
       ],
     },
   ].map((data) => ({
-    element: !data.public ? (
-      <ProtectedRoute {...data}>{data.element}</ProtectedRoute>
-    ) : (
-      data.element
-    ),
+    element: data.element,
     path: data.path,
     errorElement: <ErrorBoundary />,
     public: data.public,
@@ -101,15 +97,14 @@ function App() {
     createRoutesFromElements(
       <Route>
         {route.map((data, ind) => {
+          const isDashboard = data.path.includes("/user-dashboard");
           return (
             <React.Fragment key={ind}>
               {data.public ? (
                 <Route path={data.path} element={data.element} id={data.path} />
               ) : (
-                // This part is meant to be accessable to only validated users
-                // This is a temporary implimentation
                 <React.Fragment>
-                  {data.path.includes("/user-dashboard") && (
+                  {isDashboard && (
                     <Route
                       path="/user-dashboard"
                       element={
@@ -119,14 +114,15 @@ function App() {
                       }
                     >
                       {data.children.map((route, i) => {
-                        const id = i + 1;
+                        const id = String(i + 1);
                         return (
                           <Route
-                            index={!route.path ? true : false}
-                            id={id.toString()}
+                            id={id}
                             key={i}
                             path={route.path}
                             element={route.element}
+                            errorElement={data.errorElement}
+                            index={!route.path ? true : false}
                           />
                         );
                       })}

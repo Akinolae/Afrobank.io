@@ -41,14 +41,14 @@ const routes = [
     icon: <BiWallet style={style} />,
   },
   {
-    name: "Settings",
-    path: "settings",
-    icon: <FiSettings style={style} />,
-  },
-  {
     name: "Profile",
     path: "profile",
     icon: <BsFillPersonFill style={style} />,
+  },
+  {
+    name: "Settings",
+    path: "settings",
+    icon: <FiSettings style={style} />,
   },
   {
     name: "Log out",
@@ -79,7 +79,7 @@ export const Links = (props: any) => (
 
 const Sidebar = (props: any) => {
   return (
-    <SideBarWrapper className=" w-full flex justify-between flex-col h-full ">
+    <SideBarWrapper className=" w-full flex justify-between flex-col overflow-hidden">
       <Box className="flex flex-col justify-center">
         <Links {...props} />
       </Box>

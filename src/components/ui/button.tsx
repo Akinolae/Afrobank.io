@@ -2,7 +2,7 @@ import React from "react";
 import styled, { CSSProperties } from "styled-components";
 import { TailSpin } from "react-loader-spinner";
 
-const ButtonComponent = styled.button<CSSProperties>`
+const ButtonComponent = styled.button<CSSProperties | any>`
   border: none;
   cursor: pointer;
   width: ${(props) => props.width};
@@ -12,6 +12,7 @@ const ButtonComponent = styled.button<CSSProperties>`
   border-radius: ${(props) => props.borderRadius || ""};
   font-size: ${(props) => `${props.fontSize}px` || "14px"};
   transition: all ease-in-out 0.3s;
+  opacity: ${(props) => props.disabled ? 0.8 : 1};
   font-weight: 700;
 `;
 

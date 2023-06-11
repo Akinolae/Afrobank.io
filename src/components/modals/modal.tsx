@@ -37,6 +37,7 @@ export interface ModalProps {
   styles?: object;
   className?: string;
   color?: string;
+  id?: string | number;
 }
 
 const Modal: React.FC<React.PropsWithChildren<ModalProps>> = ({

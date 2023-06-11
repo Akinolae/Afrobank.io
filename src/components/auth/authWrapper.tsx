@@ -1,14 +1,11 @@
-import React, { JSXElementConstructor } from "react";
+import React from "react";
 import styled, { CSSProperties } from "styled-components";
 import ui from "../ui";
 import { FaKey } from "react-icons/fa";
 import { MessageBarType } from "@fluentui/react";
 import { Link } from "react-router-dom";
 import { MdOutlineCopyright } from "react-icons/md";
-import { breakpoints } from "../../breakpoints";
 import { motion } from "framer-motion";
-
-const { xScreen } = breakpoints();
 
 const Wrapper = styled(motion.div)<CSSProperties | any>`
   width: ${(props) => props.width || "100%"};
@@ -20,19 +17,18 @@ const Wrapper = styled(motion.div)<CSSProperties | any>`
   align-items: center;
   padding: 3%;
 `;
+
 const FormWrapper = styled(motion.div)`
-  // width: 30rem;
   margin: auto;
   transition: all ease 0.3s;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  // padding: 1.8%;
-  // background: white;
   border-radius: 10px;
   box-shadow: -18px 7px 82px 0px rgba(0, 0, 0, 0.23);
   -webkit-box-shadow: -18px 7px 82px 0px rgba(0, 0, 0, 0.23);
   -moz-box-shadow: -18px 7px 82px 0px rgba(0, 0, 0, 0.23);
+  transition: all ease-in-out 0.3s;
 `;
 
 interface Props {

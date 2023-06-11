@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Form } from "formik";
+import { Formik, Form, useFormik } from "formik";
 import Ui from "../ui";
 import * as yup from "yup";
 import { errors } from "../../@utils/error";
@@ -8,7 +8,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 interface FormikProps {
   initialValues: object;
   validationSchema: object;
-  onSubmit: () => void;
+  onSubmit: (params: any) => any;
   render: (props: any) => React.ReactElement;
 }
 

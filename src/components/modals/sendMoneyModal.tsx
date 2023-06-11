@@ -17,24 +17,13 @@ const SendMoneyModal: React.FC<ModalProps> = ({ isOpen, toggle }) => {
   };
 
   return (
-    <Modal
-      type="modal"
-      styles={{
-        main: {
-          width: "100%",
-          maxWidth: "600px",
-          borderRadius: "10px",
-          padding: "10px",
-        },
-      }}
-      isOpen={isOpen}
-      toggle={toggle}
-    >
+    <Modal type="drawer" className="h-full" isOpen={isOpen} toggle={toggle}>
       <React.Fragment>
-        <div className="w-48 pl-12">
+        <Ui.Text text="Send Money" className="font-black text-lg mb-10" />
+        <div className="w-full">
           <CustomDropDown
-            label="transaction type"
-            placeholder="select transaction mode"
+            label="Pick a transaction mode"
+            placeholder="Transaction mode"
             options={[
               {
                 key: "card",
@@ -47,17 +36,36 @@ const SendMoneyModal: React.FC<ModalProps> = ({ isOpen, toggle }) => {
             ]}
             onChange={(event, option) => handleChange(event, option)}
             styles={{
+              root: {
+                width: "50%",
+              },
               label: {
                 fontSize: "10px",
               },
-              dropdownOptionText: {
+              caretDownWrapper: {
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+              },
+              caretDown: {
                 fontSize: "10px",
               },
               title: {
+                height: "30px",
                 fontSize: "10px",
+                display: "flex",
+                alignItems: "center",
+                border: `1px solid #858282`,
+                borderRadius: "10px",
+                paddingLeft: "15px",
+                paddingRight: "15px",
               },
-              caretDown: {
-                fontSize: "9px",
+              dropdownItem: {
+                fontSize: "10px",
+                background: "#3B1FA4",
+              },
+              dropdownItemSelected: {
+                fontSize: "10px",
               },
             }}
           />

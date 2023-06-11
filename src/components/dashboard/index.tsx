@@ -24,7 +24,7 @@ const Main = () => {
   const toggle = () => {
     setIsopen(!isOpen);
   };
-  
+
   const toggleNav = () => {
     setNavOpen(!navOpen);
   };
@@ -71,15 +71,15 @@ const Main = () => {
               text="Afrobank"
             />
           </Box>
-          <Box className="hidden w-28 lg:flex justify-between">
-            <Ui.Button width="25px" height="25px">
+          <Box className="hidden w-32 lg:flex justify-between">
+            <Ui.Button width="27px" height="27px">
               <IoIosHelpCircleOutline className="w-full h-full text-white" />
             </Ui.Button>
-            <Ui.Button onClick={toggle} width="25px" height="25px">
+            <Ui.Button onClick={toggle} width="27px" height="27px">
               <IoMdNotifications className="w-full h-full text-white" />
             </Ui.Button>
             <Link to={"profile"} className="w-8 flex justify-center">
-              <Ui.Button width="25px" height="25px">
+              <Ui.Button width="27px" height="27px">
                 <FaUserCircle className="w-full h-full text-white" />
               </Ui.Button>
             </Link>

@@ -7,11 +7,10 @@ const Input = styled.input<CSSProperties>`
   outline: none;
   height: 100%;
   width: 100%;
-  padding-right: 15px;
   font-size: 12px;
   background: none;
 `;
-const Label = styled.span<CSSProperties>`
+export const Label = styled.span<CSSProperties>`
   color: ${(props) => props.color};
   font-size: ${(props) => props.fontSize || "12px"};
   text-transform: capitalize;
@@ -31,7 +30,7 @@ const InputWrapper = styled.div<CSSProperties>`
   width: ${(props) => props.width};
 `;
 
-const Error = styled.p<CSSProperties>`
+export const Error = styled.p<CSSProperties>`
   color: red;
   font-size: 10px;
   &::first-letter {
@@ -39,7 +38,7 @@ const Error = styled.p<CSSProperties>`
   }
 `;
 
-interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   hasIcon?: boolean;
   label?: string;
   labelColor?: string;
@@ -96,15 +95,7 @@ const CustomPasswordInput: React.FC<Props> = ({
       <InputWrapper borderColor={"#858282"}>
         <Input type={isVisible ? "text" : "password"} {...rest} />
         {hasIcon ? (
-          <div
-            style={{
-              cursor: "pointer",
-              height: "100%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
+          <div className="h-full cursor-pointer flex justify-center items-center">
             {isVisible ? (
               <AiFillEye
                 style={{ fontSize: "20px" }}

@@ -1,46 +1,38 @@
 import React, { useId } from "react";
-import styled from "styled-components";
+import PinInput from "react-pin-input";
 
-interface PinProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface PinProps {
   length: number;
   secrete?: boolean;
   type?: string;
+  onChange: (params: any) => any;
 }
 
-const Input = styled.input`
-  height: 50px;
-  width: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-`;
-const PinWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const PinInput: React.FC<PinProps> = ({ length, onChange, type, ...rest }) => {
+const Pin: React.FC<PinProps> = ({ length, onChange, type, ...rest }) => {
   return (
-    <PinWrapper>
-      {Array(length)
-        .fill("")
-        .map((_, index) => {
-          const id = useId();
-
-          return (
-            <Input
-              type={type}
-              //   value={"******"}
-              id={`pin-${id}`}
-              key={index}
-              onChange={onChange}
-              {...rest}
-            />
-          );
-        })}
-    </PinWrapper>
+    <PinInput
+      length={length}
+      onChange={onChange}
+      inputStyle={{
+        borderColor: "#858282",
+        height: "60px",
+        width: "60px",
+        borderWidth: "2px",
+        borderStyle: "solid",
+        borderRadius: "10px",
+        margin: "4px",
+        fontSize: "16px",
+        fontWeight: "bold"
+        
+      }}
+      inputFocusStyle={{
+        borderColor: "#3B1FA4",
+        borderWidth: "2px",
+        borderStyle: "solid",
+      }}
+      {...rest}
+    />
   );
 };
 
-export default PinInput;
+export default Pin;

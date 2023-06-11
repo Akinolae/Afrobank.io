@@ -4,12 +4,14 @@ import { Panel } from "@fluentui/react";
 interface DrawerProps {
   isOpen: boolean;
   dismissPanel?: () => void;
+  width?: string;
 }
 
 const Drawer: React.FC<React.PropsWithChildren<DrawerProps>> = ({
   isOpen,
   children,
   dismissPanel,
+  width,
 }) => {
   return (
     <Panel
@@ -17,8 +19,9 @@ const Drawer: React.FC<React.PropsWithChildren<DrawerProps>> = ({
       isOpen={isOpen}
       onDismiss={dismissPanel}
       closeButtonAriaLabel="Close"
+      customWidth={width}
       style={{
-        background: "yello",
+        height: "100vh"
       }}
     >
       {children}
