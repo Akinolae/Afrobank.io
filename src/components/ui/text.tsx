@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { CSSProperties } from "styled-components";
 import { breakpoints } from "../../breakpoints";
+import { TextProps } from "../../interface/index.interface";
 
 const { xScreen } = breakpoints();
 
@@ -13,15 +14,7 @@ const TextComponent = styled.p<CSSProperties | any>`
   }
 `;
 
-interface Props {
-  text?: string;
-  style?: React.CSSProperties;
-  fontWeight?: string | number;
-  fontSize?: string;
-  className?: string;
-}
-
-const Text: React.FC<React.PropsWithChildren<Props>> = ({
+const Text: React.FC<React.PropsWithChildren<TextProps>> = ({
   text,
   className,
   children,

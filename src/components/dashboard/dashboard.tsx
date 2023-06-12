@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import auth from "../../@core/auth/auth";
 import styled from "styled-components";
 import Ui from "../ui";
-import { Link } from "react-router-dom";
 import SendMoneyModal from "../modals/sendMoneyModal";
 import { useBoolean } from "@fluentui/react-hooks";
-import { FaEllipsisV, FaFileInvoiceDollar } from "react-icons/fa";
-import { IoIosSend } from "react-icons/io";
-import { MdExpandMore } from "react-icons/md";
+import { FaEllipsisV } from "react-icons/fa";
 import TransactionHistory from "./transactionHistory";
+import ReceiveModal from "../modals/receiveMoneyModal";
 
 const Box = styled.div``;
 
@@ -45,6 +43,8 @@ const BtnWithIcon = (props: any) => (
 const Dashboard = () => {
   const [isOpen, { setTrue: showModal, setFalse: hideModal }] =
     useBoolean(false);
+  const [receiveModal, { setTrue: show, setFalse: hide }] =
+    useBoolean(false);
 
   // useEffect(() => {
   //   async function fetchCards() {
@@ -63,15 +63,16 @@ const Dashboard = () => {
     <>
       <Box className="flex flex-col lg:flex-row" style={{ height: "100vh" }}>
         <SendMoneyModal isOpen={isOpen} toggle={hideModal} />
-        <Box className="w-full lg:w-9/12 mr-6 m-auto h-full">
-          <Card className="bg-white w-full h-80 mb-4 p-6">
+        <ReceiveModal isOpen={receiveModal} toggle={hide} />
+        <Box className="w-full lg:w-9/12 mr-6  m-auto h-full">
+          <Card className="hidden md:block lg:block bg-white w-full h-80 m-0 md:mb-4 lg:mb-4 p-6">
             <Ui.Text
               text="Cash position"
               className="font-black"
               fontSize="14px"
             />
           </Card>
-          <Card className="w-full h-72 bg-white"></Card>
+          <Card className="hidden md:block lg:block w-full h-72 bg-white"></Card>
         </Box>
 
         {/*  */}
@@ -91,9 +92,7 @@ const Dashboard = () => {
               <Card
                 style={{ background: "#213c9b" }}
                 className="h-[160px] w-full mt-5"
-              >
-                
-              </Card>
+              ></Card>
               <Box className="flex w-full m-auto justify-between mt-8 mb-6">
                 <BtnWithIcon btnText="Send" onClick={showModal}>
                   <svg
@@ -120,7 +119,7 @@ const Dashboard = () => {
                     />
                   </svg>
                 </BtnWithIcon>
-                <BtnWithIcon btnText="Receive">
+                <BtnWithIcon onClick={show} btnText="Receive">
                   <svg
                     width="25"
                     height="25"
@@ -188,8 +187,8 @@ const Dashboard = () => {
               </Box>
             </Box>
           </Card>
-          <Card className="h-56 w-full mb-5">
-            <TransactionHistory />
+          <Card className="h-56 w-full mb-5 pb-28">
+            {/* <TransactionHistory /> */}
           </Card>
           {/* <Card className="h-56 w-full bg-white"></Card> */}
         </Box>

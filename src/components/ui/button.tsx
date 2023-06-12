@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { CSSProperties } from "styled-components";
 import { TailSpin } from "react-loader-spinner";
+import { ButtonProps } from "../../interface/index.interface";
 
 const ButtonComponent = styled.button<CSSProperties | any>`
   border: none;
@@ -12,7 +13,7 @@ const ButtonComponent = styled.button<CSSProperties | any>`
   border-radius: ${(props) => props.borderRadius || ""};
   font-size: ${(props) => `${props.fontSize}px` || "14px"};
   transition: all ease-in-out 0.3s;
-  opacity: ${(props) => props.disabled ? 0.8 : 1};
+  opacity: ${(props) => (props.disabled ? 0.8 : 1)};
   font-weight: 700;
 `;
 
@@ -29,19 +30,7 @@ const Loader = () => (
   />
 );
 
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  text?: string;
-  color?: string;
-  borderRadius?: string;
-  backgroundColor?: string;
-  fontSize?: number;
-  height?: number | string;
-  isLoading?: boolean;
-  width?: string | string;
-  className?: string;
-}
-
-const Button: React.FC<React.PropsWithChildren<Props>> = ({
+const Button: React.FC<React.PropsWithChildren<ButtonProps>> = ({
   text,
   width,
   height,

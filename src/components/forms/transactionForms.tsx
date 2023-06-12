@@ -1,15 +1,17 @@
-import { FormWrapper } from "./forms";
-import ui from "../ui";
-import AnimationWrapper from "../ui/animations/animationWrapper";
-import { useBoolean } from "@fluentui/react-hooks";
 import * as yup from "yup";
+import ui from "../ui";
 import Pin from "../modals/pinModal";
 import { banks } from "../../@utils/data";
-import { useMemo } from "react";
+import { useBoolean } from "@fluentui/react-hooks";
+import { FormWrapper } from "./forms";
+import AnimationWrapper from "../ui/animations/animationWrapper";
+import { useMemo, useState } from "react";
 
 const SendMoneyForm: React.FC = () => {
   const [isOpen, { setTrue: showModal, setFalse: hideModal }] =
     useBoolean(false);
+  const [data, setData] = useState({});
+  const [pin, setPin] = useState("");
 
   const validationSchema = yup.object().shape({
     accountNumber: yup.string().required(),
@@ -24,12 +26,18 @@ const SendMoneyForm: React.FC = () => {
     }));
   }, [banks]);
 
+  const initiateTransfer = () => {
+    console.log({ ...data, pin });
+  };
+
   return (
     <>
       <Pin
         isOpen={isOpen}
         toggle={hideModal}
-        onChange={(e) => console.log(e)}
+        onChange={(e) => setPin(e)}
+        disabled={pin.length !== 4}
+        onSubmit={initiateTransfer}
       />
       <AnimationWrapper
         height={"auto"}
@@ -43,13 +51,13 @@ const SendMoneyForm: React.FC = () => {
                 bank: "",
               }}
               onSubmit={(e) => {
-                console.log(e);
+                setData(e);
+                showModal();
               }}
               validationSchema={validationSchema}
               render={(props) => {
                 const { values, errors, setFieldValue, isSubmitting } = props;
 
-                console.log({ errors });
                 return (
                   <div className="h-full flex flex-col justify-between">
                     <div className="mt-4">
@@ -98,7 +106,6 @@ const SendMoneyForm: React.FC = () => {
                         backgroundColor={"#3B1FA4"}
                         borderRadius="10px"
                         width="100%"
-                        onClick={showModal}
                         style={{
                           marginTop: "22px",
                           marginBottom: "22px",

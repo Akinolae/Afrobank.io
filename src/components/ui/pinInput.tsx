@@ -1,12 +1,6 @@
 import React, { useId } from "react";
 import PinInput from "react-pin-input";
-
-interface PinProps {
-  length: number;
-  secrete?: boolean;
-  type?: string;
-  onChange: (params: any) => any;
-}
+import { PinProps } from "../../interface/index.interface";
 
 const Pin: React.FC<PinProps> = ({ length, onChange, type, ...rest }) => {
   return (
@@ -22,8 +16,7 @@ const Pin: React.FC<PinProps> = ({ length, onChange, type, ...rest }) => {
         borderRadius: "10px",
         margin: "4px",
         fontSize: "16px",
-        fontWeight: "bold"
-        
+        fontWeight: "bold",
       }}
       inputFocusStyle={{
         borderColor: "#3B1FA4",

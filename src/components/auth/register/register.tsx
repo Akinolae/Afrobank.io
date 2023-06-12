@@ -1,6 +1,6 @@
-import React, { useState } from "react";
 import auth from "../../../@core/auth/auth";
 import AuthWrapper from "../authWrapper";
+import { useState } from "react";
 import { RegisterForm } from "../../forms/forms";
 
 const Register = () => {

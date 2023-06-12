@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled, { CSSProperties } from "styled-components";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+import { InputProps } from "../../interface/index.interface";
 
 const Input = styled.input<CSSProperties>`
   border: none;
@@ -38,15 +39,7 @@ export const Error = styled.p<CSSProperties>`
   }
 `;
 
-export interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
-  hasIcon?: boolean;
-  label?: string;
-  labelColor?: string;
-  error?: string | undefined;
-  option?: [{ label: string; value: string }, { label: string; value: string }];
-}
-
-const CustomInput: React.FC<Props> = ({
+const CustomInput: React.FC<InputProps> = ({
   onChange,
   label,
   labelColor,
@@ -82,7 +75,7 @@ const CustomInput: React.FC<Props> = ({
   );
 };
 
-const CustomPasswordInput: React.FC<Props> = ({
+const CustomPasswordInput: React.FC<InputProps> = ({
   hasIcon,
   label,
   error,

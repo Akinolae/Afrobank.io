@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { CSSProperties } from "styled-components";
+import { BadgeProps } from "../../interface/index.interface";
 
 const Wrapper = styled.div<CSSProperties>`
   background: ${(props) => props.background};
@@ -11,13 +12,7 @@ const Wrapper = styled.div<CSSProperties>`
   margin: auto;
 `;
 
-interface Props {
-  style: CSSProperties;
-  background: string;
-  borderRadius: string;
-}
-
-const Badge: React.FC<React.PropsWithChildren<Props>> = ({
+const Badge: React.FC<React.PropsWithChildren<BadgeProps>> = ({
   background,
   children,
   borderRadius,

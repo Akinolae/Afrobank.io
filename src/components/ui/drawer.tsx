@@ -1,11 +1,6 @@
 import React from "react";
 import { Panel } from "@fluentui/react";
-
-interface DrawerProps {
-  isOpen: boolean;
-  dismissPanel?: () => void;
-  width?: string;
-}
+import { DrawerProps } from "../../interface/index.interface";
 
 const Drawer: React.FC<React.PropsWithChildren<DrawerProps>> = ({
   isOpen,
@@ -21,7 +16,7 @@ const Drawer: React.FC<React.PropsWithChildren<DrawerProps>> = ({
       closeButtonAriaLabel="Close"
       customWidth={width}
       style={{
-        height: "100vh"
+        height: "100vh",
       }}
     >
       {children}

@@ -1,45 +1,38 @@
-import React from "react";
-import styled, { CSSProperties } from "styled-components";
 import ui from "../ui";
-import { FaKey } from "react-icons/fa";
-import { MessageBarType } from "@fluentui/react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { MdOutlineCopyright } from "react-icons/md";
+import { FaKey } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { MessageBarType } from "@fluentui/react";
+import { AuthWrapperProps } from "../../interface/index.interface";
+import { MdOutlineCopyright } from "react-icons/md";
+import styled, { CSSProperties } from "styled-components";
 
 const Wrapper = styled(motion.div)<CSSProperties | any>`
   width: ${(props) => props.width || "100%"};
   height: ${(props) => props.height || "100vh"};
-  overflow-y: scroll;
-  transition: all ease 0.03s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding: 3%;
+  display: flex;
+  overflow-y: scroll;
+  align-items: center;
+  flex-direction: column;
+  transition: all ease 0.03s;
 `;
 
 const FormWrapper = styled(motion.div)`
   margin: auto;
-  transition: all ease 0.3s;
   display: flex;
+  border-radius: 10px;
   flex-direction: column;
   box-sizing: border-box;
-  border-radius: 10px;
-  box-shadow: -18px 7px 82px 0px rgba(0, 0, 0, 0.23);
-  -webkit-box-shadow: -18px 7px 82px 0px rgba(0, 0, 0, 0.23);
-  -moz-box-shadow: -18px 7px 82px 0px rgba(0, 0, 0, 0.23);
+  transition: all ease 0.3s;
   transition: all ease-in-out 0.3s;
+  box-shadow: -18px 7px 82px 0px rgba(0, 0, 0, 0.23);
+  -moz-box-shadow: -18px 7px 82px 0px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: -18px 7px 82px 0px rgba(0, 0, 0, 0.23);
 `;
 
-interface Props {
-  headerText: string;
-  subText: string;
-  error: string;
-  routeText?: string;
-  linkto?: string | "";
-}
-
-const AuthWrapper = (props: React.PropsWithChildren<Props>) => {
+const AuthWrapper = (props: React.PropsWithChildren<AuthWrapperProps>) => {
   return (
     <Wrapper className="bg-dots">
       <FormWrapper className="w-11/12 p-7 bg-white md:w-2/3 lg:w-2/3 xl:w-1/3 md:p-10 lg:p-10">

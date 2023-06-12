@@ -64,7 +64,7 @@ const Main = () => {
 
       {/* Top nav starts */}
       <Box className="max-w-7xl m-auto">
-        <Box className="flex fixed z-50 h-16 bg-black top-0 right-0 left-0 bottom-0 lg:relative justify-between items-center pl-4 pr-4 pb-4">
+        <Box className="flex fixed z-50 h-16 bg-black top-0 right-0 left-0 bottom-0 lg:relative justify-between items-center pl-4 pr-4">
           <Box>
             <Ui.Text
               className="font-black text-white text-lg"

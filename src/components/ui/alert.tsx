@@ -1,17 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { MessageBar, MessageBarType } from "@fluentui/react";
-
-interface AlertProps {
-  text: string;
-  type:
-    | MessageBarType.error
-    | MessageBarType.warning
-    | MessageBarType.success
-    | MessageBarType.info
-    | MessageBarType.severeWarning;
-  hasBtn?: boolean;
-}
+import { MessageBar } from "@fluentui/react";
+import { AlertProps } from "../../interface/index.interface";
 
 const Alert: React.FC<AlertProps> = ({ text = "", type }) => {
   const [visible, setVisible] = useState(!!text ? true : false);

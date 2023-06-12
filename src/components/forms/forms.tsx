@@ -1,22 +1,16 @@
-import React from "react";
-import { Formik, Form, useFormik } from "formik";
-import Ui from "../ui";
 import * as yup from "yup";
+import Ui from "../ui";
+import React from "react";
 import { errors } from "../../@utils/error";
 import { useAuth0 } from "@auth0/auth0-react";
-
-interface FormikProps {
-  initialValues: object;
-  validationSchema: object;
-  onSubmit: (params: any) => any;
-  render: (props: any) => React.ReactElement;
-}
+import { Formik, Form } from "formik";
+import { FormikProps } from "../../interface/index.interface";
 
 export const FormWrapper: React.FC<React.PropsWithChildren<FormikProps>> = ({
-  initialValues,
-  onSubmit,
-  validationSchema,
   render,
+  onSubmit,
+  initialValues,
+  validationSchema,
 }) => {
   const RenderComponent = render;
   return (
