@@ -42,6 +42,7 @@ const SendMoneyForm: React.FC = () => {
       <AnimationWrapper
         height={"auto"}
         className="h-full w-full"
+        timer={0.5}
         render={() => {
           return (
             <FormWrapper
@@ -65,6 +66,7 @@ const SendMoneyForm: React.FC = () => {
                         placeholder="Enter account number"
                         value={values.accountNumber}
                         error={errors.accountNumber}
+                        type="number"
                         onChange={(e: any) =>
                           setFieldValue("accountNumber", e.target.value)
                         }
@@ -74,6 +76,7 @@ const SendMoneyForm: React.FC = () => {
                           placeholder="Enter amount"
                           value={values.amount}
                           error={errors.amount}
+                          type="number"
                           onChange={(e: any) =>
                             setFieldValue("amount", e.target.value)
                           }
