@@ -14,11 +14,6 @@ const Box = styled.div`
   width: 100%;
 `;
 
-export const Sidelink = styled((props) => <NavLink {...props} />)`
-  transition: all ease 0.3s;
-  line-height: 50px;
-`;
-
 const style = {
   fontSize: "25px",
   paddingRight: "10px",
@@ -62,15 +57,19 @@ export const Links = (props: any) => (
     <Box className="flex flex-col justify-center">
       {routes.map((route, i) => {
         return (
-          <Sidelink
-            className="flex text-black opacity-80 pl-4 no-underline hover:opacity-50 hover:bg-gray-400 rounded font-black w-full justify-start items-center text-sm lg:text-white"
+          <NavLink
+            className={({ isActive }) =>
+              `${
+                isActive ? "bg-[#3B1FA4] text-white rounded opacity-80" : ""
+              } flex pl-4 w-full justify-start items-center text-sm no-underline leading-[50px] ease-in-out duration-150 text-black md:text-white lg:text-white font-black`
+            }
             key={i}
             to={route.path}
             onClick={props?.toggle}
           >
             {route.icon}
             <ui.Text text={route.name} />
-          </Sidelink>
+          </NavLink>
         );
       })}
     </Box>
