@@ -7,6 +7,7 @@ import { useBoolean } from "@fluentui/react-hooks";
 import { FaEllipsisV } from "react-icons/fa";
 import TransactionHistory from "./transactionHistory";
 import ReceiveModal from "../modals/receiveMoneyModal";
+import Cards from "react-credit-cards-2";
 
 const Box = styled.div``;
 
@@ -43,8 +44,7 @@ const BtnWithIcon = (props: any) => (
 const Dashboard = () => {
   const [isOpen, { setTrue: showModal, setFalse: hideModal }] =
     useBoolean(false);
-  const [receiveModal, { setTrue: show, setFalse: hide }] =
-    useBoolean(false);
+  const [receiveModal, { setTrue: show, setFalse: hide }] = useBoolean(false);
 
   // useEffect(() => {
   //   async function fetchCards() {
@@ -64,7 +64,7 @@ const Dashboard = () => {
       <Box className="flex flex-col lg:flex-row" style={{ height: "100vh" }}>
         <SendMoneyModal isOpen={isOpen} toggle={hideModal} />
         <ReceiveModal isOpen={receiveModal} toggle={hide} />
-        <Box className="w-full lg:w-9/12 mr-6  m-auto h-full">
+        <Box className="w-full lg:w-9/12 mr-6  m-auto md:h-full lg:h-full">
           <Card className="hidden md:block lg:block bg-white w-full h-80 m-0 md:mb-4 lg:mb-4 p-6">
             <Ui.Text
               text="Cash position"
@@ -81,18 +81,26 @@ const Dashboard = () => {
             <Box className="flex flex-col h-full">
               <Box className="w-full flex justify-between">
                 <Ui.Text
-                  fontSize="16px"
-                  className="font-black text-black"
+                  fontSize="15px"
+                  className="font-[500] text-black"
                   text="My Cards"
                 />
-                <Ui.Button width="36px" className="flex justify-end">
+                <Ui.Button width="8px" className="flex justify-end">
                   <FaEllipsisV />
                 </Ui.Button>
               </Box>
               <Card
                 style={{ background: "#213c9b" }}
                 className="h-[160px] w-full mt-5"
-              ></Card>
+              >
+                {/* <Cards
+                cvc={"123"}
+                expiry={"12/13"}
+                name="Makinde Akinola"
+                number={"12347800111899"}
+                issuer="visa"
+                /> */}
+              </Card>
               <Box className="flex w-full m-auto justify-between mt-8 mb-6">
                 <BtnWithIcon btnText="Send" onClick={showModal}>
                   <svg

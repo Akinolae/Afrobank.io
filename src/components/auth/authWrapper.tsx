@@ -35,7 +35,7 @@ const FormWrapper = styled(motion.div)`
 const AuthWrapper = (props: React.PropsWithChildren<AuthWrapperProps>) => {
   return (
     <Wrapper className="bg-dots">
-      <FormWrapper className="w-11/12 p-7 bg-white md:w-2/3 lg:w-2/3 xl:w-1/3 md:p-10 lg:p-10">
+      <FormWrapper className="w-11/12 p-7 bg-white md:w-[50%] lg:w-[45%] xl:w-[30%] md:p-10 lg:p-10">
         <ui.Badge
           background="#b5f7cd"
           borderRadius="50%"

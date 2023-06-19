@@ -95,7 +95,7 @@ const SendMoneyForm: React.FC = () => {
                         <ui.Switch />
                       </div>
                     </div>
-                    <div className="absolute top-100 bottom-0 left-0 right-0 pl-4 pr-4">
+                    <div className="absolute top-100 bottom-0 left-0 right-0 pl-4 pr-4 pb-[3%]">
                       <ui.Button
                         // isLoading={true}
                         disabled={
@@ -104,7 +104,7 @@ const SendMoneyForm: React.FC = () => {
                           !!errors.bank
                         }
                         text="Proceed"
-                        className="hover h-10 font-black justify-center m-auto items-center"
+                        className="hover cursor-not-allowed pt-4 pb-4 uppercase font-[700] h-10 justify-center m-auto items-center"
                         color={"white"}
                         backgroundColor={"#3B1FA4"}
                         borderRadius="10px"

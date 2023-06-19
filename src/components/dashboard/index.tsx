@@ -51,7 +51,7 @@ const Main = () => {
     },
   ];
   return (
-    <MainWrapper className="w-full relative pt-4 pb-10 h-full overflow-auto scroll-mx-12">
+    <MainWrapper className="w-full relative pt-4 h-full overflow-auto scroll-mx-12">
       {/* Drawer section starts */}
       <NotificationsDrawer
         isOpen={isOpen}
@@ -64,7 +64,7 @@ const Main = () => {
 
       {/* Top nav starts */}
       <Box className="max-w-7xl m-auto">
-        <Box className="flex fixed z-50 h-16 bg-black top-0 right-0 left-0 bottom-0 lg:relative justify-between items-center pl-4 pr-4">
+        <Box className="flex fixed z-50 bg-black h-16 top-0 right-0 left-0 bottom-0 lg:relative justify-between items-center pl-4 pr-4">
           <Box>
             <Ui.Text
               className="font-black text-white text-lg"
@@ -94,7 +94,7 @@ const Main = () => {
 
         {/* Sidebar and navigation Outlet for /user-dashboard */}
         <Box className="mt-14 lg:mt-0 m-auto flex h-full justify-between py-2.5">
-          <Box className="hidden lg:block w-full lg:w-56 mr-5">
+          <Box className="hidden h-screen lg:block lg:w-56 mr-5">
             <Sidebar />
           </Box>
           <Box className="w-11/12 md:w-3/4 lg:w-11/12 m-auto lg:m-0">

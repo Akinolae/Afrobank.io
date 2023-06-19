@@ -51,7 +51,7 @@ const CustomDropDown: React.FC<Props> = ({
         onChange={onChange}
         {...rest}
       />
-      {!!error ? <Error className="font-black text-xs">{error}</Error> : null}
+      {!!error ? <Error className="font-black text-xs pt-[1.5%]">{error}</Error> : null}
     </>
   );
 };

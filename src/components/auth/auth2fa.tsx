@@ -42,7 +42,8 @@ const Auth2fa = () => {
       subText="Enter the 6 digit authentication code"
       error={networkErr}
     >
-      <div style={{padding: '10px'}}>
+      <div style={{ padding: "10px" }}>
+        {/* <ui.PinInput length={6} onChange={(e) => setCode(e)} /> */}
         <ui.CustomInput
           onChange={(e) => setCode(e.target.value)}
           placeholder="Enter code"
@@ -53,10 +54,9 @@ const Auth2fa = () => {
           isLoading={loading}
           text="Proceed"
           color={"white"}
-          className="hover h-12  text-sm font-black"
+          className="hover h-12 text-sm font-black m-auto mt-5 mb-3 uppercase justify-center items-center"
           borderRadius="10px"
           backgroundColor={"#3B1FA4"}
-          style={{ margin: "30px auto" }}
           type="submit"
           onClick={onSubmit}
         />

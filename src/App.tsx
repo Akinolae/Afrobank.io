@@ -76,7 +76,7 @@ function App() {
           element: <SendMoney />,
         },
         {
-          path: "settings",
+          path: "transactions",
           element: <Settings />,
         },
         {

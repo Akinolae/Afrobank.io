@@ -19,7 +19,8 @@ const SendMoneyModal: React.FC<ModalProps> = ({ isOpen, toggle }) => {
   return (
     <Modal type="drawer" className="h-full" isOpen={isOpen} toggle={toggle}>
       <React.Fragment>
-        <Ui.Text text="Send Money" className="font-black text-lg mb-10" />
+        <Ui.Text text="Send Money" className="font-[700] text-xl" />
+        <Ui.Text text="Enter an amount and a destination to send to" className="font-black opacity-60 text-[10px] mb-10" />
         <div className="w-full">
           <CustomDropDown
             label="Pick a transaction mode"

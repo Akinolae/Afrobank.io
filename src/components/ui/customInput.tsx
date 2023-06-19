@@ -70,7 +70,7 @@ const CustomInput: React.FC<InputProps> = ({
           <Input onChange={onChange} {...rest} />
         </InputWrapper>
       )}
-      {!!error ? <Error className="font-black text-xs">{error}</Error> : null}
+      {!!error ? <Error className="font-black text-xs pt-[1.5%]">{error}</Error> : null}
     </>
   );
 };
