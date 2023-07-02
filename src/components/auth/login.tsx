@@ -16,7 +16,7 @@ const Login = () => {
     setError("");
     try {
       const res = await auth.login(e);
-      return res ? navigate("/authenticate") : navigate("/user-dashboard");
+      return res ? navigate("/authenticate") : navigate("/user-dashboard/");
     } catch (error: any) {
       setError(error);
     }

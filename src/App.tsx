@@ -55,7 +55,7 @@ function App() {
       public: true,
     },
     {
-      path: "/user-dashboard",
+      path: "/user-dashboard/",
       element: (
         <React.Suspense fallback={"...loading"}>
           <Main />
@@ -106,7 +106,7 @@ function App() {
                 <React.Fragment>
                   {isDashboard && (
                     <Route
-                      path="/user-dashboard"
+                      path="/user-dashboard/"
                       element={
                         <ProtectedRoute>
                           <Main />

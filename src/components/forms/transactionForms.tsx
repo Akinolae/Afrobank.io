@@ -146,13 +146,23 @@ const CardTrxForm = () => {
     <AnimationWrapper
       height={"auto"}
       className="h-full w-full"
+      timer={0.5}
       render={() => {
         return (
           <div className="h-full flex flex-col justify-between">
             <div className="mt-4">
               <ui.CustomInput placeholder="Enter card number" />
-              <div className="mt-4">
-                <ui.CustomInput placeholder="Enter amount" />
+              <div className="flex mt-4 justify-between">
+                <div className="w-[70%]">
+                  <ui.CustomInput placeholder="Enter amount" />
+                </div>
+                <div className="w-[25%]">
+                  <ui.CustomInput
+                    placeholder="cvv"
+                    maxLength={3}
+                    type="number"
+                  />
+                </div>
               </div>
               <ui.CustomDropDown
                 placeholder="Select bank"
