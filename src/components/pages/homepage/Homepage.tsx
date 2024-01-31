@@ -6,7 +6,7 @@ import FirstSection from "./FirstSection";
 import SecondSection from "./SecondSection";
 import ThirdSection from "./ThirdSection";
 import ForthSection from "./ForthSection";
-import React from "react";
+import React, { useEffect } from "react";
 
 const Box = styled.div`
   width: 100%;
@@ -40,6 +40,15 @@ const Footer: React.FC = () => (
 );
 
 const Homepage = () => {
+  useEffect(() => {
+    document.addEventListener("keypress", (e) => {
+      if (e.key === "Enter" && e.key === 'Enter') {
+        console.log("mounted");
+
+        alert("I just clicked enter");
+      }
+    });
+  }, []);
   return (
     <Box className="bg-dots">
       <FirstSection />
