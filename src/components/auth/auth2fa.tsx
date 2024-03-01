@@ -24,7 +24,7 @@ const Auth2fa = () => {
         setError("code is required");
       } else {
         setError("");
-        await auth.validate2fa(code);
+        await auth.validate2FA(code);
         setLoading(false);
 
         navigate("/user-dashboard");
