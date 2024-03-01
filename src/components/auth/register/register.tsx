@@ -2,14 +2,20 @@ import auth from "../../../@core/auth/auth";
 import AuthWrapper from "../authWrapper";
 import { useState } from "react";
 import { RegisterForm } from "../../forms/forms";
+import { useNavigate } from "react-router-dom";
+import { RegisterState } from "../../../interface/index.interface";
 
 const Register = () => {
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const submit = async (params: object) => {
+  const submit = async (params: RegisterState) => {
     setError("");
     try {
       await auth.register(params);
+      navigate("/verify", {
+        state: { email: params?.email },
+      });
     } catch (error: any) {
       setError(error);
     }

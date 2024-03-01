@@ -1,11 +1,20 @@
 import { MessageBarType } from "@fluentui/react";
 import { CSSProperties } from "styled-components";
+import { FormikFormProps } from "formik";
 
-interface FormikProps {
+interface FormikProps extends FormikFormProps {
   initialValues: object;
   validationSchema: object;
   onSubmit: (params: any) => any;
   render: (props: any) => React.ReactElement;
+}
+
+interface RegisterState {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
 }
 
 interface ModalProps {
@@ -30,6 +39,7 @@ interface AlertProps {
     | MessageBarType.info
     | MessageBarType.severeWarning;
   hasBtn?: boolean;
+  resetChoice?: () => void;
 }
 
 interface BadgeProps {
@@ -85,9 +95,16 @@ interface AuthWrapperProps {
   error: string;
   routeText?: string;
   linkto?: string | "";
+  authIcon?: React.FC<any> | any;
+}
+
+interface Error {
+  status: boolean;
+  message: string;
 }
 
 export type {
+  Error,
   PinProps,
   TextProps,
   AlertProps,
@@ -98,4 +115,5 @@ export type {
   ButtonProps,
   DrawerProps,
   AuthWrapperProps,
+  RegisterState
 };

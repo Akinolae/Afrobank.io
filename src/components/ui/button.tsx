@@ -12,7 +12,7 @@ const ButtonComponent = styled.button<CSSProperties | any>`
   background-color: ${(props) => props.backgroundColor};
   border-radius: ${(props) => props.borderRadius || ""};
   font-size: ${(props) => `${props.fontSize}px` || "14px"};
-  transition: all ease-in-out 0.3s;
+  transition: all ease 0.3s;
   opacity: ${(props) => (props.disabled ? 0.8 : 1)};
   font-weight: 700;
 `;

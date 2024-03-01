@@ -3,14 +3,6 @@ import styled, { CSSProperties } from "styled-components";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { InputProps } from "../../interface/index.interface";
 
-const Input = styled.input<CSSProperties>`
-  border: none;
-  outline: none;
-  height: 100%;
-  width: 100%;
-  font-size: 12px;
-  background: none;
-`;
 export const Label = styled.span<CSSProperties>`
   color: ${(props) => props.color};
   font-size: ${(props) => props.fontSize || "12px"};
@@ -48,7 +40,7 @@ const CustomInput: React.FC<InputProps> = ({
   ...rest
 }) => {
   return (
-    <>
+    <div className="w-full">
       {!!label ? (
         <Label color={labelColor} className="font-black">
           {label}
@@ -67,11 +59,17 @@ const CustomInput: React.FC<InputProps> = ({
         </InputWrapper>
       ) : (
         <InputWrapper borderColor={"#858282"}>
-          <Input onChange={onChange} {...rest} />
+          <input
+            className="w-full h-full text-xs outline-none bg-none border-none"
+            onChange={onChange}
+            {...rest}
+          />
         </InputWrapper>
       )}
-      {!!error ? <Error className="font-black text-xs pt-[1.5%]">{error}</Error> : null}
-    </>
+      {!!error ? (
+        <Error className="font-black text-xs pt-[1.5%]">{error}</Error>
+      ) : null}
+    </div>
   );
 };
 
@@ -83,10 +81,14 @@ const CustomPasswordInput: React.FC<InputProps> = ({
 }) => {
   const [isVisible, setIsVisible] = useState<React.ComponentState>(false);
   return (
-    <>
+    <div>
       {!!label ? <Label color={rest?.labelColor}>{label}</Label> : null}
       <InputWrapper borderColor={"#858282"}>
-        <Input type={isVisible ? "text" : "password"} {...rest} />
+        <input
+          className="w-full h-full text-xs outline-none bg-none border-none"
+          type={isVisible ? "text" : "password"}
+          {...rest}
+        />
         {hasIcon ? (
           <div className="h-full cursor-pointer flex justify-center items-center">
             {isVisible ? (
@@ -103,8 +105,10 @@ const CustomPasswordInput: React.FC<InputProps> = ({
           </div>
         ) : null}
       </InputWrapper>
-      {!!error ? <Error className="font-black text-xs">{error}</Error> : null}
-    </>
+      {!!error ? (
+        <Error className="font-black text-xs pt-[1.5%]">{error}</Error>
+      ) : null}
+    </div>
   );
 };
 

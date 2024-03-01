@@ -37,6 +37,7 @@ function LoginForm(props: any) {
     email: yup.string().email("Enter a valid email").required(errors.email),
     password: yup.string().required(errors.password),
   });
+
   return (
     <FormWrapper
       validationSchema={validationSchema}
@@ -46,15 +47,18 @@ function LoginForm(props: any) {
         const { values, errors, setFieldValue, isSubmitting } = props;
         return (
           <React.Fragment>
-            <Ui.CustomInput
-              type="email"
-              placeholder="Enter your email"
-              value={values.email}
-              error={errors.email}
-              onChange={(e: any) => setFieldValue("email", e.target.value)}
-            />
-            <div style={{ marginTop: "15px" }}>
+            <div className="flex gap-3 flex-col">
+              <Ui.CustomInput
+                type="email"
+                label="Email"
+                placeholder="Enter your email"
+                value={values.email}
+                error={errors.email}
+                onChange={(e: any) => setFieldValue("email", e.target.value)}
+              />
+
               <Ui.CustomPasswordInput
+                label="Password"
                 value={values.password}
                 placeholder="Enter your password"
                 hasIcon={true}
@@ -72,19 +76,6 @@ function LoginForm(props: any) {
               backgroundColor={"#3B1FA4"}
               type="submit"
             />
-            {/* <Ui.Button
-              // isLoading={isSubmitting}
-              color={"white"}
-              className="hover bg-black text-sm mb-2 font-black m-auto justify-center items-center"
-              borderRadius="50%"
-              backgroundColor={"red"}
-              width="30px"
-              height={'30px'}
-              type="button"
-              onClick={() => loginWithRedirect()}
-            >
-              <BsGoogle />
-            </Ui.Button> */}
           </React.Fragment>
         );
       }}
@@ -118,85 +109,66 @@ function RegisterForm(props: any) {
         const { values, errors, setFieldValue, isSubmitting } = props;
 
         return (
-          <React.Fragment>
+          <div className="flex flex-col gap-5">
             <div>
-              <div style={{ marginBottom: "20px" }}>
+              <Ui.CustomInput
+                type={"email"}
+                label="Email"
+                placeholder="Enter email"
+                value={values.email}
+                error={errors.email}
+                onChange={(e: any) => setFieldValue("email", e.target.value)}
+              />
+              <div className="flex justify-between mt-5 gap-8">
                 <Ui.CustomInput
-                  type={"email"}
-                  placeholder="Enter email"
-                  value={values.email}
-                  error={errors.email}
-                  onChange={(e: any) => setFieldValue("email", e.target.value)}
-                />
-              </div>
-
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  marginBottom: "20px",
-                }}
-              >
-                <div style={{ width: "48%" }}>
-                  <Ui.CustomInput
-                    placeholder="Enter last name"
-                    width={"45px"}
-                    value={values.lastName}
-                    error={errors.lastName}
-                    onChange={(e: any) =>
-                      setFieldValue("lastName", e.target.value)
-                    }
-                  />
-                </div>
-                <div style={{ width: "48%" }}>
-                  <Ui.CustomInput
-                    placeholder="Enter first name"
-                    value={values.firstName}
-                    error={errors.firstName}
-                    onChange={(e: any) =>
-                      setFieldValue("firstName", e.target.value)
-                    }
-                  />
-                </div>
-              </div>
-              <div style={{ marginBottom: "20px" }}>
-                <Ui.CustomInput
-                  type={"tel"}
-                  placeholder="Enter phone number"
-                  value={values.phoneNumber}
-                  error={errors.phoneNumber}
+                  placeholder="Enter last name"
+                  label="Last Name"
+                  value={values.lastName}
+                  error={errors.lastName}
                   onChange={(e: any) =>
-                    setFieldValue("phoneNumber", e.target.value)
+                    setFieldValue("lastName", e.target.value)
+                  }
+                />
+                <Ui.CustomInput
+                  placeholder="Enter first name"
+                  label="First Name"
+                  value={values.firstName}
+                  error={errors.firstName}
+                  onChange={(e: any) =>
+                    setFieldValue("firstName", e.target.value)
                   }
                 />
               </div>
             </div>
-            <div style={{ marginTop: "20px" }}>
-              <Ui.CustomPasswordInput
-                value={values.password}
-                placeholder="Enter password"
-                hasIcon={true}
-                error={errors.password}
-                onChange={(e: any) => setFieldValue("password", e.target.value)}
-              />
-            </div>
-            <div className="flex-center">
-              <Ui.Button
-                isLoading={isSubmitting}
-                text="Register"
-                className="hover h-12 text-sm font-black justify-center items-center"
-                color={"white"}
-                backgroundColor={"#3B1FA4"}
-                borderRadius="10px"
-                disabled={isSubmitting}
-                style={{
-                  marginTop: "22px",
-                  marginBottom: "22px",
-                }}
-                type="submit"
-              />
-            </div>
-          </React.Fragment>
+            <Ui.CustomInput
+              type={"tel"}
+              label="Phone"
+              placeholder="Enter phone number"
+              value={values.phoneNumber}
+              error={errors.phoneNumber}
+              onChange={(e: any) =>
+                setFieldValue("phoneNumber", e.target.value)
+              }
+            />
+            <Ui.CustomPasswordInput
+              value={values.password}
+              label="Password"
+              placeholder="Enter password"
+              hasIcon={true}
+              error={errors.password}
+              onChange={(e: any) => setFieldValue("password", e.target.value)}
+            />
+            <Ui.Button
+              isLoading={isSubmitting}
+              text="Register"
+              className="hover h-12 text-sm font-black justify-center items-center mt-5 mb-3 m-auto"
+              color={"white"}
+              backgroundColor={"#3B1FA4"}
+              borderRadius="10px"
+              disabled={isSubmitting}
+              type="submit"
+            />
+          </div>
         );
       }}
     />

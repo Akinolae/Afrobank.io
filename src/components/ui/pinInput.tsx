@@ -7,16 +7,22 @@ const Pin: React.FC<PinProps> = ({ length, onChange, type, ...rest }) => {
     <PinInput
       length={length}
       onChange={onChange}
+      style={{
+        margin: "auto",
+        display: "flex",
+        gap: "10px",
+        marginBottom: "2%"
+      }}
       inputStyle={{
         borderColor: "#858282",
-        height: "60px",
-        width: "60px",
+        height: "50px",
+        width: "50px",
         borderWidth: "2px",
         borderStyle: "solid",
         borderRadius: "10px",
-        margin: "4px",
         fontSize: "16px",
         fontWeight: "bold",
+        margin: "auto",
       }}
       inputFocusStyle={{
         borderColor: "#3B1FA4",

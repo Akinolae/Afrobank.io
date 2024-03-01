@@ -24,6 +24,7 @@ import SendMoney from "./components/dashboard/sendMoney";
 import Settings from "./components/dashboard/settings";
 import Profile from "./components/dashboard/profile";
 import Payment from "./components/dashboard/payment";
+import VerifyEmail from "./components/auth/verifyEmail";
 
 initializeIcons();
 
@@ -47,6 +48,11 @@ function App() {
     {
       path: "/signup",
       element: <Register />,
+      public: true,
+    },
+    {
+      path: "/verify",
+      element: <VerifyEmail />,
       public: true,
     },
     {
