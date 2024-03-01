@@ -8,18 +8,6 @@ import {
 import { Auth } from "afrobank-sdk";
 
 class Authnew extends Auth {
-  public async verifyEmail(email: string, code: string): Promise<void> {
-    try {
-      await this.auth.apiFunctionCall({
-        url: "confirmSignUp",
-        method: "POST",
-        data: { email, code },
-      });
-    } catch (error: any) {
-      throw error?.message;
-    }
-  }
-
   public isSignedIn = (): boolean => {
     return store.getState().user.isSignedIn;
   };

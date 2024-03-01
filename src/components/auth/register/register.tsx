@@ -3,13 +3,13 @@ import AuthWrapper from "../authWrapper";
 import { useState } from "react";
 import { RegisterForm } from "../../forms/forms";
 import { useNavigate } from "react-router-dom";
-import { RegisterState } from "../../../interface/index.interface";
+import { RegisterParams } from "afrobank-sdk/types/index.interface";
 
 const Register = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const submit = async (params: RegisterState) => {
+  const submit = async (params: RegisterParams) => {
     setError("");
     try {
       await auth.register(params);
