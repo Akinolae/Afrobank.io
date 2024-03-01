@@ -17,8 +17,8 @@ const Login = () => {
     try {
       const res = await auth.login(e);
       return res ? navigate("/authenticate") : navigate("/user-dashboard/");
-    } catch (error: any) {
-      setError(error?.message);
+    } catch (error: string | any) {
+      setError(error);
     }
   };
 

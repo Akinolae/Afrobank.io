@@ -20,7 +20,7 @@ const VerifyEmail = () => {
       await auth.verifyEmail(location.state?.email, code);
       navigate("/login");
     } catch (error: string | any) {
-      setError(error?.message);
+      setError(error);
     } finally {
       setLoading(false);
     }
