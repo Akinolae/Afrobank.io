@@ -42,7 +42,7 @@ const Footer: React.FC = () => (
 const Homepage = () => {
   useEffect(() => {
     document.addEventListener("keypress", (e) => {
-      if (e.key === "Enter" && e.key === 'Enter') {
+      if (e.key === "Enter" && e.key === "Enter") {
         console.log("mounted");
 
         alert("I just clicked enter");

@@ -112,7 +112,7 @@ function App() {
                 <React.Fragment>
                   {isDashboard && (
                     <Route
-                      path="/user-dashboard/"
+                      path="/user-dashboard"
                       element={
                         <ProtectedRoute>
                           <Main />
@@ -123,8 +123,8 @@ function App() {
                         const id = String(i + 1);
                         return (
                           <Route
-                            id={id}
                             key={i}
+                            id={id}
                             path={route.path}
                             element={route.element}
                             errorElement={data.errorElement}

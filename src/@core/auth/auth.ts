@@ -6,6 +6,7 @@ import {
   update2faStatus,
 } from "../../@store/store";
 import { Auth } from "afrobank-sdk";
+import { LoggedInUser } from "../../interface/index.interface";
 
 class Authnew extends Auth {
   public isSignedIn = (): boolean => {
@@ -19,6 +20,11 @@ class Authnew extends Auth {
 
   public has2fa = (): boolean => {
     return store.getState().user.has2fasStatus;
+  };
+
+  public updateLoggedInUser = (data: LoggedInUser): void => {
+    store.dispatch(updateUser(data));
+    store.dispatch(updateSignIn(true));
   };
 
   public logOut = (): void => {

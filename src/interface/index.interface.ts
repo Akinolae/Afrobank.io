@@ -103,6 +103,14 @@ interface Error {
   message: string;
 }
 
+interface LoggedInUser {
+  accessToken: string;
+  email: string;
+  idToken: string;
+  refreshToken: string;
+  user_id: string;
+}
+
 export type {
   Error,
   PinProps,
@@ -114,6 +122,7 @@ export type {
   FormikProps,
   ButtonProps,
   DrawerProps,
+  LoggedInUser,
   AuthWrapperProps,
-  RegisterState
+  RegisterState,
 };
