@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get branch name
-        if: github.ref_type == 'branch' && github.ref != 'refs/heads/dev' && github.ref != 'refs/heads/staging' && github.ref != 'refs/heads/master'
+        if: github.event.pull_request.merged == true
         shell: bash
         run: echo "BRANCH_NAME=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV
 
@@ -21,7 +21,7 @@ jobs:
         with:
           args: --recursive
         env:
-          AWS_S3_BUCKET: staging-flex-dashboard
+          AWS_S3_BUCKET: staging-flex-dashboar
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_DEFAULT_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_DEFAULT_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
