@@ -1,7 +1,7 @@
 name: Delete build from s3 bucket
 
 on:
-  pull_request:
+  push:
     branches-ignore:
       - dev
       - staging
