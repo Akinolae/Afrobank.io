@@ -13,7 +13,7 @@ jobs:
       - name: Get branch name
         if: github.ref_type == 'branch' && github.ref != 'refs/heads/dev' && github.ref != 'refs/heads/staging' && github.ref != 'refs/heads/master'
         shell: bash
-        run: echo github.ref
+        run: echo "github.ref"
 
       - name: Remove from S3
         uses: vitorsgomes/s3-rm-action@master
