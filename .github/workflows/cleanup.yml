@@ -1,21 +1,20 @@
 name: Delete build from s3 bucket
 
-
 on:
-    pull_request:
-      types: [closed]
-      branches:
-        - '!master'
-        - '!staging'
-        - '!dev'
+  pull_request:
+    types: [closed]
+    branches:
+      - "!master"
+      - "!staging"
+      - "!dev"
 jobs:
   delete_s3_build:
     runs-on: ubuntu-latest
     steps:
       - name: Get branch name
-        if: github.ref_type == 'branch' && github.ref != 'refs/heads/dev' && github.ref != 'refs/heads/staging' && github.ref != 'refs/heads/master'
+        if: github.event.pull_request.merged == true
         shell: bash
-        run: echo `git branch --show-current`
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV
 
       - name: Remove from S3
         uses: vitorsgomes/s3-rm-action@master
