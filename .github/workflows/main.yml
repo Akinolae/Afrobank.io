@@ -1,0 +1,50 @@
+name: Deploy to AWS S3 Bucket
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "^16.x"
+
+      - name: yarn install
+        env:
+          CI: true
+        run: |
+          rm -rf node_modules dist
+          yarn install --frozen-lockfile
+
+      - name: Build
+        run: |
+          export NODE_OPTIONS=--max_old_space_size=8192
+          yarn run build
+
+      - name: Get branch name (pull request)
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV
+
+      - name: Get branch name (push)
+        if: github.event_name == 'push'
+        shell: bash
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF##*/} )" >> $GITHUB_ENV
+
+      - name: upload to s3
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: akinolaeapp
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_DEFAULT_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_DEFAULT_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+          SOURCE_DIR: "dist"
