@@ -1,0 +1,29 @@
+name: Delete build from s3 bucket
+
+
+on:
+    pull_request:
+      types: [closed]
+      branches:
+        - '!master'
+        - '!staging'
+        - '!dev'
+jobs:
+  delete_s3_build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get branch name
+        if: github.ref_type == 'branch' && github.ref != 'refs/heads/dev' && github.ref != 'refs/heads/staging' && github.ref != 'refs/heads/master'
+        shell: bash
+        run: echo `git branch --show-current`
+
+      - name: Remove from S3
+        uses: vitorsgomes/s3-rm-action@master
+        with:
+          args: --recursive
+        env:
+          AWS_S3_BUCKET: staging-flex-dashboard
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_DEFAULT_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_DEFAULT_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+          PATH_TO_DELETE: ${{ env.BRANCH_NAME }}
